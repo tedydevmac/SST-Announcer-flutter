@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       title: 'SST Announcer',
       theme: lightTheme,
       darkTheme: darkTheme,
-      home: const HomePage(title: 'SST Announcer'),
+      home: const HomePage(title: 'Announcer'),
     );
   }
 }
@@ -67,10 +67,6 @@ class _HomePageState extends State<HomePage> {
                   ),
                   placeholder: "Search",
                   controller: TextEditingController(),
-                ),
-                Divider(
-                  color: Colors.white,
-                  thickness: 1,
                 ),
                 SizedBox(
                   height: 10,

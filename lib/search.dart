@@ -24,21 +24,30 @@ class _SearchpageState extends State<Searchpage> {
                 CupertinoTextField(
                   decoration: BoxDecoration(),
                   placeholder: "Search for announcements",
+                  style: TextStyle(color: Colors.white),
                 ),
                 SizedBox(
                   height: 10,
                 ),
-                ListView.builder(
-                  shrinkWrap: true,
-                  itemBuilder: ((context, index) {
-                    return InkWell(
-                      onTap: () {},
-                      child: ListTile(
-                        title: Text("Search result $index"),
-                      ),
-                    );
-                  }),
-                )
+                Expanded(
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemBuilder: ((context, index) {
+                      return InkWell(
+                        onTap: () {},
+                        child: ListTile(
+                          title: Text(
+                            "Search result $index",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 18),
+                          ),
+                          subtitle: Text("Body text $index"),
+                        ),
+                      );
+                    }),
+                    itemCount: 5,
+                  ),
+                ),
               ],
             ),
           ),
