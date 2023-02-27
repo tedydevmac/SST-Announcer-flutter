@@ -34,8 +34,34 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
                 height: 10,
               ),
               Text(
-                "Body text of announcement",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sit amet orci eget urna fringilla hendrerit eu at felis. Donec tempus euismod dui, posuere varius arcu venenatis id. Vestibulum facilisis nibh vel ipsum ornare, fringilla vehicula metus scelerisque. Sed mollis, ante vel rutrum viverra, metus velit rhoncus urna, id vulputate nibh elit sed ex. Donec facilisis leo nibh, tristique viverra elit auctor quis. Donec sollicitudin elit est, eget tempor turpis ultrices non. Etiam fringilla bibendum diam quis vehicula. Donec suscipit enim ut leo malesuada fermentum. Nunc interdum est odio, ut porta lorem blandit id. Suspendisse ac eros et dolor porta.",
                 style: TextStyle(fontSize: 18),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Divider(
+                thickness: 1,
+                color: Colors.white,
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                "Documents",
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+              ListView.builder(
+                shrinkWrap: true,
+                itemBuilder: (BuildContext, index) {
+                  return Ink(
+                    child: ListTile(
+                      leading: Icon(Icons.image),
+                      title: Text("Document $index"),
+                    ),
+                  );
+                },
+                itemCount: 3,
               )
             ],
           ),

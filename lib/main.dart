@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sst_announcer/announcement.dart';
+import 'package:sst_announcer/search.dart';
 import 'package:sst_announcer/themes.dart';
 
 void main() {
@@ -36,7 +37,20 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
-        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.search))],
+        actions: [
+          IconButton(
+              onPressed: () {
+                var navigator = Navigator.of(context);
+                navigator.push(
+                  CupertinoPageRoute(
+                    builder: (context) {
+                      return Searchpage();
+                    },
+                  ),
+                );
+              },
+              icon: Icon(Icons.search))
+        ],
       ),
       body: Padding(
         padding: EdgeInsets.all(20),
@@ -76,7 +90,13 @@ class _HomePageState extends State<HomePage> {
                             }));
                           },
                           child: ListTile(
-                            title: Text('Announcement $index'),
+                            title: Text(
+                              'Announcement $index',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                              ),
+                            ),
                             subtitle: Text("Description $index"),
                           ),
                         );
