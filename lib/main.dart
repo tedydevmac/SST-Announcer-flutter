@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sst_announcer/announcement.dart';
+import 'package:sst_announcer/rss.dart';
 import 'package:sst_announcer/search.dart';
 import 'package:sst_announcer/settings.dart';
 import 'package:sst_announcer/themes.dart';
@@ -42,7 +43,7 @@ class _HomePageState extends State<HomePage> {
           onPressed: () {
             var navigator = Navigator.of(context);
             navigator.push(CupertinoPageRoute(builder: (context) {
-              return SettingsScreen();
+              return RssFeedPage();
             }));
           },
         ),
@@ -113,7 +114,7 @@ class _HomePageState extends State<HomePage> {
         foregroundColor: Colors.white,
         backgroundColor: darkTheme.backgroundColor,
         child: const Icon(Icons.refresh),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }
