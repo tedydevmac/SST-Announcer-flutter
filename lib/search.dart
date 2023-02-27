@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:sst_announcer/announcement.dart';
 
 class Searchpage extends StatefulWidget {
   const Searchpage({super.key});
@@ -34,7 +35,16 @@ class _SearchpageState extends State<Searchpage> {
                     shrinkWrap: true,
                     itemBuilder: ((context, index) {
                       return InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          var navigator = Navigator.of(context);
+                          navigator.push(
+                            CupertinoPageRoute(
+                              builder: (context) {
+                                return AnnouncementPage();
+                              },
+                            ),
+                          );
+                        },
                         child: ListTile(
                           title: Text(
                             "Search result $index",

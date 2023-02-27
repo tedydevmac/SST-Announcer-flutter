@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sst_announcer/announcement.dart';
 import 'package:sst_announcer/search.dart';
+import 'package:sst_announcer/settings.dart';
 import 'package:sst_announcer/themes.dart';
 
 void main() {
@@ -36,6 +37,15 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.settings),
+          onPressed: () {
+            var navigator = Navigator.of(context);
+            navigator.push(CupertinoPageRoute(builder: (context) {
+              return SettingsScreen();
+            }));
+          },
+        ),
         title: Text(widget.title),
         actions: [
           IconButton(
@@ -59,15 +69,6 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                CupertinoTextField(
-                  style: TextStyle(color: Colors.white),
-                  decoration: BoxDecoration(
-                    border: Border(),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  placeholder: "Search",
-                  controller: TextEditingController(),
-                ),
                 SizedBox(
                   height: 10,
                 ),
