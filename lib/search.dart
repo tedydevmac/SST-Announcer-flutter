@@ -40,7 +40,10 @@ class _SearchpageState extends State<Searchpage> {
                           navigator.push(
                             CupertinoPageRoute(
                               builder: (context) {
-                                return AnnouncementPage();
+                                return AnnouncementPage(
+                                  title: "",
+                                  bodyText: "",
+                                );
                               },
                             ),
                           );

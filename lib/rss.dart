@@ -1,6 +1,8 @@
 import 'dart:convert';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:sst_announcer/announcement.dart';
 import 'package:webfeed/webfeed.dart';
 import 'package:html/parser.dart';
 
@@ -38,14 +40,23 @@ class _AtomFeedListState extends State<AtomFeedList> {
           final feed = snapshot.data!;
           return ListView.separated(
             itemCount: feed.items!.length,
-            separatorBuilder: (context, index) => Divider(),
+            separatorBuilder: (context, index) => const Divider(),
             itemBuilder: (context, index) {
               final item = feed.items![index];
               var bodyText = parseFragment(item.content ?? "").text;
               return ListTile(
                 title: Text(item.title ?? ''),
-                subtitle: Text(bodyText ?? ''),
-                onTap: () {},
+                subtitle: Text(
+                  bodyText ?? '',
+                  maxLines: 2,
+                ),
+                onTap: () {
+                  var navigator = Navigator.of(context);
+                  navigator.push(CupertinoPageRoute(builder: (context) {
+                    return AnnouncementPage(
+                        title: item.title, bodyText: bodyText);
+                  }));
+                },
               );
             },
           );
@@ -54,7 +65,7 @@ class _AtomFeedListState extends State<AtomFeedList> {
             child: Text('Error: ${snapshot.error}'),
           );
         } else {
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         }
