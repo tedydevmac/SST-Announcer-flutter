@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
           onPressed: () {
             var navigator = Navigator.of(context);
             navigator.push(CupertinoPageRoute(builder: (context) {
-              return RssFeedPage();
+              return SettingsScreen();
             }));
           },
         ),

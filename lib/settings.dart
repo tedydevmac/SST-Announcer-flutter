@@ -17,6 +17,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
         appBar: AppBar(
           title: Text("Settings"),
         ),
-        body: RssFeedPage());
+        body: RssFeedScreen());
   }
 }
