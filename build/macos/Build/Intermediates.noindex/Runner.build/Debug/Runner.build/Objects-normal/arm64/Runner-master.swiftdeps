@@ -1,0 +1,8 @@
+version: "Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)"
+options: "fc204f986e7b3855b1c6908d908ef578e73cfee8604dd706164e24b758f294c8"
+build_start_time: [1677572613, 943341970]
+build_end_time: [1677572618, 909311056]
+inputs:
+  "/Users/lukeyeo/Desktop/SST Announcer/SST-Announcer-flutter/macos/Flutter/GeneratedPluginRegistrant.swift": [1677572594, 307437419]
+  "/Users/lukeyeo/Desktop/SST Announcer/SST-Announcer-flutter/macos/Runner/AppDelegate.swift": [1671141040, 0]
+  "/Users/lukeyeo/Desktop/SST Announcer/SST-Announcer-flutter/macos/Runner/MainFlutterWindow.swift": [1671141040, 0]

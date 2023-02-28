@@ -18,6 +18,10 @@ collection
 2.12
 file:///Users/lukeyeo/.pub-cache/hosted/pub.flutter-io.cn/collection-1.17.0/
 file:///Users/lukeyeo/.pub-cache/hosted/pub.flutter-io.cn/collection-1.17.0/lib/
+csslib
+2.12
+file:///Users/lukeyeo/.pub-cache/hosted/pub.flutter-io.cn/csslib-0.17.2/
+file:///Users/lukeyeo/.pub-cache/hosted/pub.flutter-io.cn/csslib-0.17.2/lib/
 cupertino_icons
 2.12
 file:///Users/lukeyeo/.pub-cache/hosted/pub.flutter-io.cn/cupertino_icons-1.0.5/
@@ -30,6 +34,14 @@ flutter_lints
 2.17
 file:///Users/lukeyeo/.pub-cache/hosted/pub.flutter-io.cn/flutter_lints-2.0.1/
 file:///Users/lukeyeo/.pub-cache/hosted/pub.flutter-io.cn/flutter_lints-2.0.1/lib/
+html
+2.12
+file:///Users/lukeyeo/.pub-cache/hosted/pub.flutter-io.cn/html-0.15.1/
+file:///Users/lukeyeo/.pub-cache/hosted/pub.flutter-io.cn/html-0.15.1/lib/
+html_unescape
+2.12
+file:///Users/lukeyeo/.pub-cache/hosted/pub.flutter-io.cn/html_unescape-2.0.0/
+file:///Users/lukeyeo/.pub-cache/hosted/pub.flutter-io.cn/html_unescape-2.0.0/lib/
 http
 2.14
 file:///Users/lukeyeo/.pub-cache/hosted/pub.flutter-io.cn/http-0.13.5/
@@ -146,6 +158,10 @@ xml
 2.16
 file:///Users/lukeyeo/.pub-cache/hosted/pub.flutter-io.cn/xml-5.4.1/
 file:///Users/lukeyeo/.pub-cache/hosted/pub.flutter-io.cn/xml-5.4.1/lib/
+xml2json
+2.12
+file:///Users/lukeyeo/.pub-cache/hosted/pub.flutter-io.cn/xml2json-5.3.2/
+file:///Users/lukeyeo/.pub-cache/hosted/pub.flutter-io.cn/xml2json-5.3.2/lib/
 sst_announcer
 2.19
 file:///Users/lukeyeo/Desktop/SST%20Announcer/SST-Announcer-flutter/

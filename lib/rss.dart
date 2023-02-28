@@ -1,58 +1,64 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:xml/xml.dart' as xml;
+import 'package:webfeed/webfeed.dart';
+import 'package:html/parser.dart';
 
-class RssFeedScreen extends StatefulWidget {
+class AtomFeedList extends StatefulWidget {
   @override
-  _RssFeedScreenState createState() => _RssFeedScreenState();
+  _AtomFeedListState createState() => _AtomFeedListState();
 }
 
-class _RssFeedScreenState extends State<RssFeedScreen> {
-  List<xml.XmlElement> _items = [];
+class _AtomFeedListState extends State<AtomFeedList> {
+  late Future<AtomFeed> _futureFeed;
 
   @override
   void initState() {
     super.initState();
-    _fetchRssFeed();
+    _futureFeed = _fetchFeed();
   }
 
-  Future<void> _fetchRssFeed() async {
-    final response = await http
-        .get(Uri.parse('http://studentsblog.sst.edu.sg/feeds/posts/default'));
-
-    final document = xml.parse(response.body);
-    final channel = document.findAllElements('channel').first;
-    final items = channel.findElements('item').toList();
-
-    setState(() {
-      _items = items;
-    });
+  Future<AtomFeed> _fetchFeed() async {
+    final response = await http.get(Uri.parse(
+        'http://studentsblog.sst.edu.sg/feeds/posts/default/?max-results=50'));
+    print(AtomFeed.parse(utf8.decode(response.bodyBytes)));
+    if (response.statusCode == 200) {
+      return AtomFeed.parse(utf8.decode(response.bodyBytes));
+    } else {
+      throw Exception('Failed to fetch feed');
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('RSS Feed'),
-      ),
-      body: ListView.builder(
-        itemCount: _items.length,
-        itemBuilder: (BuildContext context, int index) {
-          final item = _items[index];
-
-          final title = item.findElements('title').single.text;
-          final description = item.findElements('description').single.text;
-          final pubDate = item.findElements('pubDate').single.text;
-
-          return ListTile(
-            title: Text(title),
-            subtitle: Text(pubDate),
-            onTap: () {
-              // Do something when the tile is tapped
+    return FutureBuilder<AtomFeed>(
+      future: _futureFeed,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          final feed = snapshot.data!;
+          return ListView.separated(
+            itemCount: feed.items!.length,
+            separatorBuilder: (context, index) => Divider(),
+            itemBuilder: (context, index) {
+              final item = feed.items![index];
+              var bodyText = parseFragment(item.content ?? "").text;
+              return ListTile(
+                title: Text(item.title ?? ''),
+                subtitle: Text(bodyText ?? ''),
+                onTap: () {},
+              );
             },
           );
-        },
-      ),
+        } else if (snapshot.hasError) {
+          return Center(
+            child: Text('Error: ${snapshot.error}'),
+          );
+        } else {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
     );
   }
 }

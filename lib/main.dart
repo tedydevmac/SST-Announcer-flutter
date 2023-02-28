@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: Padding(
-        padding: EdgeInsets.all(20),
+        padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
         child: Ink(
           child: Center(
             child: Column(
@@ -73,37 +73,7 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(
                   height: 10,
                 ),
-                Expanded(
-                  child: ListView.separated(
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      physics: AlwaysScrollableScrollPhysics(),
-                      itemBuilder: (context, index) {
-                        return InkWell(
-                          onTap: () {
-                            var navigator = Navigator.of(context);
-                            navigator
-                                .push(CupertinoPageRoute(builder: (context) {
-                              return AnnouncementPage();
-                            }));
-                          },
-                          child: ListTile(
-                            title: Text(
-                              'Announcement $index',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                              ),
-                            ),
-                            subtitle: Text("Description $index"),
-                          ),
-                        );
-                      },
-                      separatorBuilder: (context, index) {
-                        return const Divider();
-                      },
-                      itemCount: 20),
-                ),
+                Expanded(child: AtomFeedList()),
               ],
             ),
           ),
