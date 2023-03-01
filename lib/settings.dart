@@ -6,7 +6,7 @@ import 'package:sst_announcer/rss.dart';
 
 class SettingsScreen extends StatefulWidget {
   SettingsScreen({super.key});
-  var numberOfPostsToFetch = 50;
+  var numberOfPostsToFetch;
   @override
   State<SettingsScreen> createState() => _SettingsScreenState();
 }
