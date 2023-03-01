@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sst_announcer/announcement.dart';
 import 'package:sst_announcer/rss.dart';
 import 'package:sst_announcer/search.dart';
 import 'package:sst_announcer/settings.dart';
@@ -16,6 +15,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    SettingsScreen().numberOfPostsToFetch = 50;
+
     return MaterialApp(
       title: 'SST Announcer',
       theme: lightTheme,
@@ -78,12 +79,6 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        foregroundColor: Colors.white,
-        backgroundColor: darkTheme.backgroundColor,
-        child: const Icon(Icons.refresh),
       ),
     );
   }

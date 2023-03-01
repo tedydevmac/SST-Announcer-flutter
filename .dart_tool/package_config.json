@@ -260,6 +260,30 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "webview_flutter",
+      "rootUri": "file:///Users/lukeyeo/.pub-cache/hosted/pub.flutter-io.cn/webview_flutter-4.0.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "webview_flutter_android",
+      "rootUri": "file:///Users/lukeyeo/.pub-cache/hosted/pub.flutter-io.cn/webview_flutter_android-3.3.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "webview_flutter_platform_interface",
+      "rootUri": "file:///Users/lukeyeo/.pub-cache/hosted/pub.flutter-io.cn/webview_flutter_platform_interface-2.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "webview_flutter_wkwebview",
+      "rootUri": "file:///Users/lukeyeo/.pub-cache/hosted/pub.flutter-io.cn/webview_flutter_wkwebview-3.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "xml",
       "rootUri": "file:///Users/lukeyeo/.pub-cache/hosted/pub.flutter-io.cn/xml-5.4.1",
       "packageUri": "lib/",
@@ -278,7 +302,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-02-28T10:07:44.572447Z",
+  "generated": "2023-03-01T04:57:27.770798Z",
   "generator": "pub",
   "generatorVersion": "2.19.2"
 }

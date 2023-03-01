@@ -1,8 +1,11 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:html_unescape/html_unescape_small.dart';
 import 'package:http/http.dart' as http;
 import 'package:sst_announcer/announcement.dart';
+import 'package:sst_announcer/settings.dart';
+import 'package:sst_announcer/webview.dart';
 import 'package:webfeed/webfeed.dart';
 import 'package:html/parser.dart';
 
@@ -21,9 +24,10 @@ class _AtomFeedListState extends State<AtomFeedList> {
   }
 
   Future<AtomFeed> _fetchFeed() async {
+    setState(() {});
+    print("starting fetch");
     final response = await http.get(Uri.parse(
-        'http://studentsblog.sst.edu.sg/feeds/posts/default/?max-results=50'));
-    print(AtomFeed.parse(utf8.decode(response.bodyBytes)));
+        'http://studentsblog.sst.edu.sg/feeds/posts/default/?max-results=${SettingsScreen().numberOfPostsToFetch})'));
     if (response.statusCode == 200) {
       return AtomFeed.parse(utf8.decode(response.bodyBytes));
     } else {
@@ -33,6 +37,10 @@ class _AtomFeedListState extends State<AtomFeedList> {
 
   @override
   Widget build(BuildContext context) {
+    print(SettingsScreen().numberOfPostsToFetch);
+    print(
+        "http://studentsblog.sst.edu.sg/feeds/posts/default/?max-results=${SettingsScreen().numberOfPostsToFetch})");
+    setState(() {});
     return FutureBuilder<AtomFeed>(
       future: _futureFeed,
       builder: (context, snapshot) {
@@ -44,10 +52,11 @@ class _AtomFeedListState extends State<AtomFeedList> {
             itemBuilder: (context, index) {
               final item = feed.items![index];
               var bodyText = parseFragment(item.content ?? "").text;
+              print(bodyText);
               return ListTile(
                 title: Text(item.title ?? ''),
                 subtitle: Text(
-                  bodyText ?? '',
+                  bodyText ?? "",
                   maxLines: 2,
                 ),
                 onTap: () {
