@@ -1,12 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:sst_announcer/rss.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsScreen extends StatefulWidget {
   SettingsScreen({super.key});
-  var numberOfPostsToFetch;
   @override
   State<SettingsScreen> createState() => _SettingsScreenState();
 }
@@ -21,7 +18,23 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   Widget build(BuildContext context) {
-    numberOfPostsController.text = "${widget.numberOfPostsToFetch}";
+    int? intValue;
+
+    saveFetchValue() async {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      intValue = prefs.getInt("postsToFetch");
+      print("value successfully set: ${prefs.getInt("postsToFetch")}");
+    }
+
+    getFetchValue() async {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      intValue = prefs.getInt("postsToFetch")!;
+      print("value: $intValue");
+    }
+
+    saveFetchValue();
+    getFetchValue();
+    numberOfPostsController.text = "$intValue";
 
     return Scaffold(
       appBar: AppBar(
@@ -57,10 +70,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ),
               ElevatedButton(
                   onPressed: () {
-                    widget.numberOfPostsToFetch =
-                        int.parse(numberOfPostsController.text);
+                    saveFetchValue();
+                    print("saved: $intValue");
+                    getFetchValue();
                   },
-                  child: Text("Save"))
+                  child: const Text("Save"))
             ],
           ),
         ),

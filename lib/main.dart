@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:html/parser.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sst_announcer/search.dart';
 import 'package:sst_announcer/settings.dart';
 import 'package:sst_announcer/themes.dart';
@@ -12,7 +13,6 @@ import 'package:webfeed/domain/atom_feed.dart';
 import 'announcement.dart';
 
 void main() {
-  SettingsScreen().numberOfPostsToFetch = 50;
   runApp(const MyApp());
 }
 
@@ -22,21 +22,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    SettingsScreen().numberOfPostsToFetch = 50;
-
     return MaterialApp(
       title: 'SST Announcer',
       theme: lightTheme,
       darkTheme: darkTheme,
-      home: const HomePage(title: 'Announcer'),
+      home: HomePage(title: 'Announcer'),
     );
   }
 }
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key, required this.title});
+  HomePage({super.key, required this.title});
   final String title;
-
   @override
   State<HomePage> createState() => _HomePageState();
 }
@@ -47,7 +44,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.settings),
+          icon: const Icon(Icons.settings),
           onPressed: () {
             var navigator = Navigator.of(context);
             navigator.push(CupertinoPageRoute(builder: (context) {
@@ -63,12 +60,12 @@ class _HomePageState extends State<HomePage> {
                 navigator.push(
                   CupertinoPageRoute(
                     builder: (context) {
-                      return Searchpage();
+                      return const Searchpage();
                     },
                   ),
                 );
               },
-              icon: Icon(Icons.search))
+              icon: const Icon(Icons.search))
         ],
       ),
       body: Padding(
@@ -105,10 +102,9 @@ class _AtomFeedListState extends State<AtomFeedList> {
   }
 
   Future<AtomFeed> _fetchFeed() async {
-    setState(() {});
     print("starting fetch");
     final response = await http.get(Uri.parse(
-        'http://studentsblog.sst.edu.sg/feeds/posts/default/?max-results=${SettingsScreen().numberOfPostsToFetch}'));
+        'http://studentsblog.sst.edu.sg/feeds/posts/default/?max-results=100'));
     if (response.statusCode == 200) {
       return AtomFeed.parse(utf8.decode(response.bodyBytes));
     } else {
@@ -118,9 +114,6 @@ class _AtomFeedListState extends State<AtomFeedList> {
 
   @override
   Widget build(BuildContext context) {
-    print(SettingsScreen().numberOfPostsToFetch);
-    print(
-        "http://studentsblog.sst.edu.sg/feeds/posts/default/?max-results=${SettingsScreen().numberOfPostsToFetch}");
     setState(() {});
     return FutureBuilder<AtomFeed>(
       future: _futureFeed,
@@ -128,6 +121,8 @@ class _AtomFeedListState extends State<AtomFeedList> {
         if (snapshot.hasData) {
           final feed = snapshot.data!;
           return ListView.separated(
+            shrinkWrap: true,
+            clipBehavior: Clip.hardEdge,
             itemCount: feed.items!.length,
             separatorBuilder: (context, index) => const Divider(),
             itemBuilder: (context, index) {
@@ -138,7 +133,7 @@ class _AtomFeedListState extends State<AtomFeedList> {
                 title: Text(item.title ?? ''),
                 subtitle: Text(
                   bodyText ?? "",
-                  maxLines: 2,
+                  maxLines: 3,
                 ),
                 onTap: () {
                   var navigator = Navigator.of(context);

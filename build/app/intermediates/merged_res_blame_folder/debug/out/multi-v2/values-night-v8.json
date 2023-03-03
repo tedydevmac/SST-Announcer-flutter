@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.sst_announcer.app-mergeDebugResources-9:/values-night-v8/values-night-v8.xml",
+            "outputFile": "com.example.sst_announcer.app-mergeDebugResources-10:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
                     "source": "/Users/lukeyeo/Desktop/SST Announcer/SST-Announcer-flutter/android/app/src/main/res/values-night/styles.xml",
