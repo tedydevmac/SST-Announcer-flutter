@@ -45,36 +45,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
           padding: const EdgeInsets.all(20),
           child: Column(
             children: [
-              Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      "Number of posts to fetch",
-                      style: TextStyle(fontSize: 18),
-                    ),
-                  ),
-                  SizedBox(width: 10),
-                  SizedBox(
-                    width: 80,
-                    child: CupertinoTextField(
-                      placeholder: "e.g. 50",
-                      controller: numberOfPostsController,
-                      decoration: BoxDecoration(),
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  )
-                ],
-              ),
               SizedBox(
                 height: 20,
               ),
-              ElevatedButton(
-                  onPressed: () {
-                    saveFetchValue();
-                    print("saved: $intValue");
-                    getFetchValue();
-                  },
-                  child: const Text("Save"))
             ],
           ),
         ),

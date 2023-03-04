@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
                 navigator.push(
                   CupertinoPageRoute(
                     builder: (context) {
-                      return const Searchpage();
+                      return AtomFeedSearchPage();
                     },
                   ),
                 );
