@@ -3,8 +3,8 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sst_announcer/announcement.dart';
+import 'package:sst_announcer/categories_list.dart';
 import 'package:sst_announcer/search.dart';
-import 'package:sst_announcer/settings.dart';
 import 'package:sst_announcer/themes.dart';
 import 'package:xml/xml.dart';
 
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       title: 'SST Announcer',
       theme: lightTheme,
       darkTheme: darkTheme,
-      home: HomePage(title: 'Announcer'),
+      home: HomePage(title: 'All announcements'),
     );
   }
 }
@@ -38,16 +38,50 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.settings),
-          onPressed: () {
-            var navigator = Navigator.of(context);
-            navigator.push(CupertinoPageRoute(builder: (context) {
-              return SettingsScreen();
-            }));
-          },
+      drawer: Drawer(
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Ink(
+              child: ListView(
+                padding: EdgeInsets.zero,
+                children: [
+                  const Center(
+                    child: Text("SST Announcer",
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold)),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Divider(
+                    thickness: 1,
+                    color: Colors.white,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  ExpansionTile(
+                    clipBehavior: Clip.none,
+                    title: Text(
+                      "Categories",
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                    children: [
+                      SizedBox(
+                        height: 10,
+                      ),
+                      CategoryListPage(),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
         ),
+      ),
+      appBar: AppBar(
         title: Text(widget.title),
         actions: [
           IconButton(
@@ -56,7 +90,7 @@ class _HomePageState extends State<HomePage> {
                 navigator.push(
                   CupertinoPageRoute(
                     builder: (context) {
-                      return AtomFeedSearchPage();
+                      return const AtomFeedSearchPage();
                     },
                   ),
                 );
@@ -65,13 +99,13 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: Padding(
-        padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+        padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
         child: Ink(
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Expanded(child: AtomFeedPage()),
