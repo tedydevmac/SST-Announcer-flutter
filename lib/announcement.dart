@@ -14,10 +14,10 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Announcement")),
+      appBar: AppBar(title: const Text("Announcement")),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           child: Ink(
             child: SingleChildScrollView(
               child: Expanded(
@@ -25,22 +25,22 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
                   children: [
                     Text(
                       widget.title,
-                      style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
+                      style: const TextStyle(
+                          fontSize: 25, fontWeight: FontWeight.w500),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    Divider(
+                    const Divider(
                       thickness: 1,
                       color: Colors.white,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Text(
                       widget.bodyText,
-                      style: TextStyle(fontSize: 18),
+                      style: const TextStyle(fontSize: 18),
                     ),
                   ],
                 ),

@@ -3,9 +3,10 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sst_announcer/announcement.dart';
-import 'package:sst_announcer/categories_list.dart';
 import 'package:sst_announcer/search.dart';
 import 'package:sst_announcer/themes.dart';
+import 'package:sst_announcer/categories/categories_list.dart';
+import 'package:sst_announcer/categories/user_categories.dart';
 import 'package:xml/xml.dart';
 
 void main() {
@@ -108,7 +109,7 @@ class _HomePageState extends State<HomePage> {
                 const SizedBox(
                   height: 10,
                 ),
-                Expanded(child: AtomFeedPage()),
+                Expanded(child: FeedPage()),
               ],
             ),
           ),
