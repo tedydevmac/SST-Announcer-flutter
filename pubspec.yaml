@@ -43,6 +43,7 @@ dependencies:
   html_unescape: ^2.0.0
   webview_flutter: ^4.0.5
   shared_preferences: ^2.0.18
+  cached_network_image: ^3.2.3
 
 
 dev_dependencies:

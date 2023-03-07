@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:html/parser.dart';
 import 'package:http/http.dart' as http;
+import 'package:sst_announcer/announcement.dart';
 import 'package:xml/xml.dart' as xml;
 
 class FeedPage extends StatefulWidget {
@@ -32,21 +34,6 @@ class _FeedPageState extends State<FeedPage> {
     });
   }
 
-  Future<void> _saveToCategory(xml.XmlElement post, String category) async {
-    // Check if the category already exists in the map
-    if (_categories.containsKey(category)) {
-      // If it does, add the post to the existing list of posts for the category
-      setState(() {
-        _categories[category]!.add(post);
-      });
-    } else {
-      // If it doesn't, create a new list for the category and add the post to it
-      setState(() {
-        _categories[category] = [post];
-      });
-    }
-  }
-
   Future<void> _refresh() async {
     final response = await http.get(Uri.parse(
         'http://studentsblog.sst.edu.sg/feeds/posts/default?max-results=$_numPosts'));
@@ -71,51 +58,20 @@ class _FeedPageState extends State<FeedPage> {
             final content =
                 parseFragment(post.findElements('content').first.text).text;
             return ListTile(
+              onTap: () {
+                var navigator = Navigator.of(context);
+                navigator.push(
+                  CupertinoPageRoute(
+                    builder: (context) {
+                      return AnnouncementPage(title: title, bodyText: content);
+                    },
+                  ),
+                );
+              },
               title: Text(title),
               subtitle: Text(
                 content!,
                 maxLines: 3,
-              ),
-              trailing: PopupMenuButton(
-                itemBuilder: (context) {
-                  return [
-                    PopupMenuItem(
-                      child: Text('Save to category'),
-                      onTap: () {
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            return AlertDialog(
-                              title: Text('Save to category'),
-                              content: TextField(
-                                controller: _categoryController,
-                                decoration: InputDecoration(
-                                  labelText: 'Category',
-                                ),
-                              ),
-                              actions: [
-                                TextButton(
-                                  child: Text('Cancel'),
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                ),
-                                TextButton(
-                                  child: Text('Save'),
-                                  onPressed: () {
-                                    final category = _categoryController.text;
-                                    _saveToCategory(post, category);
-                                    Navigator.of(context).pop();
-                                  },
-                                ),
-                              ],
-                            );
-                          },
-                        );
-                      },
-                    ),
-                  ];
-                },
               ),
             );
           },

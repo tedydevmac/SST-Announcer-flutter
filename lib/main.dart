@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:html/parser.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/cupertino.dart';
@@ -8,6 +10,7 @@ import 'package:sst_announcer/themes.dart';
 import 'package:sst_announcer/categories/categories_list.dart';
 import 'package:sst_announcer/categories/user_categories.dart';
 import 'package:xml/xml.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
 void main() {
   runApp(const MyApp());
@@ -128,10 +131,37 @@ class _AtomFeedPageState extends State<AtomFeedPage> {
   List<String> _postTitles = [];
   List<String> _postContent = [];
 
+  // Instantiate the cache manager
+  final CacheManager _cacheManager = CacheManager(Config(
+    'atomFeedCache',
+    maxNrOfCacheObjects: 20,
+    stalePeriod: const Duration(minutes: 30),
+  ));
+
   Future<void> _refreshFeed() async {
-    final response = await http
-        .get(Uri.parse('http://studentsblog.sst.edu.sg/feeds/posts/default'));
-    final feedXml = XmlDocument.parse(response.body);
+    // Check if the feed is in the cache
+    final cacheData = await _cacheManager.getSingleFile(
+      'http://studentsblog.sst.edu.sg/feeds/posts/default',
+    );
+
+    // If the feed is not in the cache, fetch it and add it to the cache
+    if (cacheData == null) {
+      final response = await http.get(Uri.parse(
+        'http://studentsblog.sst.edu.sg/feeds/posts/default',
+      ));
+      await _cacheManager.putFile(
+        'http://studentsblog.sst.edu.sg/feeds/posts/default',
+        Uint8List.fromList(response.bodyBytes),
+      );
+      _parseFeed(response.body);
+    } else {
+      _parseFeed(await cacheData.readAsString());
+    }
+  }
+
+  // Parse the feed and update the state
+  void _parseFeed(String responseBody) {
+    final feedXml = XmlDocument.parse(responseBody);
     final postContent = feedXml.findAllElements("entry").map((content) {
       return content.findElements("content").single.text;
     }).toList();
