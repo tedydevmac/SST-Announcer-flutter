@@ -17,6 +17,8 @@ class _FeedPageState extends State<FeedPage> {
   List<xml.XmlElement> _posts = [];
   Map<String, List<xml.XmlElement>> _categories = {};
 
+  var _controller = ScrollController();
+
   @override
   void initState() {
     super.initState();
@@ -38,7 +40,7 @@ class _FeedPageState extends State<FeedPage> {
     final response = await http.get(Uri.parse(
         'http://studentsblog.sst.edu.sg/feeds/posts/default?max-results=$_numPosts'));
     final body = response.body;
-    final document = xml.parse(body);
+    final document = xml.XmlDocument.parse(body);
     final posts = document.findAllElements('entry').toList();
     setState(() {
       _posts = posts;
@@ -47,10 +49,26 @@ class _FeedPageState extends State<FeedPage> {
 
   @override
   Widget build(BuildContext context) {
+    _controller.addListener(() {
+      if (_controller.position.atEdge) {
+        bool isTop = _controller.position.pixels == 0;
+        if (isTop) {
+          print('At the top');
+        } else {
+          setState(() {
+            _numPosts += 10;
+            print("reached bottom, adding more posts");
+            _refresh();
+            print("added posts successfully");
+          });
+        }
+      }
+    });
     return Scaffold(
       body: RefreshIndicator(
         onRefresh: _refresh,
         child: ListView.builder(
+          controller: _controller,
           itemCount: _posts.length,
           itemBuilder: (context, index) {
             final post = _posts[index];

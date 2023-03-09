@@ -174,10 +174,22 @@ class _AtomFeedPageState extends State<AtomFeedPage> {
     });
   }
 
+  final _controller = ScrollController();
+
   @override
   void initState() {
     super.initState();
     _refreshFeed();
+    _controller.addListener(() {
+      if (_controller.position.atEdge) {
+        bool isTop = _controller.position.pixels == 0;
+        if (isTop) {
+          print('At the top');
+        } else {
+          setState(() {});
+        }
+      }
+    });
   }
 
   @override
@@ -186,6 +198,7 @@ class _AtomFeedPageState extends State<AtomFeedPage> {
       body: RefreshIndicator(
         onRefresh: _refreshFeed,
         child: ListView.separated(
+          controller: _controller,
           separatorBuilder: (context, index) => const Divider(),
           itemCount: _postTitles.length,
           itemBuilder: (context, index) {
