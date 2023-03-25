@@ -13,8 +13,8 @@
 13         to allow setting breakpoints, to provide hot reload, etc.
 14    -->
 15    <uses-permission android:name="android.permission.INTERNET" />
-15-->/Users/lukeyeo/Desktop/SST Announcer/SST-Announcer-flutter/android/app/src/debug/AndroidManifest.xml:7:5-66
-15-->/Users/lukeyeo/Desktop/SST Announcer/SST-Announcer-flutter/android/app/src/debug/AndroidManifest.xml:7:22-64
+15-->/Users/lukeyeo/Desktop/School/SST Inc/SST Announcer/SST-Announcer-flutter/android/app/src/debug/AndroidManifest.xml:7:5-66
+15-->/Users/lukeyeo/Desktop/School/SST Inc/SST Announcer/SST-Announcer-flutter/android/app/src/debug/AndroidManifest.xml:7:22-64
 16
 17    <application
 18        android:name="io.flutter.app.FlutterMultiDexApplication"
@@ -57,13 +57,13 @@
 54            android:value="2" />
 55
 56        <activity
-56-->[:url_launcher_android] /Users/lukeyeo/Desktop/SST Announcer/SST-Announcer-flutter/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-13:74
+56-->[:url_launcher_android] /Users/lukeyeo/Desktop/School/SST Inc/SST Announcer/SST-Announcer-flutter/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-13:74
 57            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
-57-->[:url_launcher_android] /Users/lukeyeo/Desktop/SST Announcer/SST-Announcer-flutter/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-74
+57-->[:url_launcher_android] /Users/lukeyeo/Desktop/School/SST Inc/SST Announcer/SST-Announcer-flutter/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-74
 58            android:exported="false"
-58-->[:url_launcher_android] /Users/lukeyeo/Desktop/SST Announcer/SST-Announcer-flutter/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-37
+58-->[:url_launcher_android] /Users/lukeyeo/Desktop/School/SST Inc/SST Announcer/SST-Announcer-flutter/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-37
 59            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-59-->[:url_launcher_android] /Users/lukeyeo/Desktop/SST Announcer/SST-Announcer-flutter/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-71
+59-->[:url_launcher_android] /Users/lukeyeo/Desktop/School/SST Inc/SST Announcer/SST-Announcer-flutter/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-71
 60
 61        <uses-library
 61-->[androidx.window:window:1.0.0-beta04] /Users/lukeyeo/.gradle/caches/transforms-3/dee59bb480020f42d53c2ea15e4501f7/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40

@@ -94,7 +94,7 @@ class _HomePageState extends State<HomePage> {
                 navigator.push(
                   CupertinoPageRoute(
                     builder: (context) {
-                      return const AtomFeedSearchPage();
+                      return const BlogFeedPage();
                     },
                   ),
                 );
@@ -116,114 +116,6 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class AtomFeedPage extends StatefulWidget {
-  @override
-  _AtomFeedPageState createState() => _AtomFeedPageState();
-}
-
-class _AtomFeedPageState extends State<AtomFeedPage> {
-  List<String> _postTitles = [];
-  List<String> _postContent = [];
-
-  // Instantiate the cache manager
-  final CacheManager _cacheManager = CacheManager(Config(
-    'atomFeedCache',
-    maxNrOfCacheObjects: 20,
-    stalePeriod: const Duration(minutes: 30),
-  ));
-
-  Future<void> _refreshFeed() async {
-    // Check if the feed is in the cache
-    final cacheData = await _cacheManager.getSingleFile(
-      'http://studentsblog.sst.edu.sg/feeds/posts/default',
-    );
-
-    // If the feed is not in the cache, fetch it and add it to the cache
-    if (cacheData == null) {
-      final response = await http.get(Uri.parse(
-        'http://studentsblog.sst.edu.sg/feeds/posts/default',
-      ));
-      await _cacheManager.putFile(
-        'http://studentsblog.sst.edu.sg/feeds/posts/default',
-        Uint8List.fromList(response.bodyBytes),
-      );
-      _parseFeed(response.body);
-    } else {
-      _parseFeed(await cacheData.readAsString());
-    }
-  }
-
-  // Parse the feed and update the state
-  void _parseFeed(String responseBody) {
-    final feedXml = XmlDocument.parse(responseBody);
-    final postContent = feedXml.findAllElements("entry").map((content) {
-      return content.findElements("content").single.text;
-    }).toList();
-    final postTitles = feedXml.findAllElements('entry').map((entry) {
-      return entry.findElements('title').single.text;
-    }).toList();
-    setState(() {
-      _postTitles = postTitles;
-      _postContent = postContent;
-    });
-  }
-
-  final _controller = ScrollController();
-
-  @override
-  void initState() {
-    super.initState();
-    _refreshFeed();
-    _controller.addListener(() {
-      if (_controller.position.atEdge) {
-        bool isTop = _controller.position.pixels == 0;
-        if (isTop) {
-          print('At the top');
-        } else {
-          setState(() {});
-        }
-      }
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: RefreshIndicator(
-        onRefresh: _refreshFeed,
-        child: ListView.separated(
-          controller: _controller,
-          separatorBuilder: (context, index) => const Divider(),
-          itemCount: _postTitles.length,
-          itemBuilder: (context, index) {
-            var bodyText = parseFragment(_postContent[index]).text;
-            return Ink(
-              child: ListTile(
-                onTap: () {
-                  var navigator = Navigator.of(context);
-                  navigator.push(
-                    CupertinoPageRoute(
-                      builder: (context) {
-                        return AnnouncementPage(
-                            title: _postTitles[index], bodyText: bodyText);
-                      },
-                    ),
-                  );
-                },
-                title: Text(_postTitles[index]),
-                subtitle: Text(
-                  bodyText!,
-                  maxLines: 3,
-                ),
-              ),
-            );
-          },
         ),
       ),
     );

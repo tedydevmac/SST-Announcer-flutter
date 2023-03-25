@@ -4,25 +4,6 @@
             "outputFile": "com.example.sst_announcer.app-mergeDebugResources-10:/values/values.xml",
             "map": [
                 {
-                    "source": "/Users/lukeyeo/Desktop/SST Announcer/SST-Announcer-flutter/android/app/src/main/res/values/styles.xml",
-                    "from": {
-                        "startLines": "3,14",
-                        "startColumns": "4,4",
-                        "startOffsets": "173,818",
-                        "endLines": "7,16",
-                        "endColumns": "12,12",
-                        "endOffsets": "476,982"
-                    },
-                    "to": {
-                        "startLines": "93,97",
-                        "startColumns": "4,4",
-                        "startOffsets": "5462,5643",
-                        "endLines": "96,99",
-                        "endColumns": "12,12",
-                        "endOffsets": "5638,5807"
-                    }
-                },
-                {
                     "source": "/Users/lukeyeo/.gradle/caches/transforms-3/dee59bb480020f42d53c2ea15e4501f7/transformed/jetified-window-1.0.0-beta04/res/values/values.xml",
                     "from": {
                         "startLines": "2,7,8,9,10,11,19,23,34,51",
@@ -39,6 +20,25 @@
                         "endLines": "7,8,9,10,72,118,122,236,248,256",
                         "endColumns": "11,59,51,44,59,24,24,24,24,24",
                         "endOffsets": "289,349,401,446,4387,6899,7030,10987,11427,11736"
+                    }
+                },
+                {
+                    "source": "/Users/lukeyeo/Desktop/School/SST Inc/SST Announcer/SST-Announcer-flutter/android/app/src/main/res/values/styles.xml",
+                    "from": {
+                        "startLines": "3,14",
+                        "startColumns": "4,4",
+                        "startOffsets": "173,818",
+                        "endLines": "7,16",
+                        "endColumns": "12,12",
+                        "endOffsets": "476,982"
+                    },
+                    "to": {
+                        "startLines": "93,97",
+                        "startColumns": "4,4",
+                        "startOffsets": "5462,5643",
+                        "endLines": "96,99",
+                        "endColumns": "12,12",
+                        "endOffsets": "5638,5807"
                     }
                 },
                 {

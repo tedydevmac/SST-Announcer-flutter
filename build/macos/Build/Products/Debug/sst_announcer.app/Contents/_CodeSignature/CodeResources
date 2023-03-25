@@ -23,19 +23,28 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			Fl/e/r2pR8VHiAFb2OHUEbC9rpI=
+			h/6dsQv4HrsNxGw4BGmUKnrT2C4=
 			</data>
 			<key>requirement</key>
-			<string>cdhash H"165fdefebda947c54788015bd8e1d411b0bdae92"</string>
+			<string>cdhash H"87fe9db10bf81ebb0dc46c380469942a7ad3d82e"</string>
+		</dict>
+		<key>Frameworks/FMDB.framework</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			4wc3K7PbhgIoiSkqVNWmgVtBffU=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"e307372bb3db86022889292a54d5a6815b417df5"</string>
 		</dict>
 		<key>Frameworks/FlutterMacOS.framework</key>
 		<dict>
 			<key>cdhash</key>
 			<data>
-			Osw/cOFab+8JWO+m7ux3q7kFlmU=
+			VhjP1D63TaWPLu5WcIBtHc5lKVs=
 			</data>
 			<key>requirement</key>
-			<string>cdhash H"3acc3f70e15a6fef0958efa6eeec77abb9059665"</string>
+			<string>cdhash H"5618cfd43eb74da58f2eee5670806d1dce65295b"</string>
 		</dict>
 		<key>Frameworks/libswiftAppKit.dylib</key>
 		<dict>
@@ -190,23 +199,41 @@
 			<key>requirement</key>
 			<string>cdhash H"3406aab10f486b91c2d9334de341504de56a5631" or cdhash H"73e04119822f2d8cd5eeb426ddac2b2b98295def"</string>
 		</dict>
+		<key>Frameworks/path_provider_foundation.framework</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			UzWvKHseU4/Q3lNcujEtyfBvKyE=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"5335af287b1e538fd0de535cba312dc9f06f2b21"</string>
+		</dict>
 		<key>Frameworks/shared_preferences_foundation.framework</key>
 		<dict>
 			<key>cdhash</key>
 			<data>
-			ns3jfkTJssnuK8BRMbXDRM6wJ5Y=
+			XKC01sMFEOuOdN3InXpcZwtd9x0=
 			</data>
 			<key>requirement</key>
-			<string>cdhash H"9ecde37e44c9b2c9ee2bc05131b5c344ceb02796"</string>
+			<string>cdhash H"5ca0b4d6c30510eb8e74ddc89d7a5c670b5df71d"</string>
+		</dict>
+		<key>Frameworks/sqflite.framework</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			YssQKIN9USU7Wj95JIQ5WW79lzc=
+			</data>
+			<key>requirement</key>
+			<string>cdhash H"62cb1028837d51253b5a3f79248439596efd9737"</string>
 		</dict>
 		<key>Frameworks/url_launcher_macos.framework</key>
 		<dict>
 			<key>cdhash</key>
 			<data>
-			nf5nQIj+jprnwVDBfPhuCOrQ4Hs=
+			S6NEeldbwYr/7bcHui2ihvgFYtQ=
 			</data>
 			<key>requirement</key>
-			<string>cdhash H"9dfe674088fe8e9ae7c150c17cf86e08ead0e07b"</string>
+			<string>cdhash H"4ba3447a575bc18affedb707ba2da286f80562d4"</string>
 		</dict>
 		<key>Resources/AppIcon.icns</key>
 		<dict>
