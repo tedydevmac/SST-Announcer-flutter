@@ -5,7 +5,6 @@ import 'package:http/http.dart' as http;
 import 'package:sst_announcer/announcement.dart';
 import 'package:sst_announcer/themes.dart';
 import 'package:xml/xml.dart' as xml;
-import 'package:shared_preferences/shared_preferences.dart';
 
 class FeedPage extends StatefulWidget {
   @override
@@ -77,30 +76,49 @@ class _FeedPageState extends State<FeedPage> {
             final title = post.findElements('title').first.text;
             final content =
                 parseFragment(post.findElements('content').first.text).text;
-            return ListTile(
-              onTap: () {
-                var navigator = Navigator.of(context);
-                navigator.push(
-                  CupertinoPageRoute(
-                    builder: (context) {
-                      return AnnouncementPage(title: title, bodyText: content);
-                    },
-                  ),
-                );
-              },
-              title: Text(title),
-              subtitle: Text(
-                content!,
-                maxLines: 3,
-              ),
-              trailing: TextButton(
-                onPressed: () {},
-                child: Icon(
-                  Icons.push_pin,
-                  color: darkTheme.primaryColor,
+            if (index < 3) {
+              return ListTile(
+                onTap: () {
+                  var navigator = Navigator.of(context);
+                  navigator.push(
+                    CupertinoPageRoute(
+                      builder: (context) {
+                        return AnnouncementPage(
+                            title: title, bodyText: content);
+                      },
+                    ),
+                  );
+                },
+                title: Text("Pinned post $index"),
+                subtitle: Text("Body text $index"),
+              );
+            } else {
+              return ListTile(
+                onTap: () {
+                  var navigator = Navigator.of(context);
+                  navigator.push(
+                    CupertinoPageRoute(
+                      builder: (context) {
+                        return AnnouncementPage(
+                            title: title, bodyText: content);
+                      },
+                    ),
+                  );
+                },
+                title: Text(title),
+                subtitle: Text(
+                  content!,
+                  maxLines: 3,
                 ),
-              ),
-            );
+                trailing: TextButton(
+                  onPressed: () {},
+                  child: Icon(
+                    Icons.push_pin,
+                    color: Colors.white,
+                  ),
+                ),
+              );
+            }
           },
         ),
       ),
@@ -117,7 +135,7 @@ class _FeedPageState extends State<FeedPage> {
                   children: [
                     TextField(
                       controller: _numPostsController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Number of Posts',
                       ),
                       keyboardType: TextInputType.number,
