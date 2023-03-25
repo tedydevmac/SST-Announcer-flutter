@@ -81,6 +81,23 @@ class _HomePageState extends State<HomePage> {
                       CategoryListPage(),
                     ],
                   ),
+                  TextButton(
+                      onPressed: () {},
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.add,
+                            color: Colors.white,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            "Add custom category",
+                            style: TextStyle(fontSize: 15, color: Colors.white),
+                          )
+                        ],
+                      ))
                 ],
               ),
             ),
@@ -111,6 +128,9 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
+                const SizedBox(
+                  height: 10,
+                ),
                 const SizedBox(
                   height: 10,
                 ),

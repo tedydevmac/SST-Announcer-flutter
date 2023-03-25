@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:html/parser.dart';
 import 'package:http/http.dart' as http;
 import 'package:sst_announcer/announcement.dart';
+import 'package:sst_announcer/themes.dart';
 import 'package:xml/xml.dart' as xml;
 
 class FeedPage extends StatefulWidget {
@@ -80,9 +81,30 @@ class _FeedPageState extends State<FeedPage> {
             final title = post.findElements('title').first.text;
             final content =
                 parseFragment(post.findElements('content').first.text).text;
+<<<<<<< HEAD
             return Padding(
               padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
               child: ListTile(
+=======
+            if (index < 3) {
+              return ListTile(
+                onTap: () {
+                  var navigator = Navigator.of(context);
+                  navigator.push(
+                    CupertinoPageRoute(
+                      builder: (context) {
+                        return AnnouncementPage(
+                            title: title, bodyText: content);
+                      },
+                    ),
+                  );
+                },
+                title: Text("Pinned post $index"),
+                subtitle: Text("Body text $index"),
+              );
+            } else {
+              return ListTile(
+>>>>>>> a85e2727dae23fe3d0dd9041795beab0515a0ca8
                 onTap: () {
                   var navigator = Navigator.of(context);
                   navigator.push(
@@ -99,8 +121,20 @@ class _FeedPageState extends State<FeedPage> {
                   content!,
                   maxLines: 3,
                 ),
+<<<<<<< HEAD
               ),
             );
+=======
+                trailing: TextButton(
+                  onPressed: () {},
+                  child: Icon(
+                    Icons.push_pin,
+                    color: Colors.white,
+                  ),
+                ),
+              );
+            }
+>>>>>>> a85e2727dae23fe3d0dd9041795beab0515a0ca8
           },
         ),
       ),
@@ -117,7 +151,7 @@ class _FeedPageState extends State<FeedPage> {
                   children: [
                     TextField(
                       controller: _numPostsController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Number of Posts',
                       ),
                       keyboardType: TextInputType.number,
