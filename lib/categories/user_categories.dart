@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:html/parser.dart';
 import 'package:http/http.dart' as http;
 import 'package:sst_announcer/announcement.dart';
+import 'package:sst_announcer/themes.dart';
 import 'package:xml/xml.dart' as xml;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class FeedPage extends StatefulWidget {
   @override
@@ -90,6 +92,13 @@ class _FeedPageState extends State<FeedPage> {
               subtitle: Text(
                 content!,
                 maxLines: 3,
+              ),
+              trailing: TextButton(
+                onPressed: () {},
+                child: Icon(
+                  Icons.push_pin,
+                  color: darkTheme.primaryColor,
+                ),
               ),
             );
           },
