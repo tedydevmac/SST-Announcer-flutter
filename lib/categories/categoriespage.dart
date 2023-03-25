@@ -49,32 +49,41 @@ class _CategoryPageState extends State<CategoryPage> {
                         .where((item) => item.categories!.any(
                             (category) => category.term == widget.category))
                         .toList();
-                    return ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: items.length,
-                      itemBuilder: (context, index) {
-                        final item = items[index];
-                        return ListTile(
-                          onTap: () {
-                            var navigator = Navigator.of(context);
-                            navigator.push(
-                              CupertinoPageRoute(
-                                builder: (context) {
-                                  return AnnouncementPage(
-                                    title: item.title,
-                                    bodyText: parseFragment(item.content).text!,
-                                  );
-                                },
-                              ),
-                            );
-                          },
-                          title: Text(item.title ?? ''),
-                          subtitle: Text(
-                            parseFragment(item.content).text!,
-                            maxLines: 2,
-                          ),
-                        );
-                      },
+                    return Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+                      child: ListView.separated(
+                        separatorBuilder: (separatorContext, index) =>
+                            const Divider(
+                          color: Colors.grey,
+                          thickness: 0.4,
+                          height: 1,
+                        ),
+                        shrinkWrap: true,
+                        itemCount: items.length,
+                        itemBuilder: (context, index) {
+                          final item = items[index];
+                          return ListTile(
+                            onTap: () {
+                              var navigator = Navigator.of(context);
+                              navigator.push(
+                                CupertinoPageRoute(
+                                  builder: (context) {
+                                    return AnnouncementPage(
+                                      title: item.title,
+                                      bodyText: parseFragment(item.content).text!,
+                                    );
+                                  },
+                                ),
+                              );
+                            },
+                            title: Text(item.title ?? ''),
+                            subtitle: Text(
+                              parseFragment(item.content).text!,
+                              maxLines: 2,
+                            ),
+                          );
+                        },
+                      ),
                     );
                   } else if (snapshot.hasError) {
                     return Text('${snapshot.error}');

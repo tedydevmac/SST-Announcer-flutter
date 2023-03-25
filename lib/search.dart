@@ -107,18 +107,26 @@ class _BlogPageState extends State<BlogPage> {
           ),
           SizedBox(height: 16),
           Expanded(
-            child: ListView.builder(
+            child: ListView.separated(
+              separatorBuilder: (separatorContext, index) => const Divider(
+                color: Colors.grey,
+                thickness: 0.4,
+                height: 1,
+              ),
               itemCount: filteredPosts.length,
               itemBuilder: (context, index) {
                 final post = filteredPosts[index];
                 final title = post.findElements('title').first.text;
                 final content =
                     parseFragment(post.findElements('content').first.text).text;
-                return ListTile(
-                  title: Text(title),
-                  subtitle: Text(
-                    content!,
-                    maxLines: 3,
+                return Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+                  child: ListTile(
+                    title: Text(title),
+                    subtitle: Text(
+                      content!,
+                      maxLines: 3,
+                    ),
                   ),
                 );
               },

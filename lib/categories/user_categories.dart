@@ -68,7 +68,12 @@ class _FeedPageState extends State<FeedPage> {
     return Scaffold(
       body: RefreshIndicator(
         onRefresh: _refresh,
-        child: ListView.builder(
+        child: ListView.separated(
+          separatorBuilder: (separatorContext, index) => const Divider(
+            color: Colors.grey,
+            thickness: 0.4,
+            height: 1,
+          ),
           controller: _controller,
           itemCount: _posts.length,
           itemBuilder: (context, index) {
@@ -76,6 +81,11 @@ class _FeedPageState extends State<FeedPage> {
             final title = post.findElements('title').first.text;
             final content =
                 parseFragment(post.findElements('content').first.text).text;
+<<<<<<< HEAD
+            return Padding(
+              padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+              child: ListTile(
+=======
             if (index < 3) {
               return ListTile(
                 onTap: () {
@@ -94,6 +104,7 @@ class _FeedPageState extends State<FeedPage> {
               );
             } else {
               return ListTile(
+>>>>>>> a85e2727dae23fe3d0dd9041795beab0515a0ca8
                 onTap: () {
                   var navigator = Navigator.of(context);
                   navigator.push(
@@ -110,6 +121,10 @@ class _FeedPageState extends State<FeedPage> {
                   content!,
                   maxLines: 3,
                 ),
+<<<<<<< HEAD
+              ),
+            );
+=======
                 trailing: TextButton(
                   onPressed: () {},
                   child: Icon(
@@ -119,6 +134,7 @@ class _FeedPageState extends State<FeedPage> {
                 ),
               );
             }
+>>>>>>> a85e2727dae23fe3d0dd9041795beab0515a0ca8
           },
         ),
       ),
