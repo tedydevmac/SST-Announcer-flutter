@@ -1,6 +1,23 @@
 import 'package:flutter/material.dart';
 
-final lightTheme =
-    ThemeData(brightness: Brightness.light, primarySwatch: Colors.blue);
-final darkTheme =
-    ThemeData(brightness: Brightness.dark, primarySwatch: Colors.blueGrey);
+final lightTheme = ThemeData.light(useMaterial3: true);
+final filledButtonStyle = ElevatedButton.styleFrom(
+        backgroundColor: lightTheme.colorScheme.primary,
+        foregroundColor: lightTheme.colorScheme.onPrimary)
+    .copyWith(elevation: MaterialStateProperty.resolveWith((states) {
+  if (states.contains(MaterialState.hovered)) {
+    return 1;
+  }
+  return 0;
+}));
+
+final darkTheme = ThemeData.dark(useMaterial3: true);
+final darkFilledButtonStyle = ElevatedButton.styleFrom(
+        backgroundColor: darkTheme.colorScheme.primary,
+        foregroundColor: darkTheme.colorScheme.onPrimary)
+    .copyWith(elevation: MaterialStateProperty.resolveWith((states) {
+  if (states.contains(MaterialState.hovered)) {
+    return 1;
+  }
+  return 0;
+}));

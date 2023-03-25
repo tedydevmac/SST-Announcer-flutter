@@ -124,12 +124,13 @@ androidx/webkit/ProxyConfig$ProxyScheme.class
 androidx/webkit/ServiceWorkerWebSettingsCompat$CacheMode.class
 androidx/webkit/TracingConfig$PredefinedCategories.class
 androidx/webkit/TracingConfig$TracingMode.class
+androidx/webkit/WebMessageCompat$Type.class
 androidx/webkit/WebResourceErrorCompat$NetErrorCode.class
 androidx/webkit/WebSettingsCompat$ForceDark.class
 androidx/webkit/WebSettingsCompat$ForceDarkStrategy.class
 androidx/webkit/WebSettingsCompat$MenuItemFlags.class
-androidx/webkit/WebSettingsCompat$RequestedWithHeaderMode.class
 androidx/webkit/WebViewClientCompat$SafeBrowsingThreat.class
+androidx/webkit/WebViewFeature$WebViewStartupFeature.class
 androidx/webkit/WebViewFeature$WebViewSupportFeature.class
 androidx/window/core/ExperimentalWindowApi.class
 androidx/window/embedding/SplitRule$LayoutDir.class
@@ -292,9 +293,9 @@ kotlinx/coroutines/flow/LintKt.class
 kotlinx/coroutines/scheduling/ExperimentalCoroutineDispatcher.class
 kotlinx/coroutines/test/TestCoroutineContext.class
 kotlinx/coroutines/test/TestCoroutineContextKt.class
+org/chromium/support_lib_boundary/ProcessGlobalConfigConstants$ProcessGlobalConfigMapKey.class
 org/chromium/support_lib_boundary/WebMessagePayloadBoundaryInterface$WebMessagePayloadType.class
 org/chromium/support_lib_boundary/WebSettingsBoundaryInterface$ForceDarkBehavior.class
-org/chromium/support_lib_boundary/WebSettingsBoundaryInterface$RequestedWithHeaderMode.class
 org/chromium/support_lib_boundary/WebSettingsBoundaryInterface$WebAuthnSupport.class
 org/intellij/lang/annotations/Flow.class
 org/intellij/lang/annotations/Language.class

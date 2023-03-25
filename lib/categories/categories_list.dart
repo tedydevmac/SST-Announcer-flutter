@@ -44,28 +44,34 @@ class _CategoryListPageState extends State<CategoryListPage> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      physics: NeverScrollableScrollPhysics(),
-      separatorBuilder: (context, index) => Divider(),
-      itemCount: categories.length,
-      shrinkWrap: true,
-      itemBuilder: (BuildContext context, int index) {
-        return InkWell(
-          onTap: () {
-            var navigator = Navigator.of(context);
-            navigator.push(CupertinoPageRoute(
-              builder: (context) {
-                return CategoryPage(
-                  category: categories[index],
-                );
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        ListView.separated(
+          physics: NeverScrollableScrollPhysics(),
+          separatorBuilder: (context, index) => Divider(),
+          itemCount: categories.length,
+          shrinkWrap: true,
+          itemBuilder: (BuildContext context, int index) {
+            return InkWell(
+              onTap: () {
+                var navigator = Navigator.of(context);
+                navigator.push(CupertinoPageRoute(
+                  builder: (context) {
+                    return CategoryPage(
+                      category: categories[index],
+                    );
+                  },
+                ));
               },
-            ));
+              child: ListTile(
+                title: Text(categories[index]),
+              ),
+            );
           },
-          child: ListTile(
-            title: Text(categories[index]),
-          ),
-        );
-      },
+        ),
+        
+      ],
     );
   }
 }
