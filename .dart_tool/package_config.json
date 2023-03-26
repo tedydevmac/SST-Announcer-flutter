@@ -182,6 +182,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "nested",
+      "rootUri": "file:///Users/tedgoh/.pub-cache/hosted/pub.dev/nested-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "octo_image",
       "rootUri": "file:///Users/tedgoh/.pub-cache/hosted/pub.dev/octo_image-1.0.2",
       "packageUri": "lib/",
@@ -258,6 +264,12 @@
       "rootUri": "file:///Users/tedgoh/.pub-cache/hosted/pub.dev/process-4.2.4",
       "packageUri": "lib/",
       "languageVersion": "2.14"
+    },
+    {
+      "name": "provider",
+      "rootUri": "file:///Users/tedgoh/.pub-cache/hosted/pub.dev/provider-6.0.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "rxdart",
@@ -494,7 +506,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-03-25T09:36:22.016223Z",
+  "generated": "2023-03-25T15:27:51.013989Z",
   "generator": "pub",
   "generatorVersion": "2.19.4"
 }

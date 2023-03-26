@@ -106,6 +106,10 @@ meta
 2.12
 file:///Users/tedgoh/.pub-cache/hosted/pub.dev/meta-1.8.0/
 file:///Users/tedgoh/.pub-cache/hosted/pub.dev/meta-1.8.0/lib/
+nested
+2.12
+file:///Users/tedgoh/.pub-cache/hosted/pub.dev/nested-1.0.0/
+file:///Users/tedgoh/.pub-cache/hosted/pub.dev/nested-1.0.0/lib/
 octo_image
 2.12
 file:///Users/tedgoh/.pub-cache/hosted/pub.dev/octo_image-1.0.2/
@@ -158,6 +162,10 @@ process
 2.14
 file:///Users/tedgoh/.pub-cache/hosted/pub.dev/process-4.2.4/
 file:///Users/tedgoh/.pub-cache/hosted/pub.dev/process-4.2.4/lib/
+provider
+2.12
+file:///Users/tedgoh/.pub-cache/hosted/pub.dev/provider-6.0.5/
+file:///Users/tedgoh/.pub-cache/hosted/pub.dev/provider-6.0.5/lib/
 rxdart
 2.12
 file:///Users/tedgoh/.pub-cache/hosted/pub.dev/rxdart-0.27.7/

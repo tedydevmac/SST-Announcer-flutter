@@ -1,16 +1,11 @@
-import 'dart:typed_data';
-
-import 'package:html/parser.dart';
-import 'package:http/http.dart' as http;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sst_announcer/announcement.dart';
 import 'package:sst_announcer/search.dart';
 import 'package:sst_announcer/themes.dart';
 import 'package:sst_announcer/categories/categories_list.dart';
 import 'package:sst_announcer/categories/user_categories.dart';
-import 'package:xml/xml.dart';
-import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+
+import 'categories/categoriespage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,6 +26,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
+List<String> customCats = [];
+
 class HomePage extends StatefulWidget {
   HomePage({super.key, required this.title});
   final String title;
@@ -39,6 +36,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final addCatController = TextEditingController();
+  bool addCustomCat = false;
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,47 +61,148 @@ class _HomePageState extends State<HomePage> {
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Divider(
-                    thickness: 1,
-                    color: Colors.white,
-                  ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   ExpansionTile(
                     clipBehavior: Clip.none,
-                    title: Text(
+                    title: const Text(
                       "Categories",
                       style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                     ),
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       CategoryListPage(),
                     ],
                   ),
-                  TextButton(
-                      onPressed: () {},
-                      child: Row(
+                  const Divider(
+                    thickness: 0.5,
+                    color: Colors.black,
+                  ),
+                  ExpansionTile(
+                    clipBehavior: Clip.hardEdge,
+                    title: const Text(
+                      "Custom Categories",
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                    ),
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Icon(
-                            Icons.add,
-                            color: Colors.white,
+                          ListView.separated(
+                            physics: const NeverScrollableScrollPhysics(),
+                            separatorBuilder: (context, index) =>
+                                const Divider(),
+                            itemCount: customCats.length,
+                            shrinkWrap: true,
+                            itemBuilder: (BuildContext context, int index) {
+                              return InkWell(
+                                onTap: () {
+                                  var navigator = Navigator.of(context);
+                                  navigator.push(CupertinoPageRoute(
+                                    builder: (context) {
+                                      return CategoryPage(
+                                        category: customCats[index],
+                                      );
+                                    },
+                                  ));
+                                },
+                                child: ListTile(
+                                  title: Text(customCats[index]),
+                                  trailing: IconButton(
+                                    icon: const Icon(Icons.delete),
+                                    iconSize: 22,
+                                    color: Colors.red,
+                                    tooltip: "Delete category",
+                                    onPressed: () {
+                                      setState(() {
+                                        customCats.removeAt(index);
+                                      });
+                                    },
+                                  ),
+                                ),
+                              );
+                            },
                           ),
-                          SizedBox(
-                            width: 10,
+                          const SizedBox(
+                            height: 10,
                           ),
-                          Text(
-                            "Add custom category",
-                            style: TextStyle(fontSize: 15, color: Colors.white),
-                          )
                         ],
-                      ))
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      addCustomCat == true
+                          ? Container(
+                              padding: const EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.rectangle,
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(8)),
+                                border: Border.all(
+                                    width: 0.5, color: Colors.blueGrey),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  TextField(
+                                    controller: addCatController,
+                                    decoration: const InputDecoration(
+                                      hintText: "Input category title",
+                                      hintStyle: TextStyle(
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 13),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 5,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {
+                                          if (addCatController.text == "") {
+                                            setState(() {
+                                              addCustomCat = false;
+                                            });
+                                            return;
+                                          }
+                                          setState(() {
+                                            customCats
+                                                .add(addCatController.text);
+                                            addCatController.text = "";
+                                            addCustomCat = false;
+                                          });
+                                        },
+                                        child: const Text("Add category"),
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ),
+                            )
+                          : ElevatedButton.icon(
+                              style: filledButtonStyle,
+                              onPressed: () {
+                                setState(() {
+                                  addCustomCat = true;
+                                });
+                              },
+                              icon: const Icon(Icons.add),
+                              label: const Text("Add custom category"),
+                            ),
+                      const SizedBox(
+                        height: 10,
+                      )
+                    ],
+                  )
                 ],
               ),
             ),
@@ -108,35 +213,32 @@ class _HomePageState extends State<HomePage> {
         title: Text(widget.title),
         actions: [
           IconButton(
-              onPressed: () {
-                var navigator = Navigator.of(context);
-                navigator.push(
-                  CupertinoPageRoute(
-                    builder: (context) {
-                      return BlogPage();
-                    },
-                  ),
-                );
-              },
-              icon: const Icon(Icons.search))
+            onPressed: () {
+              var navigator = Navigator.of(context);
+              navigator.push(
+                CupertinoPageRoute(
+                  builder: (context) {
+                    return BlogPage();
+                  },
+                ),
+              );
+            },
+            icon: const Icon(Icons.search),
+          )
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-        child: Ink(
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                const SizedBox(
-                  height: 10,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Expanded(child: FeedPage()),
-              ],
-            ),
+      body: Ink(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              const SizedBox(
+                height: 10,
+              ),
+              Expanded(
+                child: FeedPage(),
+              ),
+            ],
           ),
         ),
       ),

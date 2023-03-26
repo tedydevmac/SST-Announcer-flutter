@@ -76,15 +76,15 @@ class _BlogPageState extends State<BlogPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Blog'),
+        title: const Text('Blog'),
       ),
       body: Column(
         children: [
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: DropdownButtonFormField<String>(
-              decoration: InputDecoration(labelText: 'Category'),
+              decoration: const InputDecoration(labelText: 'Category'),
               value: _selectedCategory,
               items: _categories
                   .map(
@@ -97,15 +97,15 @@ class _BlogPageState extends State<BlogPage> {
               onChanged: (value) => setState(() => _selectedCategory = value!),
             ),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: TextFormField(
-              decoration: InputDecoration(labelText: 'Search'),
+              decoration: const InputDecoration(labelText: 'Search'),
               onChanged: (value) => setState(() => _searchTerm = value),
             ),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Expanded(
             child: ListView.separated(
               separatorBuilder: (separatorContext, index) => const Divider(

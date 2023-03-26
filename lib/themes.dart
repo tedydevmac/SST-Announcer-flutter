@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 final lightTheme = ThemeData.light(useMaterial3: true);
 final filledButtonStyle = ElevatedButton.styleFrom(
         backgroundColor: lightTheme.colorScheme.primary,
-        foregroundColor: lightTheme.colorScheme.onPrimary)
+        foregroundColor: lightTheme.colorScheme.onPrimary,
+        elevation: 3)
     .copyWith(elevation: MaterialStateProperty.resolveWith((states) {
   if (states.contains(MaterialState.hovered)) {
     return 1;

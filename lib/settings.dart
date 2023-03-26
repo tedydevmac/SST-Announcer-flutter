@@ -44,7 +44,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: Column(
-            children: [
+            children: const [
               SizedBox(
                 height: 20,
               ),
