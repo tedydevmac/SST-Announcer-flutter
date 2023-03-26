@@ -1,8 +1,7 @@
 version: "Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)"
-options: "96765d01943f9f7873ee1ee4cf3475e4dbc37a83e8f2b5edd9787a2d160018b4"
-build_start_time: [1678402299, 81348896]
-build_end_time: [1678402303, 667595863]
+options: "17aa349376ac01485c9648ba7415f1d970270f4e2c7e5a8f09dcdd01b63d5d7a"
+build_start_time: [1679757199, 129809856]
+build_end_time: [1679757199, 142428874]
 inputs:
-  ? "/Users/lukeyeo/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences_foundation-2.1.4/macos/Classes/SharedPreferencesPlugin.swift"
-  : [1677718664, 320845842]
-  "/Users/lukeyeo/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences_foundation-2.1.4/macos/Classes/messages.g.swift": [1677718664, 321005344]
+  "/Users/tedgoh/.pub-cache/hosted/pub.dev/shared_preferences_foundation-2.1.5/macos/Classes/SharedPreferencesPlugin.swift": !private [1679659388, 847923994]
+  "/Users/tedgoh/.pub-cache/hosted/pub.dev/shared_preferences_foundation-2.1.5/macos/Classes/messages.g.swift": !private [1679659388, 848074913]

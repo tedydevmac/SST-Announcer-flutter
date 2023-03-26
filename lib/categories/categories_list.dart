@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 import 'package:sst_announcer/categories/categoriespage.dart';
+import 'package:sst_announcer/main.dart';
 import 'package:sst_announcer/themes.dart';
 import 'package:xml/xml.dart' as xml;
 
@@ -12,14 +14,10 @@ class CategoryListPage extends StatefulWidget {
 
 class _CategoryListPageState extends State<CategoryListPage> {
   List<String> categories = [];
-  bool customCatAdd = false;
-  final addCatController = TextEditingController();
-  late String customCat;
-
   @override
   void initState() {
-    super.initState();
     fetchCategories();
+    super.initState();
   }
 
   void fetchCategories() async {
@@ -40,7 +38,6 @@ class _CategoryListPageState extends State<CategoryListPage> {
 
     final uniqueCategories = Set<String>.from(allCategories).toList();
     uniqueCategories.sort();
-
     setState(() {
       categories = uniqueCategories;
     });
@@ -52,8 +49,8 @@ class _CategoryListPageState extends State<CategoryListPage> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         ListView.separated(
-          physics: NeverScrollableScrollPhysics(),
-          separatorBuilder: (context, index) => Divider(),
+          physics: const NeverScrollableScrollPhysics(),
+          separatorBuilder: (context, index) => const Divider(),
           itemCount: categories.length,
           shrinkWrap: true,
           itemBuilder: (BuildContext context, int index) {
@@ -74,63 +71,9 @@ class _CategoryListPageState extends State<CategoryListPage> {
             );
           },
         ),
-        if (customCatAdd == false)
-          ElevatedButton.icon(
-            style: filledButtonStyle,
-            onPressed: () {
-              setState(() {
-                customCatAdd = true;
-              });
-            },
-            icon: const Icon(Icons.add),
-            label: const Text("Add custom category"),
-          ),
         const SizedBox(
-          height: 5,
+          height: 10,
         ),
-        if (customCatAdd)
-          Container(
-            padding: const EdgeInsets.all(5),
-            decoration: BoxDecoration(
-              shape: BoxShape.rectangle,
-              borderRadius: const BorderRadius.all(Radius.circular(8)),
-              border: Border.all(width: 0.5, color: Colors.blueGrey),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                TextField(
-                  controller: addCatController,
-                  decoration: const InputDecoration(
-                    hintText: "Input category title",
-                    hintStyle:
-                        TextStyle(fontWeight: FontWeight.w400, fontSize: 13),
-                  ),
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    TextButton(
-                      onPressed: () {
-                        categories.add(addCatController.text);
-                        setState(() {
-                          customCatAdd == false;
-                        });
-                      },
-                      child: const Text("Add category"),
-                    )
-                  ],
-                )
-              ],
-            ),
-          ),
-        const SizedBox(
-          height: 15,
-        )
       ],
     );
   }

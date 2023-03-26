@@ -37,7 +37,7 @@ class _CategoryPageState extends State<CategoryPage> {
         ),
         body: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Expanded(
@@ -69,8 +69,10 @@ class _CategoryPageState extends State<CategoryPage> {
                                 CupertinoPageRoute(
                                   builder: (context) {
                                     return AnnouncementPage(
-                                      title: item.title,
-                                      bodyText: parseFragment(item.content).text!,
+                                      title: item.title!,
+                                      bodyText:
+                                          parseFragment(item.content).text!,
+                                      position: index,
                                     );
                                   },
                                 ),
@@ -87,7 +89,7 @@ class _CategoryPageState extends State<CategoryPage> {
                     );
                   } else if (snapshot.hasError) {
                     return Text('${snapshot.error}');
-                  }
+                  } else {}
                   return const Center(child: CircularProgressIndicator());
                 },
               ),

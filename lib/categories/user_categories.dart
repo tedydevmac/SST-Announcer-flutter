@@ -18,7 +18,7 @@ class _FeedPageState extends State<FeedPage> {
   List<xml.XmlElement> _posts = [];
   Map<String, List<xml.XmlElement>> _categories = {};
 
-  var _controller = ScrollController();
+  final _controller = ScrollController();
 
   @override
   void initState() {
@@ -50,17 +50,18 @@ class _FeedPageState extends State<FeedPage> {
 
   @override
   Widget build(BuildContext context) {
+    final navigator = Navigator.of(context);
     _controller.addListener(() {
       if (_controller.position.atEdge) {
         bool isTop = _controller.position.pixels == 0;
         if (isTop) {
-          print('At the top');
+          debugPrint('At the top');
         } else {
           setState(() {
             _numPosts += 10;
-            print("reached bottom, adding more posts");
+            debugPrint("reached bottom, adding more posts");
             _refresh();
-            print("added posts successfully");
+            debugPrint("added posts successfully");
           });
         }
       }
@@ -81,20 +82,18 @@ class _FeedPageState extends State<FeedPage> {
             final title = post.findElements('title').first.text;
             final content =
                 parseFragment(post.findElements('content').first.text).text;
-<<<<<<< HEAD
-            return Padding(
-              padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
-              child: ListTile(
-=======
             if (index < 3) {
               return ListTile(
                 onTap: () {
-                  var navigator = Navigator.of(context);
+                  final navigator = Navigator.of(context);
                   navigator.push(
                     CupertinoPageRoute(
                       builder: (context) {
                         return AnnouncementPage(
-                            title: title, bodyText: content);
+                          title: title,
+                          bodyText: content!,
+                          position: index,
+                        );
                       },
                     ),
                   );
@@ -103,49 +102,50 @@ class _FeedPageState extends State<FeedPage> {
                 subtitle: Text("Body text $index"),
               );
             } else {
-              return ListTile(
->>>>>>> a85e2727dae23fe3d0dd9041795beab0515a0ca8
-                onTap: () {
-                  var navigator = Navigator.of(context);
-                  navigator.push(
-                    CupertinoPageRoute(
-                      builder: (context) {
-                        return AnnouncementPage(
-                            title: title, bodyText: content);
-                      },
+              return Padding(
+                padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+                child: ListTile(
+                  onTap: () {
+                    var navigator = Navigator.of(context);
+                    navigator.push(
+                      CupertinoPageRoute(
+                        builder: (context) {
+                          return AnnouncementPage(
+                            title: title,
+                            bodyText: content,
+                            position: index,
+                          );
+                        },
+                      ),
+                    );
+                  },
+                  title: Text(title),
+                  subtitle: Text(
+                    content!,
+                    maxLines: 3,
+                  ),
+                  trailing: IconButton(
+                    onPressed: () {},
+                    iconSize: 21.5,
+                    icon: const Icon(
+                      Icons.push_pin,
+                      color: Colors.grey,
                     ),
-                  );
-                },
-                title: Text(title),
-                subtitle: Text(
-                  content!,
-                  maxLines: 3,
-                ),
-<<<<<<< HEAD
-              ),
-            );
-=======
-                trailing: TextButton(
-                  onPressed: () {},
-                  child: Icon(
-                    Icons.push_pin,
-                    color: Colors.white,
                   ),
                 ),
               );
             }
->>>>>>> a85e2727dae23fe3d0dd9041795beab0515a0ca8
           },
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.settings),
+        child: const Icon(Icons.settings),
         onPressed: () {
           showDialog(
             context: context,
             builder: (context) {
               return AlertDialog(
-                title: Text('Settings'),
+                title: const Text('Settings'),
                 content: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -156,17 +156,26 @@ class _FeedPageState extends State<FeedPage> {
                       ),
                       keyboardType: TextInputType.number,
                     ),
-                    ElevatedButton(
-                      onPressed: () {
-                        setState(
-                          () {
-                            _numPosts = int.parse(_numPostsController.text);
-                            _refresh();
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            setState(
+                              () {
+                                navigator.pop();
+                                _numPosts = int.parse(_numPostsController.text);
+                                _refresh();
+                              },
+                            );
                           },
-                        );
-                        Navigator.of(context).pop();
-                      },
-                      child: Text("Done"),
+                          style: filledButtonStyle,
+                          child: const Text("Done"),
+                        ),
+                      ],
                     )
                   ],
                 ),
