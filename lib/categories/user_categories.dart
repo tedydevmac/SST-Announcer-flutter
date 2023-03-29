@@ -138,52 +138,6 @@ class _FeedPageState extends State<FeedPage> {
           },
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.settings),
-        onPressed: () {
-          showDialog(
-            context: context,
-            builder: (context) {
-              return AlertDialog(
-                title: const Text('Settings'),
-                content: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    TextField(
-                      controller: _numPostsController,
-                      decoration: const InputDecoration(
-                        labelText: 'Number of Posts',
-                      ),
-                      keyboardType: TextInputType.number,
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        ElevatedButton(
-                          onPressed: () {
-                            setState(
-                              () {
-                                navigator.pop();
-                                _numPosts = int.parse(_numPostsController.text);
-                                _refresh();
-                              },
-                            );
-                          },
-                          style: filledButtonStyle,
-                          child: const Text("Done"),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              );
-            },
-          );
-        },
-      ),
     );
   }
 }
