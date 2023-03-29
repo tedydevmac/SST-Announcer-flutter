@@ -108,7 +108,6 @@ class _HomePageState extends State<HomePage> {
                                     builder: (context) {
                                       return CategoryPage(
                                         category: customCats[index],
-                                        isCustom: true,
                                       );
                                     },
                                   ));
@@ -118,7 +117,7 @@ class _HomePageState extends State<HomePage> {
                                   trailing: IconButton(
                                     icon: const Icon(Icons.delete),
                                     iconSize: 22,
-                                    color: Colors.black,
+                                    color: Colors.red,
                                     tooltip: "Delete category",
                                     onPressed: () {
                                       setState(() {

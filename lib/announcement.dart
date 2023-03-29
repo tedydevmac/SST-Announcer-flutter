@@ -4,23 +4,67 @@ import 'package:sst_announcer/main.dart';
 class AnnouncementPage extends StatefulWidget {
   final String title;
   String bodyText;
-  final bool isCustom;
+  final int position;
   AnnouncementPage(
       {super.key,
       required this.title,
       required this.bodyText,
-      required this.isCustom});
+      required this.position});
 
   @override
   State<AnnouncementPage> createState() => _AnnouncementPageState();
 }
 
+String selectedCat = "";
+
 class _AnnouncementPageState extends State<AnnouncementPage> {
+  void choiceDropdownCallback(String? selectedValue) {
+    if (selectedValue != null) {
+      selectedCat = selectedValue;
+    }
+  }
+
+  bool categoried = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Announcement"),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            const Text("Announcement"),
+            const SizedBox(
+              width: 8,
+            ),
+            if (categoried == true && customCats.isNotEmpty)
+              DropdownButton<String>(
+                value: selectedCat,
+                items: customCats.map((String customCat) {
+                  return DropdownMenuItem<String>(
+                    value: customCat,
+                    child: Text(customCat),
+                  );
+                }).toList(),
+                onChanged: choiceDropdownCallback,
+                isExpanded: true,
+              )
+          ],
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              setState(() {
+                categoried = !categoried;
+                if (categoried == false) {
+                  selectedCat = "";
+                }
+              });
+            },
+            icon: categoried == true
+                ? const Icon(Icons.category)
+                : const Icon(Icons.category_outlined),
+          )
+        ],
       ),
       body: SafeArea(
         child: Padding(
@@ -48,12 +92,6 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
                     widget.bodyText,
                     style: const TextStyle(fontSize: 18),
                   ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  widget.isCustom == true
-                      ? const Text("custom")
-                      : const Text("not custom")
                 ],
               ),
             ),

@@ -13,9 +13,8 @@ Future<AtomFeed> fetchAtomFeed() async {
 
 class CategoryPage extends StatefulWidget {
   final String category;
-  final bool isCustom;
 
-  CategoryPage({required this.category, required this.isCustom});
+  CategoryPage({required this.category});
 
   @override
   _CategoryPageState createState() => _CategoryPageState();
@@ -73,7 +72,7 @@ class _CategoryPageState extends State<CategoryPage> {
                                       title: item.title!,
                                       bodyText:
                                           parseFragment(item.content).text!,
-                                      isCustom: widget.isCustom ? true : false,
+                                      position: index,
                                     );
                                   },
                                 ),
