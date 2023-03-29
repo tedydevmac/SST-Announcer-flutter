@@ -213,7 +213,7 @@
     },
     {
       "name": "path_provider_foundation",
-      "rootUri": "file:///Users/tedgoh/.pub-cache/hosted/pub.dev/path_provider_foundation-2.2.0",
+      "rootUri": "file:///Users/tedgoh/.pub-cache/hosted/pub.dev/path_provider_foundation-2.2.1",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
@@ -471,7 +471,7 @@
     },
     {
       "name": "webview_flutter_wkwebview",
-      "rootUri": "file:///Users/tedgoh/.pub-cache/hosted/pub.dev/webview_flutter_wkwebview-3.2.2",
+      "rootUri": "file:///Users/tedgoh/.pub-cache/hosted/pub.dev/webview_flutter_wkwebview-3.2.3",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
@@ -506,7 +506,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-03-29T02:21:44.090530Z",
+  "generated": "2023-03-29T02:42:03.267586Z",
   "generator": "pub",
   "generatorVersion": "2.19.4"
 }

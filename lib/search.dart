@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:html/parser.dart';
 import 'package:http/http.dart' as http;
+import 'package:sst_announcer/announcement.dart';
 import 'package:xml/xml.dart' as xml;
 
 class BlogPage extends StatefulWidget {
@@ -119,9 +121,20 @@ class _BlogPageState extends State<BlogPage> {
                 final title = post.findElements('title').first.text;
                 final content =
                     parseFragment(post.findElements('content').first.text).text;
-                return Padding(
+                return Ink(
                   padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
                   child: ListTile(
+                    onTap: () {
+                      var navigator = Navigator.of(context);
+                      navigator.push(
+                        CupertinoPageRoute(
+                          builder: (context) {
+                            return AnnouncementPage(
+                                title: title, bodyText: content, position: 0);
+                          },
+                        ),
+                      );
+                    },
                     title: Text(title),
                     subtitle: Text(
                       content!,
