@@ -92,7 +92,7 @@ class _FeedPageState extends State<FeedPage> {
                         return AnnouncementPage(
                           title: title,
                           bodyText: content!,
-                          position: index,
+                          isCustom: false,
                         );
                       },
                     ),
@@ -113,7 +113,7 @@ class _FeedPageState extends State<FeedPage> {
                           return AnnouncementPage(
                             title: title,
                             bodyText: content,
-                            position: index,
+                            isCustom: false,
                           );
                         },
                       ),
