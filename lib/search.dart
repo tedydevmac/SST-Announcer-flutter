@@ -130,7 +130,10 @@ class _BlogPageState extends State<BlogPage> {
                         CupertinoPageRoute(
                           builder: (context) {
                             return AnnouncementPage(
-                                title: title, bodyText: content, position: 0);
+                              title: title,
+                              bodyText: content,
+                              isCustom: false,
+                            );
                           },
                         ),
                       );

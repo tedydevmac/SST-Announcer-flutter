@@ -61,6 +61,7 @@ class _CategoryListPageState extends State<CategoryListPage> {
                   builder: (context) {
                     return CategoryPage(
                       category: categories[index],
+                      isCustom: false,
                     );
                   },
                 ));

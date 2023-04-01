@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sst_announcer/search.dart';
@@ -6,6 +8,8 @@ import 'package:sst_announcer/categories/categories_list.dart';
 import 'package:sst_announcer/categories/user_categories.dart';
 
 import 'categories/categoriespage.dart';
+
+final postStreamController = StreamController<PostStream>.broadcast();
 
 void main() {
   runApp(const MyApp());
@@ -108,6 +112,7 @@ class _HomePageState extends State<HomePage> {
                                     builder: (context) {
                                       return CategoryPage(
                                         category: customCats[index],
+                                        isCustom: true,
                                       );
                                     },
                                   ));
@@ -117,7 +122,7 @@ class _HomePageState extends State<HomePage> {
                                   trailing: IconButton(
                                     icon: const Icon(Icons.delete),
                                     iconSize: 22,
-                                    color: Colors.red,
+                                    color: Colors.black,
                                     tooltip: "Delete category",
                                     onPressed: () {
                                       setState(() {

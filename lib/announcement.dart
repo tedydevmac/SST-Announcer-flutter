@@ -4,12 +4,12 @@ import 'package:sst_announcer/main.dart';
 class AnnouncementPage extends StatefulWidget {
   final String title;
   String bodyText;
-  final int position;
+  final bool isCustom;
   AnnouncementPage(
       {super.key,
       required this.title,
       required this.bodyText,
-      required this.position});
+      required this.isCustom});
 
   @override
   State<AnnouncementPage> createState() => _AnnouncementPageState();
@@ -31,40 +31,10 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
       appBar: AppBar(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            const Text("Announcement"),
-            const SizedBox(
-              width: 8,
-            ),
-            if (categoried == true && customCats.isNotEmpty)
-              DropdownButton<String>(
-                value: selectedCat,
-                items: customCats.map((String customCat) {
-                  return DropdownMenuItem<String>(
-                    value: customCat,
-                    child: Text(customCat),
-                  );
-                }).toList(),
-                onChanged: choiceDropdownCallback,
-                isExpanded: true,
-              )
+          children: const [
+            Text("Announcement"),
           ],
         ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              setState(() {
-                categoried = !categoried;
-                if (categoried == false) {
-                  selectedCat = "";
-                }
-              });
-            },
-            icon: categoried == true
-                ? const Icon(Icons.category)
-                : const Icon(Icons.category_outlined),
-          )
-        ],
       ),
       body: SafeArea(
         child: Padding(

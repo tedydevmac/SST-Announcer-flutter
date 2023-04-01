@@ -16,7 +16,6 @@ class _FeedPageState extends State<FeedPage> {
   final TextEditingController _numPostsController = TextEditingController();
   int _numPosts = 10;
   List<xml.XmlElement> _posts = [];
-  Map<String, List<xml.XmlElement>> _categories = {};
 
   final _controller = ScrollController();
 
@@ -92,7 +91,7 @@ class _FeedPageState extends State<FeedPage> {
                         return AnnouncementPage(
                           title: title,
                           bodyText: content!,
-                          position: index,
+                          isCustom: false,
                         );
                       },
                     ),
@@ -113,7 +112,7 @@ class _FeedPageState extends State<FeedPage> {
                           return AnnouncementPage(
                             title: title,
                             bodyText: content,
-                            position: index,
+                            isCustom: false,
                           );
                         },
                       ),
