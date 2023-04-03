@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:html/parser.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sst_announcer/announcement.dart';
-import 'package:sst_announcer/themes.dart';
 import 'package:xml/xml.dart' as xml;
 
 class FeedPage extends StatefulWidget {
@@ -12,8 +12,24 @@ class FeedPage extends StatefulWidget {
 }
 
 class _FeedPageState extends State<FeedPage> {
-  final TextEditingController _categoryController = TextEditingController();
-  final TextEditingController _numPostsController = TextEditingController();
+  List<String>? pinnedTitles = [];
+  List<String>? pinnedContent = [];
+
+  getTitleValues() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    //Return String
+    pinnedTitles = prefs.getStringList('titles');
+    print(pinnedTitles);
+  }
+
+  getContentValues() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    //Return String
+    List<String>? stringValue = prefs.getStringList('content');
+    print(pinnedContent);
+    return stringValue;
+  }
+
   int _numPosts = 10;
   List<xml.XmlElement> _posts = [];
 
@@ -49,6 +65,10 @@ class _FeedPageState extends State<FeedPage> {
 
   @override
   Widget build(BuildContext context) {
+    getTitleValues();
+    getContentValues();
+    print(pinnedTitles);
+    print(pinnedContent);
     final navigator = Navigator.of(context);
     _controller.addListener(() {
       if (_controller.position.atEdge) {
@@ -82,23 +102,35 @@ class _FeedPageState extends State<FeedPage> {
             final content =
                 parseFragment(post.findElements('content').first.text).text;
             if (index < 3) {
-              return ListTile(
-                onTap: () {
-                  final navigator = Navigator.of(context);
-                  navigator.push(
-                    CupertinoPageRoute(
-                      builder: (context) {
-                        return AnnouncementPage(
-                          title: title,
-                          bodyText: content!,
-                          isCustom: false,
-                        );
-                      },
-                    ),
-                  );
-                },
-                title: Text("Pinned post $index"),
-                subtitle: Text("Body text $index"),
+              return Padding(
+                padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
+                child: ListTile(
+                  onTap: () {
+                    final navigator = Navigator.of(context);
+                    navigator.push(
+                      CupertinoPageRoute(
+                        builder: (context) {
+                          return AnnouncementPage(
+                            title: title,
+                            bodyText: content!,
+                            isCustom: false,
+                          );
+                        },
+                      ),
+                    );
+                  },
+                  title: Text(
+                    (pinnedTitles?.isNotEmpty == true)
+                        ? pinnedTitles![index]
+                        : "Not found",
+                  ),
+                  subtitle: Text(
+                    (pinnedContent?.isNotEmpty == true)
+                        ? pinnedContent![index]
+                        : "Not found",
+                    maxLines: 3,
+                  ),
+                ),
               );
             } else {
               return Padding(
@@ -124,7 +156,34 @@ class _FeedPageState extends State<FeedPage> {
                     maxLines: 3,
                   ),
                   trailing: IconButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      // saving pinned title values
+                      final SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+
+                      getTitleValues();
+                      pinnedTitles!.insert(0, title);
+                      if (pinnedTitles!.length > 3) {
+                        pinnedTitles!.removeLast();
+                      }
+
+                      // saving pinned content values
+                      getContentValues();
+                      pinnedContent!.insert(0, content);
+                      if (pinnedContent!.length > 3) {
+                        pinnedContent!.removeLast();
+                      }
+
+                      await prefs.setStringList('titles', pinnedTitles!);
+                      await prefs.setStringList('content', pinnedContent!);
+                      print("successfully saved data");
+                      print(
+                          "fetching titles: ${prefs.getStringList('titles')}");
+                      print(
+                          "fetching content: ${prefs.getStringList('content')}");
+
+                      _refresh();
+                    },
                     iconSize: 21.5,
                     icon: const Icon(
                       Icons.push_pin,
