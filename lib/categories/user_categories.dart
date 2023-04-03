@@ -4,7 +4,7 @@ import 'package:html/parser.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sst_announcer/announcement.dart';
-import 'package:xml/xml.dart' as xml;
+import 'package:xml/xml.dart';
 
 class FeedPage extends StatefulWidget {
   @override
@@ -31,7 +31,7 @@ class _FeedPageState extends State<FeedPage> {
   }
 
   int _numPosts = 10;
-  List<xml.XmlElement> _posts = [];
+  List<XmlElement> _posts = [];
 
   final _controller = ScrollController();
 
@@ -45,7 +45,7 @@ class _FeedPageState extends State<FeedPage> {
     final response = await http.get(Uri.parse(
         'http://studentsblog.sst.edu.sg/feeds/posts/default?max-results=$_numPosts'));
     final body = response.body;
-    final document = xml.XmlDocument.parse(body);
+    final document = XmlDocument.parse(body);
     final posts = document.findAllElements('entry').toList();
     setState(() {
       _posts = posts;
@@ -56,7 +56,7 @@ class _FeedPageState extends State<FeedPage> {
     final response = await http.get(Uri.parse(
         'http://studentsblog.sst.edu.sg/feeds/posts/default?max-results=$_numPosts'));
     final body = response.body;
-    final document = xml.XmlDocument.parse(body);
+    final document = XmlDocument.parse(body);
     final posts = document.findAllElements('entry').toList();
     setState(() {
       _posts = posts;
@@ -119,17 +119,21 @@ class _FeedPageState extends State<FeedPage> {
                       ),
                     );
                   },
-                  title: Text(
+                  title: Text("Pinned title $index")
+                  /*Text(
                     (pinnedTitles?.isNotEmpty == true)
                         ? pinnedTitles![index]
                         : "Not found",
-                  ),
+                  )*/
+                  ,
                   subtitle: Text(
+                      "Pinned text $index") /*Text(
                     (pinnedContent?.isNotEmpty == true)
                         ? pinnedContent![index]
                         : "Not found",
                     maxLines: 3,
-                  ),
+                  )*/
+                  ,
                 ),
               );
             } else {
