@@ -111,8 +111,8 @@ class _FeedPageState extends State<FeedPage> {
                       CupertinoPageRoute(
                         builder: (context) {
                           return AnnouncementPage(
-                            title: title,
-                            bodyText: content!,
+                            title: pinnedTitles[index],
+                            bodyText: pinnedContent[index],
                             isCustom: false,
                           );
                         },
@@ -167,12 +167,13 @@ class _FeedPageState extends State<FeedPage> {
                       if (pinnedContent.length > 3) {
                         pinnedContent.removeLast();
                       }
-
+                      print("getting content: $content");
                       await prefs.setStringList('titles', pinnedTitles);
-                      await prefs.setStringList('content', pinnedContent);
-                      print("successfully saved data");
+                      print("successfully saved titles");
                       print(
                           "fetching titles: ${prefs.getStringList('titles')}");
+                      await prefs.setStringList('content', pinnedContent);
+                      print("successfully saved content");
                       print(
                           "fetching content: ${prefs.getStringList('content')}");
 
