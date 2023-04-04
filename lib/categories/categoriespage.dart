@@ -15,9 +15,6 @@ class AddPostBotttomSheet extends StatefulWidget {
   State<AddPostBotttomSheet> createState() => _AddPostBotttomSheetState();
 }
 
-var titlesList = [];
-var contentList = [];
-
 Map<String, List<xml.XmlElement>> customCatPosts = {
   for (var item in customCats)
     item: [
@@ -118,11 +115,7 @@ class _AddPostBotttomSheetState extends State<AddPostBotttomSheet> {
                               });
                               customCatPosts[widget.customCategoryName]!
                                   .add(post);
-                              titlesList.add(title);
-                              contentList.add(parseFragment(content).text);
                               postStreamController.add(PostStream.refreshPosts);
-                              print(
-                                  "Added post with title: ${titlesList.last}, content: ${contentList.last} to category ${widget.customCategoryName}");
                               navigator.pop();
                             },
                             iconSize: 21.5,
@@ -242,7 +235,7 @@ class _CategoryPageState extends State<CategoryPage> {
                           ),
                         );
                       },
-                      title: Text(title),
+                      title: Text(title ?? ''),
                       subtitle: Text(
                         content!,
                         maxLines: 2,
