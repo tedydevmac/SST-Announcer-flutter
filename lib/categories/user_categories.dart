@@ -12,23 +12,25 @@ class FeedPage extends StatefulWidget {
 }
 
 class _FeedPageState extends State<FeedPage> {
-  List<String> pinnedTitles = [];
-  List<String> pinnedContent = [];
+  List<String>? pinnedTitles = [];
+  List<String>? pinnedContent = [];
 
-  getTitleValues() async {
+  getSavedValues() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     //Return String
     pinnedTitles = prefs.getStringList("titles") ?? ["", "", ""];
+    pinnedContent = prefs.getStringList("content") ?? ["", "", ""];
     print(pinnedTitles);
+    print(pinnedContent);
   }
 
-  getContentValues() async {
+  /*getContentValues() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     //Return String
 
     pinnedContent = prefs.getStringList("content") ?? ["", "", ""];
     print(pinnedContent);
-  }
+  }*/
 
   int _numPosts = 10;
   List<xml.XmlElement> _posts = [];
@@ -65,10 +67,8 @@ class _FeedPageState extends State<FeedPage> {
 
   @override
   Widget build(BuildContext context) {
-    getTitleValues();
-    getContentValues();
-    print(pinnedTitles);
-    print(pinnedContent);
+    getSavedValues();
+
     final navigator = Navigator.of(context);
     _controller.addListener(() {
       if (_controller.position.atEdge) {
@@ -101,7 +101,7 @@ class _FeedPageState extends State<FeedPage> {
             final title = post.findElements('title').first.text;
             final content =
                 parseFragment(post.findElements('content').first.text).text;
-            if (index < pinnedTitles.length) {
+            if (index < pinnedTitles!.length) {
               return Padding(
                 padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
                 child: ListTile(
@@ -111,17 +111,30 @@ class _FeedPageState extends State<FeedPage> {
                       CupertinoPageRoute(
                         builder: (context) {
                           return AnnouncementPage(
-                            title: title,
-                            bodyText: content!,
+                            title: pinnedTitles![index],
+                            bodyText: pinnedContent![index],
                             isCustom: false,
                           );
                         },
                       ),
                     );
                   },
-                  title: Text(pinnedTitles[index]),
+                  title: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Pinned",
+                        style: TextStyle(fontSize: 10),
+                        textAlign: TextAlign.left,
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(pinnedTitles![index]),
+                    ],
+                  ),
                   subtitle: Text(
-                    pinnedContent[index],
+                    pinnedContent![index],
                     maxLines: 3,
                   ),
                 ),
@@ -155,21 +168,21 @@ class _FeedPageState extends State<FeedPage> {
                       final SharedPreferences prefs =
                           await SharedPreferences.getInstance();
 
-                      getTitleValues();
-                      pinnedTitles.insert(0, title);
-                      if (pinnedTitles.length > 3) {
-                        pinnedTitles.removeLast();
+                      await getSavedValues();
+
+                      pinnedTitles!.insert(0, title);
+                      if (pinnedTitles!.length > 3) {
+                        pinnedTitles!.removeLast();
                       }
 
                       // saving pinned content values
-                      getContentValues();
-                      pinnedContent.insert(0, content);
-                      if (pinnedContent.length > 3) {
-                        pinnedContent.removeLast();
+                      pinnedContent!.insert(0, content);
+                      if (pinnedContent!.length > 3) {
+                        pinnedContent!.removeLast();
                       }
 
-                      await prefs.setStringList('titles', pinnedTitles);
-                      await prefs.setStringList('content', pinnedContent);
+                      await prefs.setStringList('titles', pinnedTitles!);
+                      await prefs.setStringList('content', pinnedContent!);
                       print("successfully saved data");
                       print(
                           "fetching titles: ${prefs.getStringList('titles')}");
