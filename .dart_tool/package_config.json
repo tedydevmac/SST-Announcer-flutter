@@ -279,7 +279,7 @@
     },
     {
       "name": "shared_preferences",
-      "rootUri": "file:///Users/lukeyeo/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences-2.0.20",
+      "rootUri": "file:///Users/lukeyeo/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences-2.1.0",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
@@ -506,7 +506,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-04-05T00:50:30.467305Z",
+  "generated": "2023-04-05T04:32:30.232281Z",
   "generator": "pub",
   "generatorVersion": "2.19.6"
 }
