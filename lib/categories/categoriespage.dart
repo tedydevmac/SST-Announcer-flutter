@@ -1,8 +1,13 @@
+import 'dart:html';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:html/parser.dart';
+import 'package:http/retry.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sst_announcer/announcement.dart';
 import 'package:sst_announcer/main.dart';
+import 'package:uuid/uuid.dart';
 import 'package:webfeed/webfeed.dart';
 import 'package:http/http.dart' as http;
 import 'package:xml/xml.dart' as xml;
@@ -15,31 +20,35 @@ class AddPostBotttomSheet extends StatefulWidget {
   State<AddPostBotttomSheet> createState() => _AddPostBotttomSheetState();
 }
 
-Map<String, List<xml.XmlElement>> customCatPosts = {
-  for (var item in customCats)
-    item: [
-      xml.XmlElement(
-        xml.XmlName('post'),
-        [],
-        [
-          xml.XmlElement(
-            xml.XmlName('title'),
-            [],
-            [
-              xml.XmlText('Sample Post Title'),
-            ],
-          ),
-          xml.XmlElement(
-            xml.XmlName('content'),
-            [],
-            [
-              xml.XmlText('Sample Post Content'),
-            ],
-          )
-        ],
-      ),
-    ]
-};
+Map<String, List<xml.XmlElement>> customCatPosts = {};
+
+Future<SharedPreferences> get _prefs async {
+  return await SharedPreferences.getInstance();
+}
+
+Future<void> saveXmlDataList(List<String> xmlDataList) async {
+  final SharedPreferences prefs = await _prefs;
+  final xmlStrings = xmlDataList.map((xmlData) {
+    final document = xml.XmlDocument.parse(xmlData);
+    return document.toXmlString();
+  }).toList();
+  final xmlDataString = xmlStrings.join('\n');
+  await prefs.setString('xml_data_list', xmlDataString);
+}
+
+Future<List<String>> getXmlDataList() async {
+  final SharedPreferences prefs = await _prefs;
+  final xmlDataString = prefs.getString('xml_data_list');
+  if (xmlDataString == null) {
+    return [];
+  }
+  final xmlStrings = xmlDataString.split('\n');
+  final xmlDataList = xmlStrings.map((xmlString) {
+    final document = xml.XmlDocument.parse(xmlString);
+    return document.toXmlString();
+  }).toList();
+  return xmlDataList;
+}
 
 class _AddPostBotttomSheetState extends State<AddPostBotttomSheet> {
   bool _isLoading = true;
@@ -113,8 +122,8 @@ class _AddPostBotttomSheetState extends State<AddPostBotttomSheet> {
                               setState(() {
                                 isLoading = true;
                               });
-                              customCatPosts[widget.customCategoryName]!
-                                  .add(post);
+                              customCatPosts[widget.customCategoryName]
+                                  ?.add(post);
                               postStreamController.add(PostStream.refreshPosts);
                               navigator.pop();
                             },
@@ -149,7 +158,14 @@ class CategoryPage extends StatefulWidget {
   _CategoryPageState createState() => _CategoryPageState();
 }
 
+Future<AtomFeed> fetchAtomFeed() async {
+  final response = await http
+      .get(Uri.parse('http://studentsblog.sst.edu.sg/feeds/posts/default'));
+  return AtomFeed.parse(response.body);
+}
+
 class _CategoryPageState extends State<CategoryPage> {
+  late Future<AtomFeed> _futureAtomFeed;
   void postStreamControllerListener(PostStream value) {
     switch (value) {
       case PostStream.refreshPosts:
@@ -161,8 +177,12 @@ class _CategoryPageState extends State<CategoryPage> {
 
   @override
   void initState() {
+    for (String str in customCats) {
+      customCatPosts[str] = [];
+    }
     postStreamController.stream.listen(postStreamControllerListener);
     super.initState();
+    _futureAtomFeed = fetchAtomFeed();
   }
 
   void showAddPostBottomSheet() {
@@ -194,60 +214,128 @@ class _CategoryPageState extends State<CategoryPage> {
             )
           : null,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      body: SafeArea(
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 10,
-            ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
-                child: ListView.separated(
-                  separatorBuilder: (separatorContext, index) => const Divider(
-                    color: Colors.grey,
-                    thickness: 0.4,
-                    height: 1,
+      body: widget.isCustom == true
+          ? SafeArea(
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 10,
                   ),
-                  shrinkWrap: true,
-                  itemCount: customCatPosts[widget.category]!.length,
-                  itemBuilder: (context, index) {
-                    final customCatPost =
-                        customCatPosts[widget.category]![index];
-                    final title =
-                        customCatPost.findElements('title').first.text;
-                    final content = parseFragment(
-                            customCatPost.findElements('content').first.text)
-                        .text;
-                    return ListTile(
-                      onTap: () {
-                        var navigator = Navigator.of(context);
-                        navigator.push(
-                          CupertinoPageRoute(
-                            builder: (context) {
-                              return AnnouncementPage(
-                                title: title,
-                                bodyText: content,
-                                isCustom:
-                                    widget.isCustom == true ? true : false,
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+                      child: ListView.separated(
+                        separatorBuilder: (separatorContext, index) =>
+                            const Divider(
+                          color: Colors.grey,
+                          thickness: 0.4,
+                          height: 1,
+                        ),
+                        shrinkWrap: true,
+                        itemCount: customCatPosts[widget.category]?.length ?? 0,
+                        itemBuilder: (context, index) {
+                          final customCatPost =
+                              customCatPosts[widget.category]![index];
+                          final title =
+                              customCatPost.findElements('title').first.text;
+                          final content = parseFragment(customCatPost
+                                  .findElements('content')
+                                  .first
+                                  .text)
+                              .text;
+                          return ListTile(
+                            onTap: () {
+                              var navigator = Navigator.of(context);
+                              navigator.push(
+                                CupertinoPageRoute(
+                                  builder: (context) {
+                                    return AnnouncementPage(
+                                      title: title,
+                                      bodyText: content,
+                                    );
+                                  },
+                                ),
                               );
                             },
-                          ),
+                            title: Text(title),
+                            subtitle: Text(
+                              content!,
+                              maxLines: 2,
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            )
+          : SafeArea(
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Expanded(
+                    child: FutureBuilder<AtomFeed>(
+                      future: _futureAtomFeed,
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData) {
+                          final items = snapshot.data!.items!
+                              .where((item) => item.categories!.any(
+                                  (category) =>
+                                      category.term == widget.category))
+                              .toList();
+                          return Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+                            child: ListView.separated(
+                              itemBuilder: (context, index) {
+                                final item = items[index];
+                                return ListTile(
+                                  onTap: () {
+                                    var navigator = Navigator.of(context);
+                                    navigator.push(
+                                      CupertinoPageRoute(
+                                        builder: (context) {
+                                          return AnnouncementPage(
+                                            title: item.title!,
+                                            bodyText:
+                                                parseFragment(item.content)
+                                                    .text!,
+                                          );
+                                        },
+                                      ),
+                                    );
+                                  },
+                                  title: Text(item.title ?? ''),
+                                  subtitle: Text(
+                                    parseFragment(item.content).text!,
+                                    maxLines: 2,
+                                  ),
+                                );
+                              },
+                              separatorBuilder: (separatorContext, index) =>
+                                  const Divider(
+                                color: Colors.grey,
+                                thickness: 0.4,
+                                height: 1,
+                              ),
+                              shrinkWrap: true,
+                              itemCount: items.length,
+                            ),
+                          );
+                        } else if (snapshot.hasError) {
+                          return Text('${snapshot.error}');
+                        } else {}
+                        return const Center(
+                          child: CircularProgressIndicator(),
                         );
                       },
-                      title: Text(title),
-                      subtitle: Text(
-                        content!,
-                        maxLines: 2,
-                      ),
-                    );
-                  },
-                ),
+                    ),
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
-      ),
     );
   }
 }

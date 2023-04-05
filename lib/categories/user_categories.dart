@@ -120,7 +120,7 @@ class _FeedPageState extends State<FeedPage> {
                 parseFragment(post.findElements('content').first.text).text;
             if (index < pinnedTitles!.length) {
               return Padding(
-                padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
+                padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
                 child: ListTile(
                   onTap: () {
                     final navigator = Navigator.of(context);
@@ -130,7 +130,6 @@ class _FeedPageState extends State<FeedPage> {
                           return AnnouncementPage(
                             title: pinnedTitles![index],
                             bodyText: pinnedContent![index],
-                            isCustom: false,
                           );
                         },
                       ),
@@ -139,12 +138,12 @@ class _FeedPageState extends State<FeedPage> {
                   title: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         "Pinned",
                         style: TextStyle(fontSize: 10),
                         textAlign: TextAlign.left,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Text(pinnedTitles![index]),
@@ -184,7 +183,6 @@ class _FeedPageState extends State<FeedPage> {
                           return AnnouncementPage(
                             title: title,
                             bodyText: content,
-                            isCustom: false,
                           );
                         },
                       ),
