@@ -132,7 +132,6 @@ class _BlogPageState extends State<BlogPage> {
                             return AnnouncementPage(
                               title: title,
                               bodyText: content,
-                              isCustom: false,
                             );
                           },
                         ),

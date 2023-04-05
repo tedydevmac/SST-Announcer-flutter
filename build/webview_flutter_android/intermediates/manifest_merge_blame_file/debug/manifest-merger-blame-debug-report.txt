@@ -4,8 +4,8 @@
 4
 5    <uses-sdk
 6        android:minSdkVersion="19"
-6-->/Users/lukeyeo/.pub-cache/hosted/pub.flutter-io.cn/webview_flutter_android-3.4.4/android/src/main/AndroidManifest.xml
+6-->/Users/tedgoh/.pub-cache/hosted/pub.dev/webview_flutter_android-3.4.4/android/src/main/AndroidManifest.xml
 7        android:targetSdkVersion="19" />
-7-->/Users/lukeyeo/.pub-cache/hosted/pub.flutter-io.cn/webview_flutter_android-3.4.4/android/src/main/AndroidManifest.xml
+7-->/Users/tedgoh/.pub-cache/hosted/pub.dev/webview_flutter_android-3.4.4/android/src/main/AndroidManifest.xml
 8
 9</manifest>

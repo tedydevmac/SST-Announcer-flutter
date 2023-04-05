@@ -4,12 +4,7 @@ import 'package:sst_announcer/main.dart';
 class AnnouncementPage extends StatefulWidget {
   final String title;
   String bodyText;
-  final bool isCustom;
-  AnnouncementPage(
-      {super.key,
-      required this.title,
-      required this.bodyText,
-      required this.isCustom});
+  AnnouncementPage({super.key, required this.title, required this.bodyText});
 
   @override
   State<AnnouncementPage> createState() => _AnnouncementPageState();
