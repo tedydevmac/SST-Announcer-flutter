@@ -1,8 +1,0 @@
-version: "Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)"
-options: "3911861a259d63c3b76507d5180c0478c682390a49e0889569723c13bc88b8c4"
-build_start_time: [1680672755, 179978847]
-build_end_time: [1680672755, 225692033]
-inputs:
-  "/Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/macos/Flutter/GeneratedPluginRegistrant.swift": !private [1680672730, 848060607]
-  "/Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/macos/Runner/AppDelegate.swift": !private [1680657903, 871680021]
-  "/Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/macos/Runner/MainFlutterWindow.swift": !private [1680657903, 873986244]

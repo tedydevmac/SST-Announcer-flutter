@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:html/parser.dart';
@@ -5,6 +8,7 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sst_announcer/announcement.dart';
 import 'package:xml/xml.dart' as xml;
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
 class FeedPage extends StatefulWidget {
   @override
@@ -44,14 +48,27 @@ class _FeedPageState extends State<FeedPage> {
   }
 
   Future<void> _fetchPosts() async {
-    final response = await http.get(Uri.parse(
-        'http://studentsblog.sst.edu.sg/feeds/posts/default?max-results=$_numPosts'));
-    final body = response.body;
-    final document = xml.XmlDocument.parse(body);
-    final posts = document.findAllElements('entry').toList();
-    setState(() {
-      _posts = posts;
-    });
+    final url =
+        'http://studentsblog.sst.edu.sg/feeds/posts/default?max-results=$_numPosts';
+    final file = await DefaultCacheManager().getSingleFile(url);
+
+    if (await file.exists()) {
+      final document = xml.XmlDocument.parse(await file.readAsString());
+      final posts = document.findAllElements('entry').toList();
+      setState(() {
+        _posts = posts;
+      });
+    } else {
+      final response = await http.get(Uri.parse(url));
+      final body = response.body;
+      final document = xml.XmlDocument.parse(body);
+      final posts = document.findAllElements('entry').toList();
+      setState(() {
+        _posts = posts;
+      });
+      await DefaultCacheManager()
+          .putFile(url, Uint8List.fromList(utf8.encode(body)));
+    }
   }
 
   Future<void> _refresh() async {
@@ -135,6 +152,22 @@ class _FeedPageState extends State<FeedPage> {
                   subtitle: Text(
                     pinnedContent![index],
                     maxLines: 3,
+                  ),
+                  trailing: IconButton(
+                    onPressed: () async {
+                      final SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      await getSavedValues();
+                      pinnedTitles?.removeAt(index);
+                      pinnedContent?.removeAt(index);
+                      await prefs.setStringList('titles', pinnedTitles!);
+                      await prefs.setStringList('content', pinnedContent!);
+
+                      _refresh();
+                    },
+                    icon: Icon(Icons.push_pin),
+                    color: Colors.red,
+                    iconSize: 21.5,
                   ),
                 ),
               );
