@@ -235,7 +235,7 @@ class _CategoryPageState extends State<CategoryPage> {
                           ),
                         );
                       },
-                      title: Text(title ?? ''),
+                      title: Text(title),
                       subtitle: Text(
                         content!,
                         maxLines: 2,

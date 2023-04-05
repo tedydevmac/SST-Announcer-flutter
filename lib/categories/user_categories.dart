@@ -154,6 +154,22 @@ class _FeedPageState extends State<FeedPage> {
                     pinnedContent![index],
                     maxLines: 3,
                   ),
+                  trailing: IconButton(
+                    onPressed: () async {
+                      final SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      await getSavedValues();
+                      pinnedTitles?.removeAt(index);
+                      pinnedContent?.removeAt(index);
+                      await prefs.setStringList('titles', pinnedTitles!);
+                      await prefs.setStringList('content', pinnedContent!);
+
+                      _refresh();
+                    },
+                    icon: Icon(Icons.push_pin),
+                    color: Colors.red,
+                    iconSize: 21.5,
+                  ),
                 ),
               );
             } else {
