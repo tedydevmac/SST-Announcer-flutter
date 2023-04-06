@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sst_announcer/poststream.dart';
 import 'package:sst_announcer/search.dart';
 import 'package:sst_announcer/themes.dart';
 import 'package:sst_announcer/categories/categories_list.dart';
@@ -43,9 +45,39 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final addCatController = TextEditingController();
   bool addCustomCat = false;
+
+  Future<List<String>> getCategoryList() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getStringList('categoryList') ?? [];
+  }
+
+  Future<void> addCategory(String category) async {
+    final prefs = await SharedPreferences.getInstance();
+    final categoryList = await getCategoryList();
+    if (!categoryList.contains(category)) {
+      categoryList.add(category);
+      await prefs.setStringList('categoryList', categoryList);
+    }
+  }
+
+  Future<void> removeCategory(String category) async {
+    final prefs = await SharedPreferences.getInstance();
+    final categoryList = await getCategoryList();
+    if (categoryList.length == 1) {
+      await prefs.setStringList('categoryList', []);
+    }
+    categoryList.remove(category);
+    await prefs.setStringList('categoryList', categoryList);
+  }
+
   @override
   void initState() {
     super.initState();
+    getCategoryList().then((categoryList) {
+      setState(() {
+        customCats = categoryList;
+      });
+    });
   }
 
   @override
@@ -106,33 +138,36 @@ class _HomePageState extends State<HomePage> {
                             itemCount: customCats.length,
                             shrinkWrap: true,
                             itemBuilder: (BuildContext context, int index) {
-                              return InkWell(
-                                onTap: () {
-                                  var navigator = Navigator.of(context);
-                                  navigator.push(CupertinoPageRoute(
-                                    builder: (context) {
-                                      return CategoryPage(
-                                        category: customCats[index],
-                                        isCustom: true,
-                                      );
-                                    },
-                                  ));
-                                },
-                                child: ListTile(
-                                  title: Text(customCats[index]),
-                                  trailing: IconButton(
-                                    icon: const Icon(Icons.delete),
-                                    iconSize: 22,
-                                    color: Colors.black,
-                                    tooltip: "Delete category",
-                                    onPressed: () {
-                                      setState(() {
-                                        customCats.removeAt(index);
-                                      });
-                                    },
-                                  ),
-                                ),
-                              );
+                              return customCats.isNotEmpty
+                                  ? InkWell(
+                                      onTap: () {
+                                        var navigator = Navigator.of(context);
+                                        navigator.push(CupertinoPageRoute(
+                                          builder: (context) {
+                                            return CategoryPage(
+                                              category: customCats[index],
+                                              isCustom: true,
+                                            );
+                                          },
+                                        ));
+                                      },
+                                      child: ListTile(
+                                        title: Text(customCats[index]),
+                                        trailing: IconButton(
+                                          icon: const Icon(Icons.delete),
+                                          iconSize: 22,
+                                          color: Colors.black,
+                                          tooltip: "Delete category",
+                                          onPressed: () {
+                                            setState(() {
+                                              customCats.removeAt(index);
+                                            });
+                                            removeCategory(customCats[index]);
+                                          },
+                                        ),
+                                      ),
+                                    )
+                                  : const SizedBox.shrink();
                             },
                           ),
                           const SizedBox(
@@ -183,6 +218,7 @@ class _HomePageState extends State<HomePage> {
                                           setState(() {
                                             customCats
                                                 .add(addCatController.text);
+                                            addCategory(addCatController.text);
                                             addCatController.text = "";
                                             addCustomCat = false;
                                           });

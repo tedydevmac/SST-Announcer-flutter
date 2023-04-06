@@ -24,8 +24,6 @@ class _FeedPageState extends State<FeedPage> {
     //Return String
     pinnedTitles = prefs.getStringList("titles") ?? ["", "", ""];
     pinnedContent = prefs.getStringList("content") ?? ["", "", ""];
-    print(pinnedTitles);
-    print(pinnedContent);
   }
 
   /*getContentValues() async {
@@ -86,7 +84,6 @@ class _FeedPageState extends State<FeedPage> {
   Widget build(BuildContext context) {
     getSavedValues();
 
-    final navigator = Navigator.of(context);
     _controller.addListener(() {
       if (_controller.position.atEdge) {
         bool isTop = _controller.position.pixels == 0;
@@ -95,9 +92,7 @@ class _FeedPageState extends State<FeedPage> {
         } else {
           setState(() {
             _numPosts += 10;
-            debugPrint("reached bottom, adding more posts");
             _refresh();
-            debugPrint("added posts successfully");
           });
         }
       }
@@ -164,7 +159,7 @@ class _FeedPageState extends State<FeedPage> {
 
                       _refresh();
                     },
-                    icon: Icon(Icons.push_pin),
+                    icon: const Icon(Icons.push_pin),
                     color: Colors.red,
                     iconSize: 21.5,
                   ),
@@ -213,12 +208,6 @@ class _FeedPageState extends State<FeedPage> {
 
                       await prefs.setStringList('titles', pinnedTitles!);
                       await prefs.setStringList('content', pinnedContent!);
-                      print("successfully saved data");
-                      print(
-                          "fetching titles: ${prefs.getStringList('titles')}");
-                      print(
-                          "fetching content: ${prefs.getStringList('content')}");
-
                       _refresh();
                     },
                     iconSize: 21.5,

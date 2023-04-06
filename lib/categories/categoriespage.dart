@@ -1,149 +1,15 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:html/parser.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sst_announcer/announcement.dart';
 import 'package:sst_announcer/main.dart';
 import 'package:webfeed/webfeed.dart';
 import 'package:http/http.dart' as http;
 import 'package:xml/xml.dart' as xml;
-
-class AddPostBotttomSheet extends StatefulWidget {
-  final String customCategoryName;
-  const AddPostBotttomSheet({super.key, required this.customCategoryName});
-
-  @override
-  State<AddPostBotttomSheet> createState() => _AddPostBotttomSheetState();
-}
-
-Map<String, List<xml.XmlElement>> customCatPosts = {};
-
-Future<SharedPreferences> get _prefs async {
-  return await SharedPreferences.getInstance();
-}
-
-Future<void> saveXmlDataList(List<String> xmlDataList) async {
-  final SharedPreferences prefs = await _prefs;
-  final xmlStrings = xmlDataList.map((xmlData) {
-    final document = xml.XmlDocument.parse(xmlData);
-    return document.toXmlString();
-  }).toList();
-  final xmlDataString = xmlStrings.join('\n');
-  await prefs.setString('xml_data_list', xmlDataString);
-}
-
-Future<List<String>> getXmlDataList() async {
-  final SharedPreferences prefs = await _prefs;
-  final xmlDataString = prefs.getString('xml_data_list');
-  if (xmlDataString == null) {
-    return [];
-  }
-  final xmlStrings = xmlDataString.split('\n');
-  final xmlDataList = xmlStrings.map((xmlString) {
-    final document = xml.XmlDocument.parse(xmlString);
-    return document.toXmlString();
-  }).toList();
-  return xmlDataList;
-}
-
-class _AddPostBotttomSheetState extends State<AddPostBotttomSheet> {
-  bool _isLoading = true;
-  bool isLoading = false;
-  List<xml.XmlElement> _posts = [];
-  Future<void> _fetchPosts() async {
-    final response = await http.get(
-      Uri.parse('http://studentsblog.sst.edu.sg/feeds/posts/default?'),
-    );
-    final body = response.body;
-    final document = xml.XmlDocument.parse(body);
-    final posts = document.findAllElements('entry').toList();
-    setState(() {
-      _posts = posts;
-      _isLoading = !_isLoading;
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _fetchPosts();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final double screenHeight = MediaQuery.of(context).size.height;
-    final _controller = ScrollController();
-    final navigator = Navigator.of(context);
-    return Container(
-      height: screenHeight * 0.75,
-      width: MediaQuery.of(context).size.width,
-      padding: const EdgeInsets.fromLTRB(5, 10, 5, 10),
-      child: _isLoading == true
-          ? const Center(
-              child: CircularProgressIndicator(),
-            )
-          : Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: screenHeight * 0.726,
-                  width: MediaQuery.of(context).size.width,
-                  child: ListView.separated(
-                    separatorBuilder: (separatorContext, index) =>
-                        const Divider(
-                      color: Colors.grey,
-                      thickness: 0.4,
-                      height: 1,
-                    ),
-                    controller: _controller,
-                    itemCount: _posts.length,
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) {
-                      final post = _posts[index];
-                      final title = post.findElements('title').first.text;
-                      final content =
-                          parseFragment(post.findElements('content').first.text)
-                              .text;
-                      return Padding(
-                        padding: const EdgeInsets.fromLTRB(6, 15, 6, 10),
-                        child: ListTile(
-                          title: Text(title),
-                          subtitle: Text(
-                            content!,
-                            maxLines: 3,
-                          ),
-                          trailing: IconButton(
-                            onPressed: () {
-                              setState(() {
-                                isLoading = true;
-                              });
-                              customCatPosts[widget.customCategoryName]
-                                  ?.add(post);
-                              postStreamController.add(PostStream.refreshPosts);
-                              navigator.pop();
-                            },
-                            iconSize: 21.5,
-                            icon: isLoading == true
-                                ? const CircularProgressIndicator()
-                                : const Icon(
-                                    Icons.add,
-                                    color: Color.fromARGB(255, 99, 99, 99),
-                                  ),
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                ),
-              ],
-            ),
-    );
-  }
-}
-
-enum PostStream { refreshPosts }
+import '../poststream.dart';
+import 'CustomModalBottomSheet.dart';
+import 'dart:convert';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CategoryPage extends StatefulWidget {
   final String category;
@@ -162,6 +28,10 @@ Future<AtomFeed> fetchAtomFeed() async {
 }
 
 class _CategoryPageState extends State<CategoryPage> {
+  Map<String, List<xml.XmlElement>> customCatPosts = {
+    for (var item in customCats) item: []
+  };
+
   late Future<AtomFeed> _futureAtomFeed;
   void postStreamControllerListener(PostStream value) {
     switch (value) {
@@ -172,13 +42,34 @@ class _CategoryPageState extends State<CategoryPage> {
     }
   }
 
+  Future<List<xml.XmlElement>> getCustomCatPosts(String category) async {
+    final prefs = await SharedPreferences.getInstance();
+    final customCatPostsXml = prefs.getStringList(category);
+
+    if (customCatPostsXml == null) {
+      return [];
+    }
+
+    final customCatPosts = customCatPostsXml
+        .map((xmlString) => xml.XmlDocument.parse(xmlString).rootElement)
+        .toList();
+
+    return customCatPosts;
+  }
+
   @override
   void initState() {
-    for (String str in customCats) {
-      customCatPosts[str] = [];
-    }
     postStreamController.stream.listen(postStreamControllerListener);
     super.initState();
+    getCustomCatPosts(
+      widget.category,
+    ).then((customCatPosts) {
+      // Update the customCatPosts map with the loaded data
+      setState(() {
+        this.customCatPosts[widget.category] = customCatPosts;
+      });
+    });
+
     _futureAtomFeed = fetchAtomFeed();
   }
 
@@ -187,6 +78,7 @@ class _CategoryPageState extends State<CategoryPage> {
         context: context,
         builder: (bottomSheetContext) => AddPostBotttomSheet(
               customCategoryName: widget.category,
+              customCatPosts: customCatPosts,
             ),
         isScrollControlled: true,
         shape: const RoundedRectangleBorder(
@@ -202,6 +94,13 @@ class _CategoryPageState extends State<CategoryPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.category),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            final navigator = Navigator.of(context);
+            navigator.pop(context);
+          },
+        ),
       ),
       floatingActionButton: widget.isCustom == true
           ? FloatingActionButton.extended(
