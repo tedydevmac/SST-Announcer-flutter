@@ -4,8 +4,8 @@
 4
 5    <uses-sdk
 6        android:minSdkVersion="16"
-6-->/Users/lukeyeo/.pub-cache/hosted/pub.flutter-io.cn/sqflite-2.2.6/android/src/main/AndroidManifest.xml
+6-->/Users/tedgoh/.pub-cache/hosted/pub.dev/sqflite-2.2.6/android/src/main/AndroidManifest.xml
 7        android:targetSdkVersion="16" />
-7-->/Users/lukeyeo/.pub-cache/hosted/pub.flutter-io.cn/sqflite-2.2.6/android/src/main/AndroidManifest.xml
+7-->/Users/tedgoh/.pub-cache/hosted/pub.dev/sqflite-2.2.6/android/src/main/AndroidManifest.xml
 8
 9</manifest>

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:html/parser.dart';
 
 class AnnouncementPage extends StatefulWidget {
   final String title;
@@ -50,6 +49,16 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
+                  Text(
+                    widget.title,
+                    style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
                   html,
                   /*Text(
                     widget.title,

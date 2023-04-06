@@ -22,13 +22,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
     saveFetchValue() async {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       intValue = prefs.getInt("postsToFetch");
-      print("value successfully set: ${prefs.getInt("postsToFetch")}");
     }
 
     getFetchValue() async {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       intValue = prefs.getInt("postsToFetch")!;
-      print("value: $intValue");
     }
 
     saveFetchValue();
