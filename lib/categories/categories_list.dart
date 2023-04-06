@@ -1,10 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:provider/provider.dart';
 import 'package:sst_announcer/categories/categoriespage.dart';
-import 'package:sst_announcer/main.dart';
-import 'package:sst_announcer/themes.dart';
 import 'package:xml/xml.dart' as xml;
 
 class CategoryListPage extends StatefulWidget {

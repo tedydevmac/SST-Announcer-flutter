@@ -116,8 +116,7 @@ class _FeedPageState extends State<FeedPage> {
           itemBuilder: (context, index) {
             final post = _posts[index];
             final title = post.findElements('title').first.text;
-            final content =
-                parseFragment(post.findElements('content').first.text).text;
+            final content = post.findElements('content').first.text;
             if (index < pinnedTitles!.length) {
               return Padding(
                 padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
@@ -182,7 +181,7 @@ class _FeedPageState extends State<FeedPage> {
                         builder: (context) {
                           return AnnouncementPage(
                             title: title,
-                            bodyText: content,
+                            bodyText: parseFragment(content).text!,
                           );
                         },
                       ),
@@ -190,7 +189,7 @@ class _FeedPageState extends State<FeedPage> {
                   },
                   title: Text(title),
                   subtitle: Text(
-                    content!,
+                    content,
                     maxLines: 3,
                   ),
                   trailing: IconButton(

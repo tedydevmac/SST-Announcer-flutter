@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sst_announcer/main.dart';
+import 'package:flutter_html/flutter_html.dart';
+import 'package:html/parser.dart';
 
 class AnnouncementPage extends StatefulWidget {
   final String title;
@@ -22,6 +23,17 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
   bool categoried = false;
   @override
   Widget build(BuildContext context) {
+    var originalString = widget.bodyText;
+    var parsedString = originalString.replaceAllMapped(
+        RegExp(
+            "(font-size: [^;]+;|color: #[0-9a-fA-F]{6};|background-color: \\w+;)"),
+        (match) {
+      return '"${match.group(0)}"';
+    });
+    Widget html = Html(
+      data: parsedString,
+    );
+
     return Scaffold(
       appBar: AppBar(
         title: Row(
@@ -38,7 +50,8 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  Text(
+                  html,
+                  /*Text(
                     widget.title,
                     style: const TextStyle(
                         fontSize: 25, fontWeight: FontWeight.w500),
@@ -56,7 +69,7 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
                   Text(
                     widget.bodyText,
                     style: const TextStyle(fontSize: 18),
-                  ),
+                  ),*/
                 ],
               ),
             ),
