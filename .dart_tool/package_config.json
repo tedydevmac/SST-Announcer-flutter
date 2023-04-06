@@ -104,6 +104,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "flutter_html",
+      "rootUri": "file:///Users/tedgoh/.pub-cache/hosted/pub.dev/flutter_html-3.0.0-alpha.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "flutter_lints",
       "rootUri": "file:///Users/tedgoh/.pub-cache/hosted/pub.dev/flutter_lints-2.0.1",
       "packageUri": "lib/",
@@ -186,6 +192,12 @@
       "rootUri": "file:///Users/tedgoh/.pub-cache/hosted/pub.dev/nested-1.0.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "numerus",
+      "rootUri": "file:///Users/tedgoh/.pub-cache/hosted/pub.dev/numerus-2.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.16"
     },
     {
       "name": "octo_image",
@@ -459,7 +471,7 @@
     },
     {
       "name": "webview_flutter_android",
-      "rootUri": "file:///Users/tedgoh/.pub-cache/hosted/pub.dev/webview_flutter_android-3.4.4",
+      "rootUri": "file:///Users/tedgoh/.pub-cache/hosted/pub.dev/webview_flutter_android-3.4.5",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
@@ -506,7 +518,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-04-05T08:22:57.992779Z",
+  "generated": "2023-04-06T13:06:48.759530Z",
   "generator": "pub",
   "generatorVersion": "2.19.4"
 }
