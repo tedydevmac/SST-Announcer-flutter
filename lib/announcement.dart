@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:sst_announcer/themes.dart';
 
 class AnnouncementPage extends StatefulWidget {
   final String title;
@@ -25,13 +26,25 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
     var originalString = widget.bodyText;
     var parsedString = originalString.replaceAllMapped(
         RegExp(
-            "(font-size: 40;|color: #[0-9a-fA-F]{6};|background-color: \\w+;)"),
+            "(font-size: [^;]+;|color: #[0-9a-fA-F]{6};|background-color: \\w+;)"),
         (match) {
       return '"${match.group(0)}"';
     });
+    print(parsedString);
     Widget html = Html(
       data: parsedString,
+      style: {"body": Style(fontSize: FontSize(15))},
     );
+
+    Color backgroundColor = Colors.black;
+
+    bool isDarkMode =
+        (MediaQuery.of(context).platformBrightness == Brightness.dark);
+    if (isDarkMode) {
+      backgroundColor = Colors.white;
+    } else {
+      backgroundColor = Colors.black;
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -51,8 +64,8 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
                 children: [
                   Text(
                     widget.title,
-                    style: const TextStyle(
-                        color: Colors.black,
+                    style: TextStyle(
+                        color: backgroundColor,
                         fontSize: 20,
                         fontWeight: FontWeight.bold),
                   ),

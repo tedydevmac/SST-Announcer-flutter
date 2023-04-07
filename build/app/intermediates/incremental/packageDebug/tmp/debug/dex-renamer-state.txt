@@ -1,0 +1,7 @@
+#Fri Apr 07 14:13:46 SGT 2023
+base.1=/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/app/intermediates/dex/debug/mergeDexDebug/classes2.dex
+path.1=classes2.dex
+base.0=/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+renamed.1=classes2.dex
+renamed.0=classes.dex
+path.0=classes.dex
