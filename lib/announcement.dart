@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:sst_announcer/themes.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AnnouncementPage extends StatefulWidget {
   final String title;
@@ -33,7 +33,10 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
     print(parsedString);
     Widget html = Html(
       data: parsedString,
-      style: {"body": Style(fontSize: FontSize(15))},
+      style: {"body": Style(fontSize: FontSize.large)},
+      onLinkTap: (link, _, __, ___) {
+        launchUrl(link as Uri);
+      },
     );
 
     Color backgroundColor = Colors.black;
