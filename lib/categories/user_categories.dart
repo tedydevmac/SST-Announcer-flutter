@@ -85,8 +85,6 @@ class _FeedPageState extends State<FeedPage> {
   @override
   Widget build(BuildContext context) {
     getSavedValues();
-
-    final navigator = Navigator.of(context);
     _controller.addListener(() {
       if (_controller.position.atEdge) {
         bool isTop = _controller.position.pixels == 0;
@@ -149,7 +147,7 @@ class _FeedPageState extends State<FeedPage> {
                     ],
                   ),
                   subtitle: Text(
-                    pinnedContent![index],
+                    parseFragment(pinnedContent![index]).text!,
                     maxLines: 3,
                   ),
                   trailing: IconButton(
@@ -181,17 +179,14 @@ class _FeedPageState extends State<FeedPage> {
                         builder: (context) {
                           return AnnouncementPage(
                             title: title,
-                            bodyText: parseFragment(content).text!,
+                            bodyText: content,
                           );
                         },
                       ),
                     );
                   },
                   title: Text(title),
-                  subtitle: Text(
-                    content,
-                    maxLines: 3,
-                  ),
+                  subtitle: Text(parseFragment(content).text!, maxLines: 3),
                   trailing: IconButton(
                     onPressed: () async {
                       // saving pinned title values

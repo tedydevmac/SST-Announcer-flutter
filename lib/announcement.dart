@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:html/parser.dart';
 
 class AnnouncementPage extends StatefulWidget {
   final String title;
@@ -26,7 +25,7 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
     var originalString = widget.bodyText;
     var parsedString = originalString.replaceAllMapped(
         RegExp(
-            "(font-size: [^;]+;|color: #[0-9a-fA-F]{6};|background-color: \\w+;)"),
+            "(font-size: 40;|color: #[0-9a-fA-F]{6};|background-color: \\w+;)"),
         (match) {
       return '"${match.group(0)}"';
     });
