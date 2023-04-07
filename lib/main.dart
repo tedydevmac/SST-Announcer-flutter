@@ -63,9 +63,6 @@ class _HomePageState extends State<HomePage> {
   Future<void> removeCategory(String category) async {
     final prefs = await SharedPreferences.getInstance();
     final categoryList = await getCategoryList();
-    if (categoryList.length == 1) {
-      await prefs.setStringList('categoryList', []);
-    }
     categoryList.remove(category);
     await prefs.setStringList('categoryList', categoryList);
   }
@@ -158,11 +155,11 @@ class _HomePageState extends State<HomePage> {
                                           iconSize: 22,
                                           color: Colors.black,
                                           tooltip: "Delete category",
-                                          onPressed: () {
+                                          onPressed: () async {
+                                            removeCategory(customCats[index]);
                                             setState(() {
                                               customCats.removeAt(index);
                                             });
-                                            removeCategory(customCats[index]);
                                           },
                                         ),
                                       ),
