@@ -49,6 +49,16 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
+                  Text(
+                    widget.title,
+                    style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
                   html,
                   /*Text(
                     widget.title,
