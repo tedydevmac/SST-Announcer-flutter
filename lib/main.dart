@@ -29,6 +29,7 @@ class MyApp extends StatelessWidget {
       theme: lightTheme,
       darkTheme: darkTheme,
       home: HomePage(title: 'All announcements'),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

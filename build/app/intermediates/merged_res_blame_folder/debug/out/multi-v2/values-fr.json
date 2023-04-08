@@ -1,16 +1,33 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.sst_announcer.app-mergeDebugResources-10:/values-fr/values-fr.xml",
+            "outputFile": "com.example.sst_announcer.app-mergeDebugResources-12:/values-fr/values-fr.xml",
             "map": [
                 {
-                    "source": "/Users/lukeyeo/.gradle/caches/transforms-3/9ae990dd2d4353842bc15594b2d8f0d6/transformed/core-1.6.0/res/values-fr/values-fr.xml",
+                    "source": "/Users/lukeyeo/.gradle/caches/transforms-3/42c9cb444e70aed5913074278d9d4671/transformed/jetified-exoplayer-core-2.18.5/res/values-fr/values-fr.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,129,194,263,335,418,495,592,685",
+                        "endColumns": "73,64,68,71,82,76,96,92,82",
+                        "endOffsets": "124,189,258,330,413,490,587,680,763"
+                    }
+                },
+                {
+                    "source": "/Users/lukeyeo/.gradle/caches/transforms-3/92b378fed2c7ad5d0dc31b9e1ebba952/transformed/core-1.7.0/res/values-fr/values-fr.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
                         "startOffsets": "55",
                         "endColumns": "100",
                         "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "11",
+                        "startColumns": "4",
+                        "startOffsets": "768",
+                        "endColumns": "100",
+                        "endOffsets": "864"
                     }
                 }
             ]

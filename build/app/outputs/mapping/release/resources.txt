@@ -3166,7 +3166,7 @@ Marking id:androidx_window_activity_scope:2131034150 used because it matches str
 Marking attr:primaryActivityName:2130771989 used because it matches string pool constant primaryActivityName.packageName
 Marking attr:activityAction:2130771968 used because it matches string pool constant activity
 Marking attr:activityName:2130771969 used because it matches string pool constant activity
-Marking drawable:launch_background:2130968576 used because it matches string pool constant launch
+Marking drawable:launch_background:2130968577 used because it matches string pool constant launch
 Marking attr:queryPatterns:2130771990 used because it matches string pool constant query
 Marking id:line1:2131034164 used because it matches string pool constant line
 Marking id:line3:2131034165 used because it matches string pool constant line
@@ -3229,6 +3229,7 @@ Marking id:line3:2131034165 used because it matches string pool constant line
 @dimen/notification_subtext_size : reachable=false
 @dimen/notification_top_pad : reachable=false
 @dimen/notification_top_pad_large_text : reachable=false
+@drawable/ic_launcher_background : reachable=false
 @drawable/launch_background : reachable=true
 @drawable/notification_action_background : reachable=false
     @color/androidx_core_ripple_material_light
@@ -3367,6 +3368,12 @@ Marking id:line3:2131034165 used because it matches string pool constant line
 @menu/example_menu : reachable=false
 @menu/example_menu2 : reachable=false
 @mipmap/ic_launcher : reachable=true
+    @drawable/ic_launcher_background
+    @mipmap/ic_launcher_foreground
+@mipmap/ic_launcher_foreground : reachable=false
+@mipmap/ic_launcher_round : reachable=false
+    @drawable/ic_launcher_background
+    @mipmap/ic_launcher_foreground
 @string/exo_download_completed : reachable=false
 @string/exo_download_description : reachable=false
 @string/exo_download_downloading : reachable=false
@@ -3406,7 +3413,7 @@ The root reachable resources are:
  attr:shortcutMatchRequired:2130771993
  color:androidx_core_ripple_material_light:2130837504
  color:androidx_core_secondary_text_default_material_light:2130837505
- drawable:launch_background:2130968576
+ drawable:launch_background:2130968577
  id:accessibility_action_clickable_span:2131034112
  id:accessibility_custom_action_0:2131034113
  id:accessibility_custom_action_1:2131034114
@@ -3493,3 +3500,9 @@ Skipped unused resource res/layout-v21/notification_template_custom_big.xml: 631
 Skipped unused resource res/layout-v21/notification_template_icon_group.xml: 2432 bytes (replaced with small dummy file of size 9 bytes)
 Skipped unused resource res/menu/example_menu.xml: 428 bytes (replaced with small dummy file of size 9 bytes)
 Skipped unused resource res/menu/example_menu2.xml: 428 bytes (replaced with small dummy file of size 9 bytes)
+Skipped unused resource res/mipmap-mdpi-v4/ic_launcher_round.png: 4164 bytes (replaced with small dummy file of size 67 bytes)
+Skipped unused resource res/mipmap-hdpi-v4/ic_launcher_round.png: 7334 bytes (replaced with small dummy file of size 67 bytes)
+Skipped unused resource res/mipmap-xhdpi-v4/ic_launcher_round.png: 11148 bytes (replaced with small dummy file of size 67 bytes)
+Skipped unused resource res/mipmap-xxhdpi-v4/ic_launcher_round.png: 19072 bytes (replaced with small dummy file of size 67 bytes)
+Skipped unused resource res/mipmap-xxxhdpi-v4/ic_launcher_round.png: 29189 bytes (replaced with small dummy file of size 67 bytes)
+Skipped unused resource res/mipmap-anydpi-v26/ic_launcher_round.xml: 419 bytes (replaced with small dummy file of size 9 bytes)

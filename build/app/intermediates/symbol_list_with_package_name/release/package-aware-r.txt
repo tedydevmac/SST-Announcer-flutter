@@ -56,6 +56,7 @@ dimen notification_small_icon_size_as_large
 dimen notification_subtext_size
 dimen notification_top_pad
 dimen notification_top_pad_large_text
+drawable ic_launcher_background
 drawable launch_background
 drawable notification_action_background
 drawable notification_bg
@@ -161,6 +162,8 @@ layout notification_template_part_time
 menu example_menu
 menu example_menu2
 mipmap ic_launcher
+mipmap ic_launcher_foreground
+mipmap ic_launcher_round
 string exo_download_completed
 string exo_download_description
 string exo_download_downloading
