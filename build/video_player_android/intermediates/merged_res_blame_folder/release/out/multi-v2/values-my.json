@@ -4,7 +4,17 @@
             "outputFile": "io.flutter.plugins.videoplayer.video_player_android-merged_res-12:/values-my/values-my.xml",
             "map": [
                 {
-                    "source": "/Users/lukeyeo/.gradle/caches/transforms-3/92b378fed2c7ad5d0dc31b9e1ebba952/transformed/core-1.7.0/res/values-my/values-my.xml",
+                    "source": "/Users/tedgoh/.gradle/caches/transforms-3/42c9cb444e70aed5913074278d9d4671/transformed/jetified-exoplayer-core-2.18.5/res/values-my/values-my.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,130,202,275,344,426,501,602,697",
+                        "endColumns": "74,71,72,68,81,74,100,94,77",
+                        "endOffsets": "125,197,270,339,421,496,597,692,770"
+                    }
+                },
+                {
+                    "source": "/Users/tedgoh/.gradle/caches/transforms-3/92b378fed2c7ad5d0dc31b9e1ebba952/transformed/core-1.7.0/res/values-my/values-my.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -18,16 +28,6 @@
                         "startOffsets": "775",
                         "endColumns": "100",
                         "endOffsets": "871"
-                    }
-                },
-                {
-                    "source": "/Users/lukeyeo/.gradle/caches/transforms-3/42c9cb444e70aed5913074278d9d4671/transformed/jetified-exoplayer-core-2.18.5/res/values-my/values-my.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10",
-                        "startColumns": "4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,130,202,275,344,426,501,602,697",
-                        "endColumns": "74,71,72,68,81,74,100,94,77",
-                        "endOffsets": "125,197,270,339,421,496,597,692,770"
                     }
                 }
             ]
@@ -36,7 +36,17 @@
             "outputFile": "io.flutter.plugins.videoplayer.video_player_android-mergeReleaseResources-10:/values-my/values-my.xml",
             "map": [
                 {
-                    "source": "/Users/lukeyeo/.gradle/caches/transforms-3/92b378fed2c7ad5d0dc31b9e1ebba952/transformed/core-1.7.0/res/values-my/values-my.xml",
+                    "source": "/Users/tedgoh/.gradle/caches/transforms-3/42c9cb444e70aed5913074278d9d4671/transformed/jetified-exoplayer-core-2.18.5/res/values-my/values-my.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,130,202,275,344,426,501,602,697",
+                        "endColumns": "74,71,72,68,81,74,100,94,77",
+                        "endOffsets": "125,197,270,339,421,496,597,692,770"
+                    }
+                },
+                {
+                    "source": "/Users/tedgoh/.gradle/caches/transforms-3/92b378fed2c7ad5d0dc31b9e1ebba952/transformed/core-1.7.0/res/values-my/values-my.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -50,16 +60,6 @@
                         "startOffsets": "775",
                         "endColumns": "100",
                         "endOffsets": "871"
-                    }
-                },
-                {
-                    "source": "/Users/lukeyeo/.gradle/caches/transforms-3/42c9cb444e70aed5913074278d9d4671/transformed/jetified-exoplayer-core-2.18.5/res/values-my/values-my.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10",
-                        "startColumns": "4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,130,202,275,344,426,501,602,697",
-                        "endColumns": "74,71,72,68,81,74,100,94,77",
-                        "endOffsets": "125,197,270,339,421,496,597,692,770"
                     }
                 }
             ]

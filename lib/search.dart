@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:html/parser.dart';
 import 'package:http/http.dart' as http;
+import 'package:skeletons/skeletons.dart';
 import 'package:sst_announcer/announcement.dart';
 import 'package:xml/xml.dart' as xml;
 
@@ -16,6 +17,7 @@ class _BlogPageState extends State<BlogPage> {
   List<String?> _categories = [];
   String? _selectedCategory;
   String? _searchTerm;
+  bool _isLoading = true;
 
   @override
   void initState() {
@@ -38,6 +40,7 @@ class _BlogPageState extends State<BlogPage> {
     setState(() {
       _posts = posts;
       _categories = categories;
+      _isLoading = !_isLoading;
     });
   }
 
@@ -109,42 +112,45 @@ class _BlogPageState extends State<BlogPage> {
           ),
           const SizedBox(height: 16),
           Expanded(
-            child: ListView.separated(
-              separatorBuilder: (separatorContext, index) => const Divider(
-                color: Colors.grey,
-                thickness: 0.4,
-                height: 1,
-              ),
-              itemCount: filteredPosts.length,
-              itemBuilder: (context, index) {
-                final post = filteredPosts[index];
-                final title = post.findElements('title').first.text;
-                final content = post.findElements('content').first.text;
-                return Ink(
-                  padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
-                  child: ListTile(
-                    onTap: () {
-                      var navigator = Navigator.of(context);
-                      navigator.push(
-                        CupertinoPageRoute(
-                          builder: (context) {
-                            return AnnouncementPage(
-                              title: title,
-                              bodyText: content,
+            child: _isLoading == true
+                ? SkeletonListView()
+                : ListView.separated(
+                    separatorBuilder: (separatorContext, index) =>
+                        const Divider(
+                      color: Colors.grey,
+                      thickness: 0.4,
+                      height: 1,
+                    ),
+                    itemCount: filteredPosts.length,
+                    itemBuilder: (context, index) {
+                      final post = filteredPosts[index];
+                      final title = post.findElements('title').first.text;
+                      final content = post.findElements('content').first.text;
+                      return Ink(
+                        padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+                        child: ListTile(
+                          onTap: () {
+                            var navigator = Navigator.of(context);
+                            navigator.push(
+                              CupertinoPageRoute(
+                                builder: (context) {
+                                  return AnnouncementPage(
+                                    title: title,
+                                    bodyText: content,
+                                  );
+                                },
+                              ),
                             );
                           },
+                          title: Text(title),
+                          subtitle: Text(
+                            parseFragment(content).text!,
+                            maxLines: 3,
+                          ),
                         ),
                       );
                     },
-                    title: Text(title),
-                    subtitle: Text(
-                      parseFragment(content).text!,
-                      maxLines: 3,
-                    ),
                   ),
-                );
-              },
-            ),
           ),
         ],
       ),
