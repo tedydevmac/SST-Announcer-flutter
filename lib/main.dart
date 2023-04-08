@@ -80,6 +80,10 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    bool isDarkThemeEnabled(BuildContext context) {
+      return Theme.of(context).brightness == Brightness.dark;
+    }
+
     return Scaffold(
       drawer: Drawer(
         child: SafeArea(
@@ -113,9 +117,11 @@ class _HomePageState extends State<HomePage> {
                       CategoryListPage(),
                     ],
                   ),
-                  const Divider(
+                  Divider(
                     thickness: 0.5,
-                    color: Colors.black,
+                    color: isDarkThemeEnabled(context)
+                        ? Colors.white
+                        : Colors.black,
                   ),
                   ExpansionTile(
                     clipBehavior: Clip.hardEdge,
@@ -154,7 +160,9 @@ class _HomePageState extends State<HomePage> {
                                         trailing: IconButton(
                                           icon: const Icon(Icons.delete),
                                           iconSize: 22,
-                                          color: Colors.black,
+                                          color: isDarkThemeEnabled(context)
+                                              ? Colors.white
+                                              : Colors.black,
                                           tooltip: "Delete category",
                                           onPressed: () async {
                                             removeCategory(customCats[index]);
