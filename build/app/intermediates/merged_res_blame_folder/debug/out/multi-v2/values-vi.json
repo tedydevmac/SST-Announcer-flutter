@@ -1,16 +1,33 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.sst_announcer.app-mergeDebugResources-10:/values-vi/values-vi.xml",
+            "outputFile": "com.example.sst_announcer.app-mergeDebugResources-12:/values-vi/values-vi.xml",
             "map": [
                 {
-                    "source": "/Users/tedgoh/.gradle/caches/transforms-3/4ca28c4a71705f8a687c69dda140a277/transformed/core-1.6.0/res/values-vi/values-vi.xml",
+                    "source": "/Users/tedgoh/.gradle/caches/transforms-3/92b378fed2c7ad5d0dc31b9e1ebba952/transformed/core-1.7.0/res/values-vi/values-vi.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
                         "startOffsets": "55",
                         "endColumns": "100",
                         "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "11",
+                        "startColumns": "4",
+                        "startOffsets": "747",
+                        "endColumns": "100",
+                        "endOffsets": "843"
+                    }
+                },
+                {
+                    "source": "/Users/tedgoh/.gradle/caches/transforms-3/42c9cb444e70aed5913074278d9d4671/transformed/jetified-exoplayer-core-2.18.5/res/values-vi/values-vi.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,128,191,259,328,419,489,579,667",
+                        "endColumns": "72,62,67,68,90,69,89,87,79",
+                        "endOffsets": "123,186,254,323,414,484,574,662,742"
                     }
                 }
             ]

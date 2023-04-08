@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:html/parser.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:skeletons/skeletons.dart';
 import 'package:sst_announcer/announcement.dart';
 import 'package:xml/xml.dart' as xml;
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
@@ -36,6 +37,7 @@ class _FeedPageState extends State<FeedPage> {
 
   int _numPosts = 10;
   List<xml.XmlElement> _posts = [];
+  bool _isLoading = true;
 
   final _controller = ScrollController();
 
@@ -54,6 +56,8 @@ class _FeedPageState extends State<FeedPage> {
       final document = xml.XmlDocument.parse(await file.readAsString());
       final posts = document.findAllElements('entry').toList();
       setState(() {
+        _isLoading = false;
+        print("loading finished");
         _posts = posts;
       });
     } else {
@@ -62,6 +66,8 @@ class _FeedPageState extends State<FeedPage> {
       final document = xml.XmlDocument.parse(body);
       final posts = document.findAllElements('entry').toList();
       setState(() {
+        _isLoading = false;
+        print("loading finished");
         _posts = posts;
       });
       await DefaultCacheManager()
@@ -99,126 +105,135 @@ class _FeedPageState extends State<FeedPage> {
       }
     });
     return Scaffold(
-      body: RefreshIndicator(
-        onRefresh: _refresh,
-        child: ListView.separated(
-          separatorBuilder: (separatorContext, index) => const Divider(
-            color: Colors.grey,
-            thickness: 0.4,
-            height: 1,
-          ),
-          controller: _controller,
-          itemCount: _posts.length,
-          itemBuilder: (context, index) {
-            final post = _posts[index];
-            final title = post.findElements('title').first.text;
-            final content = post.findElements('content').first.text;
-            if (index < pinnedTitles!.length) {
-              return Padding(
-                padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
-                child: ListTile(
-                  onTap: () {
-                    final navigator = Navigator.of(context);
-                    navigator.push(
-                      CupertinoPageRoute(
-                        builder: (context) {
-                          return AnnouncementPage(
-                            title: pinnedTitles![index],
-                            bodyText: pinnedContent![index],
-                          );
-                        },
-                      ),
-                    );
+      body: Container(
+        child: _isLoading
+            ? SkeletonListView()
+            : RefreshIndicator(
+                onRefresh: _refresh,
+                child: ListView.separated(
+                  separatorBuilder: (separatorContext, index) => const Divider(
+                    color: Colors.grey,
+                    thickness: 0.4,
+                    height: 1,
+                  ),
+                  controller: _controller,
+                  itemCount: _posts.length,
+                  itemBuilder: (context, index) {
+                    final post = _posts[index];
+                    final title = post.findElements('title').first.text;
+                    final content = post.findElements('content').first.text;
+                    if (index < pinnedTitles!.length) {
+                      return Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+                        child: ListTile(
+                          onTap: () {
+                            final navigator = Navigator.of(context);
+                            navigator.push(
+                              CupertinoPageRoute(
+                                builder: (context) {
+                                  return AnnouncementPage(
+                                    title: pinnedTitles![index],
+                                    bodyText: pinnedContent![index],
+                                  );
+                                },
+                              ),
+                            );
+                          },
+                          title: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                "Pinned",
+                                style: TextStyle(fontSize: 10),
+                                textAlign: TextAlign.left,
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Text(pinnedTitles![index]),
+                            ],
+                          ),
+                          subtitle: Text(
+                            parseFragment(pinnedContent![index]).text!,
+                            maxLines: 3,
+                          ),
+                          trailing: IconButton(
+                            onPressed: () async {
+                              final SharedPreferences prefs =
+                                  await SharedPreferences.getInstance();
+                              await getSavedValues();
+                              pinnedTitles?.removeAt(index);
+                              pinnedContent?.removeAt(index);
+                              await prefs.setStringList(
+                                  'titles', pinnedTitles!);
+                              await prefs.setStringList(
+                                  'content', pinnedContent!);
+
+                              _refresh();
+                            },
+                            icon: const Icon(Icons.push_pin),
+                            color: Colors.red,
+                            iconSize: 21.5,
+                          ),
+                        ),
+                      );
+                    } else {
+                      return Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+                        child: ListTile(
+                          onTap: () {
+                            var navigator = Navigator.of(context);
+                            navigator.push(
+                              CupertinoPageRoute(
+                                builder: (context) {
+                                  return AnnouncementPage(
+                                    title: title,
+                                    bodyText: content,
+                                  );
+                                },
+                              ),
+                            );
+                          },
+                          title: Text(title),
+                          subtitle:
+                              Text(parseFragment(content).text!, maxLines: 3),
+                          trailing: IconButton(
+                            onPressed: () async {
+                              // saving pinned title values
+                              final SharedPreferences prefs =
+                                  await SharedPreferences.getInstance();
+
+                              await getSavedValues();
+
+                              pinnedTitles!.insert(0, title);
+                              if (pinnedTitles!.length > 3) {
+                                pinnedTitles!.removeLast();
+                              }
+
+                              // saving pinned content values
+                              pinnedContent!.insert(0, content);
+                              if (pinnedContent!.length > 3) {
+                                pinnedContent!.removeLast();
+                              }
+
+                              await prefs.setStringList(
+                                  'titles', pinnedTitles!);
+                              await prefs.setStringList(
+                                  'content', pinnedContent!);
+                              _refresh();
+                            },
+                            iconSize: 21.5,
+                            icon: const Icon(
+                              Icons.push_pin,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ),
+                      );
+                    }
                   },
-                  title: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        "Pinned",
-                        style: TextStyle(fontSize: 10),
-                        textAlign: TextAlign.left,
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Text(pinnedTitles![index]),
-                    ],
-                  ),
-                  subtitle: Text(
-                    parseFragment(pinnedContent![index]).text!,
-                    maxLines: 3,
-                  ),
-                  trailing: IconButton(
-                    onPressed: () async {
-                      final SharedPreferences prefs =
-                          await SharedPreferences.getInstance();
-                      await getSavedValues();
-                      pinnedTitles?.removeAt(index);
-                      pinnedContent?.removeAt(index);
-                      await prefs.setStringList('titles', pinnedTitles!);
-                      await prefs.setStringList('content', pinnedContent!);
-
-                      _refresh();
-                    },
-                    icon: const Icon(Icons.push_pin),
-                    color: Colors.red,
-                    iconSize: 21.5,
-                  ),
                 ),
-              );
-            } else {
-              return Padding(
-                padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
-                child: ListTile(
-                  onTap: () {
-                    var navigator = Navigator.of(context);
-                    navigator.push(
-                      CupertinoPageRoute(
-                        builder: (context) {
-                          return AnnouncementPage(
-                            title: title,
-                            bodyText: content,
-                          );
-                        },
-                      ),
-                    );
-                  },
-                  title: Text(title),
-                  subtitle: Text(parseFragment(content).text!, maxLines: 3),
-                  trailing: IconButton(
-                    onPressed: () async {
-                      // saving pinned title values
-                      final SharedPreferences prefs =
-                          await SharedPreferences.getInstance();
-
-                      await getSavedValues();
-
-                      pinnedTitles!.insert(0, title);
-                      if (pinnedTitles!.length > 3) {
-                        pinnedTitles!.removeLast();
-                      }
-
-                      // saving pinned content values
-                      pinnedContent!.insert(0, content);
-                      if (pinnedContent!.length > 3) {
-                        pinnedContent!.removeLast();
-                      }
-
-                      await prefs.setStringList('titles', pinnedTitles!);
-                      await prefs.setStringList('content', pinnedContent!);
-                      _refresh();
-                    },
-                    iconSize: 21.5,
-                    icon: const Icon(
-                      Icons.push_pin,
-                      color: Colors.grey,
-                    ),
-                  ),
-                ),
-              );
-            }
-          },
-        ),
+              ),
       ),
     );
   }

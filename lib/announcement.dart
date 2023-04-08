@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:sst_announcer/themes.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AnnouncementPage extends StatefulWidget {
   final String title;
@@ -31,10 +31,6 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
       return '"${match.group(0)}"';
     });
     print(parsedString);
-    Widget html = Html(
-      data: parsedString,
-      style: {"body": Style(fontSize: FontSize(15))},
-    );
 
     Color backgroundColor = Colors.black;
 
@@ -72,26 +68,18 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
                   const SizedBox(
                     height: 15,
                   ),
-                  html,
-                  /*Text(
-                    widget.title,
-                    style: const TextStyle(
-                        fontSize: 25, fontWeight: FontWeight.w500),
+                  Html(
+                    data: parsedString,
+                    style: {
+                      "body": Style(
+                          fontSize: FontSize.large, color: backgroundColor),
+                      "p": Style(
+                          fontSize: FontSize.large, color: backgroundColor),
+                    },
+                    onLinkTap: (link, _, __, ___) {
+                      launch(link!);
+                    },
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  const Divider(
-                    thickness: 1,
-                    color: Colors.white,
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    widget.bodyText,
-                    style: const TextStyle(fontSize: 18),
-                  ),*/
                 ],
               ),
             ),
