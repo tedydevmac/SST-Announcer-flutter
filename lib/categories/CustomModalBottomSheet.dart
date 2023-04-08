@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:html/parser.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -7,7 +5,7 @@ import 'package:sst_announcer/main.dart';
 import 'package:http/http.dart' as http;
 import 'package:xml/xml.dart' as xml;
 import '../poststream.dart';
-import 'categoriespage.dart';
+import 'package:skeletons/skeletons.dart';
 
 class AddPostBotttomSheet extends StatefulWidget {
   final String customCategoryName;
@@ -71,9 +69,7 @@ class _AddPostBotttomSheetState extends State<AddPostBotttomSheet> {
       width: MediaQuery.of(context).size.width,
       padding: const EdgeInsets.fromLTRB(5, 10, 5, 10),
       child: _isLoading == true
-          ? const Center(
-              child: CircularProgressIndicator(),
-            )
+          ? SkeletonListView()
           : Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,

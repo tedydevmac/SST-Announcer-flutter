@@ -4,7 +4,7 @@
             "outputFile": "com.example.sst_announcer.app-mergeReleaseResources-12:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/res/values-night/styles.xml",
+                    "source": "/Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/android/app/src/main/res/values-night/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
