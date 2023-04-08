@@ -80,25 +80,6 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
                       launch(link!);
                     },
                   ),
-                  /*Text(
-                    widget.title,
-                    style: const TextStyle(
-                        fontSize: 25, fontWeight: FontWeight.w500),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  const Divider(
-                    thickness: 1,
-                    color: Colors.white,
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    widget.bodyText,
-                    style: const TextStyle(fontSize: 18),
-                  ),*/
                 ],
               ),
             ),

@@ -119,8 +119,7 @@ class _BlogPageState extends State<BlogPage> {
               itemBuilder: (context, index) {
                 final post = filteredPosts[index];
                 final title = post.findElements('title').first.text;
-                final content =
-                    parseFragment(post.findElements('content').first.text).text;
+                final content = post.findElements('content').first.text;
                 return Ink(
                   padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
                   child: ListTile(
@@ -139,7 +138,7 @@ class _BlogPageState extends State<BlogPage> {
                     },
                     title: Text(title),
                     subtitle: Text(
-                      content!,
+                      parseFragment(content).text!,
                       maxLines: 3,
                     ),
                   ),
