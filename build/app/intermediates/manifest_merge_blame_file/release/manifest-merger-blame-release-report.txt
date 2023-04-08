@@ -13,89 +13,92 @@
 11    <uses-permission android:name="android.permission.INTERNET" />
 11-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:3:4-65
 11-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:3:21-63
-12
-13    <application
-14        android:name="io.flutter.app.FlutterMultiDexApplication"
-14-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:6:9-42
-15        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-15-->[androidx.core:core:1.6.0] /Users/lukeyeo/.gradle/caches/transforms-3/9ae990dd2d4353842bc15594b2d8f0d6/transformed/core-1.6.0/AndroidManifest.xml:24:18-86
-16        android:icon="@mipmap/ic_launcher"
-16-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:7:9-43
-17        android:label="sst_announcer" >
-17-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:5:9-38
-18        <activity
-18-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:8:9-28:20
-19            android:name="com.example.sst_announcer.MainActivity"
-19-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:9:13-41
-20            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-20-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:13:13-163
-21            android:exported="true"
-21-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:10:13-36
-22            android:hardwareAccelerated="true"
-22-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:14:13-47
-23            android:launchMode="singleTop"
-23-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:11:13-43
-24            android:theme="@style/LaunchTheme"
-24-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:12:13-47
-25            android:windowSoftInputMode="adjustResize" >
-25-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:15:13-55
-26
-27            <!--
-28                 Specifies an Android theme to apply to this Activity as soon as
-29                 the Android process has started. This theme is visible to the user
-30                 while the Flutter UI initializes. After that, this theme continues
-31                 to determine the Window background behind the Flutter UI.
-32            -->
-33            <meta-data
-33-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:20:13-23:17
-34                android:name="io.flutter.embedding.android.NormalTheme"
-34-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:21:15-70
-35                android:resource="@style/NormalTheme" />
-35-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:22:15-52
-36
-37            <intent-filter>
-37-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:24:13-27:29
-38                <action android:name="android.intent.action.MAIN" />
-38-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:25:17-68
-38-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:25:25-66
-39
-40                <category android:name="android.intent.category.LAUNCHER" />
-40-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:26:17-76
-40-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:26:27-74
-41            </intent-filter>
-42        </activity>
-43        <!--
-44             Don't delete the meta-data below.
-45             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
-46        -->
-47        <meta-data
-47-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:31:9-33:33
-48            android:name="flutterEmbedding"
-48-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:32:13-44
-49            android:value="2" />
-49-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:33:13-30
-50
-51        <activity
-51-->[:url_launcher_android] /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/url_launcher_android/intermediates/merged_manifest/release/AndroidManifest.xml:8:9-11:74
-52            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
-52-->[:url_launcher_android] /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/url_launcher_android/intermediates/merged_manifest/release/AndroidManifest.xml:9:13-74
-53            android:exported="false"
-53-->[:url_launcher_android] /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/url_launcher_android/intermediates/merged_manifest/release/AndroidManifest.xml:10:13-37
-54            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-54-->[:url_launcher_android] /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/url_launcher_android/intermediates/merged_manifest/release/AndroidManifest.xml:11:13-71
-55
-56        <uses-library
-56-->[androidx.window:window:1.0.0-beta04] /Users/lukeyeo/.gradle/caches/transforms-3/518111e08d93c16bc666f5016f25f03d/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
-57            android:name="androidx.window.extensions"
-57-->[androidx.window:window:1.0.0-beta04] /Users/lukeyeo/.gradle/caches/transforms-3/518111e08d93c16bc666f5016f25f03d/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
-58            android:required="false" />
-58-->[androidx.window:window:1.0.0-beta04] /Users/lukeyeo/.gradle/caches/transforms-3/518111e08d93c16bc666f5016f25f03d/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
-59        <uses-library
-59-->[androidx.window:window:1.0.0-beta04] /Users/lukeyeo/.gradle/caches/transforms-3/518111e08d93c16bc666f5016f25f03d/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
-60            android:name="androidx.window.sidecar"
-60-->[androidx.window:window:1.0.0-beta04] /Users/lukeyeo/.gradle/caches/transforms-3/518111e08d93c16bc666f5016f25f03d/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
-61            android:required="false" />
-61-->[androidx.window:window:1.0.0-beta04] /Users/lukeyeo/.gradle/caches/transforms-3/518111e08d93c16bc666f5016f25f03d/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
-62    </application>
-63
-64</manifest>
+12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+12-->[com.google.android.exoplayer:exoplayer-core:2.18.5] /Users/lukeyeo/.gradle/caches/transforms-3/42c9cb444e70aed5913074278d9d4671/transformed/jetified-exoplayer-core-2.18.5/AndroidManifest.xml:24:5-79
+12-->[com.google.android.exoplayer:exoplayer-core:2.18.5] /Users/lukeyeo/.gradle/caches/transforms-3/42c9cb444e70aed5913074278d9d4671/transformed/jetified-exoplayer-core-2.18.5/AndroidManifest.xml:24:22-76
+13
+14    <application
+15        android:name="io.flutter.app.FlutterMultiDexApplication"
+15-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:6:9-42
+16        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+16-->[androidx.core:core:1.7.0] /Users/lukeyeo/.gradle/caches/transforms-3/92b378fed2c7ad5d0dc31b9e1ebba952/transformed/core-1.7.0/AndroidManifest.xml:24:18-86
+17        android:icon="@mipmap/ic_launcher"
+17-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:7:9-43
+18        android:label="sst_announcer" >
+18-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:5:9-38
+19        <activity
+19-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:8:9-28:20
+20            android:name="com.example.sst_announcer.MainActivity"
+20-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:9:13-41
+21            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+21-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:13:13-163
+22            android:exported="true"
+22-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:10:13-36
+23            android:hardwareAccelerated="true"
+23-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:14:13-47
+24            android:launchMode="singleTop"
+24-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:11:13-43
+25            android:theme="@style/LaunchTheme"
+25-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:12:13-47
+26            android:windowSoftInputMode="adjustResize" >
+26-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:15:13-55
+27
+28            <!--
+29                 Specifies an Android theme to apply to this Activity as soon as
+30                 the Android process has started. This theme is visible to the user
+31                 while the Flutter UI initializes. After that, this theme continues
+32                 to determine the Window background behind the Flutter UI.
+33            -->
+34            <meta-data
+34-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:20:13-23:17
+35                android:name="io.flutter.embedding.android.NormalTheme"
+35-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:21:15-70
+36                android:resource="@style/NormalTheme" />
+36-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:22:15-52
+37
+38            <intent-filter>
+38-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:24:13-27:29
+39                <action android:name="android.intent.action.MAIN" />
+39-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:25:17-68
+39-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:25:25-66
+40
+41                <category android:name="android.intent.category.LAUNCHER" />
+41-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:26:17-76
+41-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:26:27-74
+42            </intent-filter>
+43        </activity>
+44        <!--
+45             Don't delete the meta-data below.
+46             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+47        -->
+48        <meta-data
+48-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:31:9-33:33
+49            android:name="flutterEmbedding"
+49-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:32:13-44
+50            android:value="2" />
+50-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:33:13-30
+51
+52        <activity
+52-->[:url_launcher_android] /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/url_launcher_android/intermediates/merged_manifest/release/AndroidManifest.xml:8:9-11:74
+53            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
+53-->[:url_launcher_android] /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/url_launcher_android/intermediates/merged_manifest/release/AndroidManifest.xml:9:13-74
+54            android:exported="false"
+54-->[:url_launcher_android] /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/url_launcher_android/intermediates/merged_manifest/release/AndroidManifest.xml:10:13-37
+55            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+55-->[:url_launcher_android] /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/url_launcher_android/intermediates/merged_manifest/release/AndroidManifest.xml:11:13-71
+56
+57        <uses-library
+57-->[androidx.window:window:1.0.0-beta04] /Users/lukeyeo/.gradle/caches/transforms-3/518111e08d93c16bc666f5016f25f03d/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
+58            android:name="androidx.window.extensions"
+58-->[androidx.window:window:1.0.0-beta04] /Users/lukeyeo/.gradle/caches/transforms-3/518111e08d93c16bc666f5016f25f03d/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
+59            android:required="false" />
+59-->[androidx.window:window:1.0.0-beta04] /Users/lukeyeo/.gradle/caches/transforms-3/518111e08d93c16bc666f5016f25f03d/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
+60        <uses-library
+60-->[androidx.window:window:1.0.0-beta04] /Users/lukeyeo/.gradle/caches/transforms-3/518111e08d93c16bc666f5016f25f03d/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
+61            android:name="androidx.window.sidecar"
+61-->[androidx.window:window:1.0.0-beta04] /Users/lukeyeo/.gradle/caches/transforms-3/518111e08d93c16bc666f5016f25f03d/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
+62            android:required="false" />
+62-->[androidx.window:window:1.0.0-beta04] /Users/lukeyeo/.gradle/caches/transforms-3/518111e08d93c16bc666f5016f25f03d/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
+63    </application>
+64
+65</manifest>

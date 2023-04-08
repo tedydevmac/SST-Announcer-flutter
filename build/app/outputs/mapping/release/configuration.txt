@@ -217,8 +217,66 @@
 -dontwarn sun.misc.Signal
 
 # End of content from /Users/lukeyeo/.gradle/caches/transforms-3/c7651117b57881e2cf17ca36cec8ed87/transformed/rules/lib/META-INF/proguard/coroutines.pro
-# The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/f5415c76bd669f9fcaa78969b35f8138/transformed/webkit-1.6.0/proguard.txt
-# Copyright 2018 The Chromium Authors
+# The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/42c9cb444e70aed5913074278d9d4671/transformed/jetified-exoplayer-core-2.18.5/proguard.txt
+# Proguard rules specific to the core module.
+
+# Constructors accessed via reflection in DefaultRenderersFactory
+-dontnote com.google.android.exoplayer2.ext.vp9.LibvpxVideoRenderer
+-keepclassmembers class com.google.android.exoplayer2.ext.vp9.LibvpxVideoRenderer {
+  <init>(long, android.os.Handler, com.google.android.exoplayer2.video.VideoRendererEventListener, int);
+}
+-dontnote com.google.android.exoplayer2.ext.av1.Libgav1VideoRenderer
+-keepclassmembers class com.google.android.exoplayer2.ext.av1.Libgav1VideoRenderer {
+  <init>(long, android.os.Handler, com.google.android.exoplayer2.video.VideoRendererEventListener, int);
+}
+-dontnote com.google.android.exoplayer2.ext.opus.LibopusAudioRenderer
+-keepclassmembers class com.google.android.exoplayer2.ext.opus.LibopusAudioRenderer {
+  <init>(android.os.Handler, com.google.android.exoplayer2.audio.AudioRendererEventListener, com.google.android.exoplayer2.audio.AudioSink);
+}
+-dontnote com.google.android.exoplayer2.ext.flac.LibflacAudioRenderer
+-keepclassmembers class com.google.android.exoplayer2.ext.flac.LibflacAudioRenderer {
+  <init>(android.os.Handler, com.google.android.exoplayer2.audio.AudioRendererEventListener, com.google.android.exoplayer2.audio.AudioSink);
+}
+-dontnote com.google.android.exoplayer2.ext.ffmpeg.FfmpegAudioRenderer
+-keepclassmembers class com.google.android.exoplayer2.ext.ffmpeg.FfmpegAudioRenderer {
+  <init>(android.os.Handler, com.google.android.exoplayer2.audio.AudioRendererEventListener, com.google.android.exoplayer2.audio.AudioSink);
+}
+
+# Constructors accessed via reflection in DefaultDownloaderFactory
+-dontnote com.google.android.exoplayer2.source.dash.offline.DashDownloader
+-keepclassmembers class com.google.android.exoplayer2.source.dash.offline.DashDownloader {
+  <init>(com.google.android.exoplayer2.MediaItem, com.google.android.exoplayer2.upstream.cache.CacheDataSource$Factory, java.util.concurrent.Executor);
+}
+-dontnote com.google.android.exoplayer2.source.hls.offline.HlsDownloader
+-keepclassmembers class com.google.android.exoplayer2.source.hls.offline.HlsDownloader {
+  <init>(com.google.android.exoplayer2.MediaItem, com.google.android.exoplayer2.upstream.cache.CacheDataSource$Factory, java.util.concurrent.Executor);
+}
+-dontnote com.google.android.exoplayer2.source.smoothstreaming.offline.SsDownloader
+-keepclassmembers class com.google.android.exoplayer2.source.smoothstreaming.offline.SsDownloader {
+  <init>(com.google.android.exoplayer2.MediaItem, com.google.android.exoplayer2.upstream.cache.CacheDataSource$Factory, java.util.concurrent.Executor);
+}
+
+# Constructors accessed via reflection in DefaultMediaSourceFactory
+-dontnote com.google.android.exoplayer2.source.dash.DashMediaSource$Factory
+-keepclasseswithmembers class com.google.android.exoplayer2.source.dash.DashMediaSource$Factory {
+  <init>(com.google.android.exoplayer2.upstream.DataSource$Factory);
+}
+-dontnote com.google.android.exoplayer2.source.hls.HlsMediaSource$Factory
+-keepclasseswithmembers class com.google.android.exoplayer2.source.hls.HlsMediaSource$Factory {
+  <init>(com.google.android.exoplayer2.upstream.DataSource$Factory);
+}
+-dontnote com.google.android.exoplayer2.source.smoothstreaming.SsMediaSource$Factory
+-keepclasseswithmembers class com.google.android.exoplayer2.source.smoothstreaming.SsMediaSource$Factory {
+  <init>(com.google.android.exoplayer2.upstream.DataSource$Factory);
+}
+-dontnote com.google.android.exoplayer2.source.rtsp.RtspMediaSource$Factory
+-keepclasseswithmembers class com.google.android.exoplayer2.source.rtsp.RtspMediaSource$Factory {
+  <init>();
+}
+
+# End of content from /Users/lukeyeo/.gradle/caches/transforms-3/42c9cb444e70aed5913074278d9d4671/transformed/jetified-exoplayer-core-2.18.5/proguard.txt
+# The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/caf79cea42cbd291c641ead075abd485/transformed/webkit-1.5.0/proguard.txt
+# Copyright 2018 The Chromium Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
@@ -245,14 +303,9 @@
 # Prevent WebViewClientCompat from being renamed, since chromium depends on this name.
 -keepnames public class androidx.webkit.WebViewClientCompat
 
-# Prevent ProcessGlobalConfig and member sProcessGlobalConfig from being renamed, since chromium
-# depends on this name.
--keepnames public class androidx.webkit.ProcessGlobalConfig {
-    private static final * sProcessGlobalConfig;
-}
 
-# End of content from /Users/lukeyeo/.gradle/caches/transforms-3/f5415c76bd669f9fcaa78969b35f8138/transformed/webkit-1.6.0/proguard.txt
-# The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/9ae990dd2d4353842bc15594b2d8f0d6/transformed/core-1.6.0/proguard.txt
+# End of content from /Users/lukeyeo/.gradle/caches/transforms-3/caf79cea42cbd291c641ead075abd485/transformed/webkit-1.5.0/proguard.txt
+# The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/92b378fed2c7ad5d0dc31b9e1ebba952/transformed/core-1.7.0/proguard.txt
 # Never inline methods, but allow shrinking and obfuscation.
 -keepclassmembernames,allowobfuscation,allowshrinking class androidx.core.view.ViewCompat$Api* {
   <methods>;
@@ -266,9 +319,78 @@
 -keepclassmembernames,allowobfuscation,allowshrinking class androidx.core.os.UserHandleCompat$Api*Impl {
   <methods>;
 }
+-keepclassmembernames,allowobfuscation,allowshrinking class androidx.core.widget.EdgeEffectCompat$Api*Impl {
+  <methods>;
+}
 
-# End of content from /Users/lukeyeo/.gradle/caches/transforms-3/9ae990dd2d4353842bc15594b2d8f0d6/transformed/core-1.6.0/proguard.txt
-# The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/fecdf94f1aa4e7e9f030c5372155f7a9/transformed/lifecycle-runtime-2.2.0/proguard.txt
+# End of content from /Users/lukeyeo/.gradle/caches/transforms-3/92b378fed2c7ad5d0dc31b9e1ebba952/transformed/core-1.7.0/proguard.txt
+# The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/c3f3c22a078eff5c655925d4a231283e/transformed/jetified-exoplayer-datasource-2.18.5/proguard.txt
+# Proguard rules specific to the DataSource module.
+
+# Constant folding for resource integers may mean that a resource passed to this method appears to be unused. Keep the method to prevent this from happening.
+-keepclassmembers class com.google.android.exoplayer2.upstream.RawResourceDataSource {
+  public static android.net.Uri buildRawResourceUri(int);
+}
+
+# Constructors accessed via reflection in DefaultDataSource
+-dontnote com.google.android.exoplayer2.ext.rtmp.RtmpDataSource
+-keepclassmembers class com.google.android.exoplayer2.ext.rtmp.RtmpDataSource {
+  <init>();
+}
+
+# End of content from /Users/lukeyeo/.gradle/caches/transforms-3/c3f3c22a078eff5c655925d4a231283e/transformed/jetified-exoplayer-datasource-2.18.5/proguard.txt
+# The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/6878010ef9076c6a8a916822a69d27f0/transformed/jetified-exoplayer-extractor-2.18.5/proguard.txt
+# Proguard rules specific to the extractor module.
+
+# Methods accessed via reflection in DefaultExtractorsFactory
+-dontnote com.google.android.exoplayer2.ext.flac.FlacExtractor
+-keepclassmembers class com.google.android.exoplayer2.ext.flac.FlacExtractor {
+  <init>(int);
+}
+-dontnote com.google.android.exoplayer2.ext.flac.FlacLibrary
+-keepclassmembers class com.google.android.exoplayer2.ext.flac.FlacLibrary {
+  public static boolean isAvailable();
+}
+
+# Don't warn about checkerframework and Kotlin annotations
+-dontwarn org.checkerframework.**
+-dontwarn kotlin.annotations.jvm.**
+-dontwarn javax.annotation.**
+
+# End of content from /Users/lukeyeo/.gradle/caches/transforms-3/6878010ef9076c6a8a916822a69d27f0/transformed/jetified-exoplayer-extractor-2.18.5/proguard.txt
+# The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/66536e940f829f67ee2a3cc707524fe8/transformed/jetified-exoplayer-common-2.18.5/proguard.txt
+# Proguard rules specific to the common module.
+
+# Don't warn about checkerframework and Kotlin annotations
+-dontwarn org.checkerframework.**
+-dontwarn kotlin.annotations.jvm.**
+-dontwarn javax.annotation.**
+
+# From https://github.com/google/guava/wiki/UsingProGuardWithGuava
+-dontwarn java.lang.ClassValue
+-dontwarn java.lang.SafeVarargs
+-dontwarn javax.lang.model.element.Modifier
+-dontwarn sun.misc.Unsafe
+
+# Don't warn about Guava's compile-only dependencies.
+# These lines are needed for ProGuard but not R8.
+-dontwarn com.google.errorprone.annotations.**
+-dontwarn com.google.j2objc.annotations.**
+-dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
+
+# Workaround for https://issuetracker.google.com/issues/112297269
+# This is needed for ProGuard but not R8.
+-keepclassmembernames class com.google.common.base.Function { *; }
+
+# End of content from /Users/lukeyeo/.gradle/caches/transforms-3/66536e940f829f67ee2a3cc707524fe8/transformed/jetified-exoplayer-common-2.18.5/proguard.txt
+# The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/6f6c99620269cf0645b8cf4d98dca92d/transformed/versionedparcelable-1.1.1/proguard.txt
+-keep class * implements androidx.versionedparcelable.VersionedParcelable
+-keep public class android.support.**Parcelizer { *; }
+-keep public class androidx.**Parcelizer { *; }
+-keep public class androidx.versionedparcelable.ParcelImpl
+
+# End of content from /Users/lukeyeo/.gradle/caches/transforms-3/6f6c99620269cf0645b8cf4d98dca92d/transformed/versionedparcelable-1.1.1/proguard.txt
+# The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/d527349b99caec46f6a37ce2d52a171e/transformed/lifecycle-runtime-2.3.1/proguard.txt
 -keepattributes *Annotation*
 
 -keepclassmembers enum androidx.lifecycle.Lifecycle$Event {
@@ -287,8 +409,19 @@
 }
 
 # this rule is need to work properly when app is compiled with api 28, see b/142778206
+# Also this rule prevents registerIn from being inlined.
 -keepclassmembers class androidx.lifecycle.ReportFragment$LifecycleCallbacks { *; }
-# End of content from /Users/lukeyeo/.gradle/caches/transforms-3/fecdf94f1aa4e7e9f030c5372155f7a9/transformed/lifecycle-runtime-2.2.0/proguard.txt
+# End of content from /Users/lukeyeo/.gradle/caches/transforms-3/d527349b99caec46f6a37ce2d52a171e/transformed/lifecycle-runtime-2.3.1/proguard.txt
+# The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/8d03a0b64560754b8a48fcfc51e947ae/transformed/lifecycle-viewmodel-2.1.0/proguard.txt
+-keepclassmembers,allowobfuscation class * extends androidx.lifecycle.ViewModel {
+    <init>();
+}
+
+-keepclassmembers,allowobfuscation class * extends androidx.lifecycle.AndroidViewModel {
+    <init>(android.app.Application);
+}
+
+# End of content from /Users/lukeyeo/.gradle/caches/transforms-3/8d03a0b64560754b8a48fcfc51e947ae/transformed/lifecycle-viewmodel-2.1.0/proguard.txt
 # The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/5338b61fb9219c159361b89580f08771/transformed/jetified-savedstate-1.0.0/proguard.txt
 # Copyright (C) 2019 The Android Open Source Project
 #
@@ -309,23 +442,6 @@
 }
 
 # End of content from /Users/lukeyeo/.gradle/caches/transforms-3/5338b61fb9219c159361b89580f08771/transformed/jetified-savedstate-1.0.0/proguard.txt
-# The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/6f6c99620269cf0645b8cf4d98dca92d/transformed/versionedparcelable-1.1.1/proguard.txt
--keep class * implements androidx.versionedparcelable.VersionedParcelable
--keep public class android.support.**Parcelizer { *; }
--keep public class androidx.**Parcelizer { *; }
--keep public class androidx.versionedparcelable.ParcelImpl
-
-# End of content from /Users/lukeyeo/.gradle/caches/transforms-3/6f6c99620269cf0645b8cf4d98dca92d/transformed/versionedparcelable-1.1.1/proguard.txt
-# The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/8d03a0b64560754b8a48fcfc51e947ae/transformed/lifecycle-viewmodel-2.1.0/proguard.txt
--keepclassmembers,allowobfuscation class * extends androidx.lifecycle.ViewModel {
-    <init>();
-}
-
--keepclassmembers,allowobfuscation class * extends androidx.lifecycle.AndroidViewModel {
-    <init>(android.app.Application);
-}
-
-# End of content from /Users/lukeyeo/.gradle/caches/transforms-3/8d03a0b64560754b8a48fcfc51e947ae/transformed/lifecycle-viewmodel-2.1.0/proguard.txt
 # The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/970eca219f6882e5c456164ef8aa2829/transformed/rules/lib/META-INF/proguard/androidx-annotations.pro
 -keep,allowobfuscation @interface androidx.annotation.Keep
 -keep @androidx.annotation.Keep class * {*;}

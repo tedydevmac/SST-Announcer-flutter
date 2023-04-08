@@ -56,6 +56,32 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
+      name="/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android@@:video_player_android::release"
+      jars="/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/video_player_android/.transforms/957706f5797be0c116af400fb2b14818/transformed/out/jars/classes.jar:/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/video_player_android/.transforms/957706f5797be0c116af400fb2b14818/transformed/out/jars/libs/R.jar"
+      resolved="io.flutter.plugins.videoplayer:video_player_android:unspecified"
+      folder="/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/video_player_android/.transforms/957706f5797be0c116af400fb2b14818/transformed/out"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android@@:wakelock::release"
+      jars="/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/wakelock/.transforms/fa89c4279f5bf2ad25f83da27071110e/transformed/out/jars/classes.jar:/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/wakelock/.transforms/fa89c4279f5bf2ad25f83da27071110e/transformed/out/jars/libs/R.jar"
+      resolved="creativemaybeno.wakelock:wakelock:unspecified"
+      folder="/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/wakelock/.transforms/fa89c4279f5bf2ad25f83da27071110e/transformed/out"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
       name="/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android@@:webview_flutter_android::release"
       jars="/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/webview_flutter_android/.transforms/bab68e71a71a3a9f725eac959df4c2ee/transformed/out/jars/classes.jar:/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/webview_flutter_android/.transforms/bab68e71a71a3a9f725eac959df4c2ee/transformed/out/jars/libs/R.jar"
       resolved="io.flutter.plugins.webviewflutter:webview_flutter_android:unspecified"
@@ -209,10 +235,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="androidx.core:core:1.6.0@aar"
-      jars="/Users/lukeyeo/.gradle/caches/transforms-3/9ae990dd2d4353842bc15594b2d8f0d6/transformed/core-1.6.0/jars/classes.jar"
-      resolved="androidx.core:core:1.6.0"
-      folder="/Users/lukeyeo/.gradle/caches/transforms-3/9ae990dd2d4353842bc15594b2d8f0d6/transformed/core-1.6.0"
+      name="androidx.core:core:1.7.0@aar"
+      jars="/Users/lukeyeo/.gradle/caches/transforms-3/92b378fed2c7ad5d0dc31b9e1ebba952/transformed/core-1.7.0/jars/classes.jar"
+      resolved="androidx.core:core:1.7.0"
+      folder="/Users/lukeyeo/.gradle/caches/transforms-3/92b378fed2c7ad5d0dc31b9e1ebba952/transformed/core-1.7.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -222,10 +248,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="androidx.lifecycle:lifecycle-runtime:2.2.0@aar"
-      jars="/Users/lukeyeo/.gradle/caches/transforms-3/fecdf94f1aa4e7e9f030c5372155f7a9/transformed/lifecycle-runtime-2.2.0/jars/classes.jar"
-      resolved="androidx.lifecycle:lifecycle-runtime:2.2.0"
-      folder="/Users/lukeyeo/.gradle/caches/transforms-3/fecdf94f1aa4e7e9f030c5372155f7a9/transformed/lifecycle-runtime-2.2.0"
+      name="androidx.lifecycle:lifecycle-runtime:2.3.1@aar"
+      jars="/Users/lukeyeo/.gradle/caches/transforms-3/d527349b99caec46f6a37ce2d52a171e/transformed/lifecycle-runtime-2.3.1/jars/classes.jar"
+      resolved="androidx.lifecycle:lifecycle-runtime:2.3.1"
+      folder="/Users/lukeyeo/.gradle/caches/transforms-3/d527349b99caec46f6a37ce2d52a171e/transformed/lifecycle-runtime-2.3.1"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -274,14 +300,14 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="androidx.lifecycle:lifecycle-common:2.2.0@jar"
-      jars="/Users/lukeyeo/.gradle/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-common/2.2.0/4ef09a745007778eef83b92f8f23987a8ea59496/lifecycle-common-2.2.0.jar"
-      resolved="androidx.lifecycle:lifecycle-common:2.2.0"/>
+      name="androidx.lifecycle:lifecycle-common:2.3.1@jar"
+      jars="/Users/lukeyeo/.gradle/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-common/2.3.1/fc466261d52f4433863642fb40d12441ae274a98/lifecycle-common-2.3.1.jar"
+      resolved="androidx.lifecycle:lifecycle-common:2.3.1"/>
   <library
-      name="androidx.arch.core:core-runtime:2.0.0@aar"
-      jars="/Users/lukeyeo/.gradle/caches/transforms-3/1bc6ef48a801d4281e540207cc4f266a/transformed/core-runtime-2.0.0/jars/classes.jar"
-      resolved="androidx.arch.core:core-runtime:2.0.0"
-      folder="/Users/lukeyeo/.gradle/caches/transforms-3/1bc6ef48a801d4281e540207cc4f266a/transformed/core-runtime-2.0.0"
+      name="androidx.arch.core:core-runtime:2.1.0@aar"
+      jars="/Users/lukeyeo/.gradle/caches/transforms-3/33e08ea0cc9fd5d059167265056b1f01/transformed/core-runtime-2.1.0/jars/classes.jar"
+      resolved="androidx.arch.core:core-runtime:2.1.0"
+      folder="/Users/lukeyeo/.gradle/caches/transforms-3/33e08ea0cc9fd5d059167265056b1f01/transformed/core-runtime-2.1.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -367,10 +393,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="androidx.webkit:webkit:1.6.0@aar"
-      jars="/Users/lukeyeo/.gradle/caches/transforms-3/f5415c76bd669f9fcaa78969b35f8138/transformed/webkit-1.6.0/jars/classes.jar"
-      resolved="androidx.webkit:webkit:1.6.0"
-      folder="/Users/lukeyeo/.gradle/caches/transforms-3/f5415c76bd669f9fcaa78969b35f8138/transformed/webkit-1.6.0"
+      name="com.google.android.exoplayer:exoplayer-hls:2.18.5@aar"
+      jars="/Users/lukeyeo/.gradle/caches/transforms-3/6ec5c779acf52db8648bbcfd7c296e75/transformed/jetified-exoplayer-hls-2.18.5/jars/classes.jar"
+      resolved="com.google.android.exoplayer:exoplayer-hls:2.18.5"
+      folder="/Users/lukeyeo/.gradle/caches/transforms-3/6ec5c779acf52db8648bbcfd7c296e75/transformed/jetified-exoplayer-hls-2.18.5"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -379,4 +405,137 @@
       symbolFile="R.txt"
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
+  <library
+      name="com.google.android.exoplayer:exoplayer-dash:2.18.5@aar"
+      jars="/Users/lukeyeo/.gradle/caches/transforms-3/984e73b19018f6bee26c113be507b018/transformed/jetified-exoplayer-dash-2.18.5/jars/classes.jar"
+      resolved="com.google.android.exoplayer:exoplayer-dash:2.18.5"
+      folder="/Users/lukeyeo/.gradle/caches/transforms-3/984e73b19018f6bee26c113be507b018/transformed/jetified-exoplayer-dash-2.18.5"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="com.google.android.exoplayer:exoplayer-smoothstreaming:2.18.5@aar"
+      jars="/Users/lukeyeo/.gradle/caches/transforms-3/b4309fc006ba76f4b6e3957a0803fef4/transformed/jetified-exoplayer-smoothstreaming-2.18.5/jars/classes.jar"
+      resolved="com.google.android.exoplayer:exoplayer-smoothstreaming:2.18.5"
+      folder="/Users/lukeyeo/.gradle/caches/transforms-3/b4309fc006ba76f4b6e3957a0803fef4/transformed/jetified-exoplayer-smoothstreaming-2.18.5"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="com.google.android.exoplayer:exoplayer-core:2.18.5@aar"
+      jars="/Users/lukeyeo/.gradle/caches/transforms-3/42c9cb444e70aed5913074278d9d4671/transformed/jetified-exoplayer-core-2.18.5/jars/classes.jar"
+      resolved="com.google.android.exoplayer:exoplayer-core:2.18.5"
+      folder="/Users/lukeyeo/.gradle/caches/transforms-3/42c9cb444e70aed5913074278d9d4671/transformed/jetified-exoplayer-core-2.18.5"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="androidx.webkit:webkit:1.5.0@aar"
+      jars="/Users/lukeyeo/.gradle/caches/transforms-3/caf79cea42cbd291c641ead075abd485/transformed/webkit-1.5.0/jars/classes.jar"
+      resolved="androidx.webkit:webkit:1.5.0"
+      folder="/Users/lukeyeo/.gradle/caches/transforms-3/caf79cea42cbd291c641ead075abd485/transformed/webkit-1.5.0"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="com.google.android.exoplayer:exoplayer-datasource:2.18.5@aar"
+      jars="/Users/lukeyeo/.gradle/caches/transforms-3/c3f3c22a078eff5c655925d4a231283e/transformed/jetified-exoplayer-datasource-2.18.5/jars/classes.jar"
+      resolved="com.google.android.exoplayer:exoplayer-datasource:2.18.5"
+      folder="/Users/lukeyeo/.gradle/caches/transforms-3/c3f3c22a078eff5c655925d4a231283e/transformed/jetified-exoplayer-datasource-2.18.5"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="com.google.android.exoplayer:exoplayer-extractor:2.18.5@aar"
+      jars="/Users/lukeyeo/.gradle/caches/transforms-3/6878010ef9076c6a8a916822a69d27f0/transformed/jetified-exoplayer-extractor-2.18.5/jars/classes.jar"
+      resolved="com.google.android.exoplayer:exoplayer-extractor:2.18.5"
+      folder="/Users/lukeyeo/.gradle/caches/transforms-3/6878010ef9076c6a8a916822a69d27f0/transformed/jetified-exoplayer-extractor-2.18.5"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="com.google.android.exoplayer:exoplayer-decoder:2.18.5@aar"
+      jars="/Users/lukeyeo/.gradle/caches/transforms-3/63aff1a8e54dd2a9df01d55fdfdc237e/transformed/jetified-exoplayer-decoder-2.18.5/jars/classes.jar"
+      resolved="com.google.android.exoplayer:exoplayer-decoder:2.18.5"
+      folder="/Users/lukeyeo/.gradle/caches/transforms-3/63aff1a8e54dd2a9df01d55fdfdc237e/transformed/jetified-exoplayer-decoder-2.18.5"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="com.google.android.exoplayer:exoplayer-database:2.18.5@aar"
+      jars="/Users/lukeyeo/.gradle/caches/transforms-3/1ac43a5c82dd156f6353972d8db88ae3/transformed/jetified-exoplayer-database-2.18.5/jars/classes.jar"
+      resolved="com.google.android.exoplayer:exoplayer-database:2.18.5"
+      folder="/Users/lukeyeo/.gradle/caches/transforms-3/1ac43a5c82dd156f6353972d8db88ae3/transformed/jetified-exoplayer-database-2.18.5"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="com.google.android.exoplayer:exoplayer-common:2.18.5@aar"
+      jars="/Users/lukeyeo/.gradle/caches/transforms-3/66536e940f829f67ee2a3cc707524fe8/transformed/jetified-exoplayer-common-2.18.5/jars/classes.jar"
+      resolved="com.google.android.exoplayer:exoplayer-common:2.18.5"
+      folder="/Users/lukeyeo/.gradle/caches/transforms-3/66536e940f829f67ee2a3cc707524fe8/transformed/jetified-exoplayer-common-2.18.5"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="androidx.concurrent:concurrent-futures:1.0.0@jar"
+      jars="/Users/lukeyeo/.gradle/caches/modules-2/files-2.1/androidx.concurrent/concurrent-futures/1.0.0/c1e77e3ee6f4643b77496a1ddf7a2eef1aefdaa1/concurrent-futures-1.0.0.jar"
+      resolved="androidx.concurrent:concurrent-futures:1.0.0"/>
+  <library
+      name="com.google.guava:guava:31.0.1-android@jar"
+      jars="/Users/lukeyeo/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/31.0.1-android/b400db548e748a1a60ba18543ad4fbb44a675a69/guava-31.0.1-android.jar"
+      resolved="com.google.guava:guava:31.0.1-android"/>
+  <library
+      name="com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava@jar"
+      jars="/Users/lukeyeo/.gradle/caches/modules-2/files-2.1/com.google.guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/b421526c5f297295adef1c886e5246c39d4ac629/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar"
+      resolved="com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava"/>
+  <library
+      name="com.google.guava:failureaccess:1.0.1@jar"
+      jars="/Users/lukeyeo/.gradle/caches/modules-2/files-2.1/com.google.guava/failureaccess/1.0.1/1dcf1de382a0bf95a3d8b0849546c88bac1292c9/failureaccess-1.0.1.jar"
+      resolved="com.google.guava:failureaccess:1.0.1"/>
 </libraries>

@@ -31,13 +31,6 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
       return '"${match.group(0)}"';
     });
     print(parsedString);
-    Widget html = Html(
-      data: parsedString,
-      style: {"body": Style(fontSize: FontSize.large)},
-      onLinkTap: (link, _, __, ___) {
-        launchUrl(link as Uri);
-      },
-    );
 
     Color backgroundColor = Colors.black;
 
@@ -75,7 +68,18 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
                   const SizedBox(
                     height: 15,
                   ),
-                  html,
+                  Html(
+                    data: parsedString,
+                    style: {
+                      "body": Style(
+                          fontSize: FontSize.large, color: backgroundColor),
+                      "p": Style(
+                          fontSize: FontSize.large, color: backgroundColor),
+                    },
+                    onLinkTap: (link, _, __, ___) {
+                      launch(link!);
+                    },
+                  ),
                   /*Text(
                     widget.title,
                     style: const TextStyle(
