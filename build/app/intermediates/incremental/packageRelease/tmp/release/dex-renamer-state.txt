@@ -1,4 +1,4 @@
-#Thu Apr 13 19:46:44 SGT 2023
+#Thu Apr 13 20:15:51 SGT 2023
 base.0=/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/app/intermediates/dex/release/minifyReleaseWithR8/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

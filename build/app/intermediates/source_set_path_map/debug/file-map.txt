@@ -14,9 +14,10 @@ com.example.sst_announcer.app-mergeDebugResources-12 /Users/lukeyeo/Documents/Gi
 com.example.sst_announcer.app-mergeDebugResources-13 /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/app/intermediates/incremental/debug/mergeDebugResources/stripped.dir
 com.example.sst_announcer.app-merged_res-14 /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/app/intermediates/merged_res/debug
 com.example.sst_announcer.app-packaged_res-15 /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/path_provider_android/intermediates/packaged_res/debug
-com.example.sst_announcer.app-packaged_res-16 /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/shared_preferences_android/intermediates/packaged_res/debug
-com.example.sst_announcer.app-packaged_res-17 /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/sqflite/intermediates/packaged_res/debug
-com.example.sst_announcer.app-packaged_res-18 /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/url_launcher_android/intermediates/packaged_res/debug
-com.example.sst_announcer.app-packaged_res-19 /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/video_player_android/intermediates/packaged_res/debug
-com.example.sst_announcer.app-packaged_res-20 /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/wakelock/intermediates/packaged_res/debug
-com.example.sst_announcer.app-packaged_res-21 /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/webview_flutter_android/intermediates/packaged_res/debug
+com.example.sst_announcer.app-packaged_res-16 /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/restart_app/intermediates/packaged_res/debug
+com.example.sst_announcer.app-packaged_res-17 /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/shared_preferences_android/intermediates/packaged_res/debug
+com.example.sst_announcer.app-packaged_res-18 /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/sqflite/intermediates/packaged_res/debug
+com.example.sst_announcer.app-packaged_res-19 /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/url_launcher_android/intermediates/packaged_res/debug
+com.example.sst_announcer.app-packaged_res-20 /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/video_player_android/intermediates/packaged_res/debug
+com.example.sst_announcer.app-packaged_res-21 /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/wakelock/intermediates/packaged_res/debug
+com.example.sst_announcer.app-packaged_res-22 /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/webview_flutter_android/intermediates/packaged_res/debug

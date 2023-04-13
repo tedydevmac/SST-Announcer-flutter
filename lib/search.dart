@@ -4,8 +4,8 @@ import 'package:html/parser.dart';
 import 'package:http/http.dart' as http;
 import 'package:skeletons/skeletons.dart';
 import 'package:sst_announcer/announcement.dart';
-import 'package:webfeed/util/iterable.dart';
 import 'package:xml/xml.dart' as xml;
+import 'package:intl/intl.dart';
 
 class BlogPage extends StatefulWidget {
   @override
@@ -96,7 +96,7 @@ class _BlogPageState extends State<BlogPage> {
                   .map(
                     (category) => DropdownMenuItem<String>(
                       value: category!,
-                      child: Text(category),
+                      child: Text(toBeginningOfSentenceCase(category)!),
                     ),
                   )
                   .toList(),
