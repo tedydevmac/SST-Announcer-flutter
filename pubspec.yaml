@@ -44,6 +44,8 @@ dependencies:
   flutter_cache_manager: ^3.3.0
   flutter_html: ^2.2.1
   skeletons: ^0.0.3
+  flutter_colorpicker: ^1.0.3
+  restart_app: ^1.1.2
 
 dev_dependencies:
   flutter_test:

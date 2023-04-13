@@ -5,13 +5,40 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sst_announcer/poststream.dart';
 import 'package:sst_announcer/search.dart';
-import 'package:sst_announcer/themes.dart';
+import 'package:sst_announcer/settings.dart';
 import 'package:sst_announcer/categories/categories_list.dart';
 import 'package:sst_announcer/categories/user_categories.dart';
 
 import 'categories/categoriespage.dart';
 
 final postStreamController = StreamController<PostStream>.broadcast();
+
+var seedcolor = Colors.red;
+
+var lightTheme = ThemeData(
+    useMaterial3: true,
+    colorScheme: ColorScheme.fromSeed(seedColor: seedcolor));
+var filledButtonStyle = ElevatedButton.styleFrom(
+        backgroundColor: lightTheme.colorScheme.primary,
+        foregroundColor: lightTheme.colorScheme.onPrimary,
+        elevation: 3)
+    .copyWith(elevation: MaterialStateProperty.resolveWith((states) {
+  if (states.contains(MaterialState.hovered)) {
+    return 1;
+  }
+  return 0;
+}));
+
+var darkTheme = ThemeData.dark(useMaterial3: true);
+var darkFilledButtonStyle = ElevatedButton.styleFrom(
+        backgroundColor: darkTheme.colorScheme.primary,
+        foregroundColor: darkTheme.colorScheme.onPrimary)
+    .copyWith(elevation: MaterialStateProperty.resolveWith((states) {
+  if (states.contains(MaterialState.hovered)) {
+    return 1;
+  }
+  return 0;
+}));
 
 void main() {
   runApp(const MyApp());
@@ -120,7 +147,7 @@ class _HomePageState extends State<HomePage> {
                   ExpansionTile(
                     clipBehavior: Clip.hardEdge,
                     title: const Text(
-                      "Custom Categories",
+                      "Tags",
                       style:
                           TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                     ),
@@ -154,7 +181,6 @@ class _HomePageState extends State<HomePage> {
                                         trailing: IconButton(
                                           icon: const Icon(Icons.delete),
                                           iconSize: 22,
-                                          color: Colors.black,
                                           tooltip: "Delete category",
                                           onPressed: () async {
                                             removeCategory(customCats[index]);
@@ -228,20 +254,52 @@ class _HomePageState extends State<HomePage> {
                                 ],
                               ),
                             )
-                          : ElevatedButton.icon(
-                              style: filledButtonStyle,
+                          : ElevatedButton(
+                              style: darkFilledButtonStyle,
                               onPressed: () {
                                 setState(() {
                                   addCustomCat = true;
                                 });
                               },
-                              icon: const Icon(Icons.add),
-                              label: const Text("Add custom category"),
+                              child: Center(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(Icons.add),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text("Add custom category"),
+                                  ],
+                                ),
+                              ),
                             ),
                       const SizedBox(
                         height: 10,
                       )
                     ],
+                  ),
+                  Divider(
+                    thickness: 0.5,
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      var navigator = Navigator.of(context);
+                      navigator.push(
+                        CupertinoPageRoute(
+                          builder: (context) {
+                            return SettingsScreen();
+                          },
+                        ),
+                      );
+                    },
+                    child: Text(
+                      "Settings",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
                   )
                 ],
               ),

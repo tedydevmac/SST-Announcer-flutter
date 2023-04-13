@@ -13,16 +13,16 @@
 13         to allow setting breakpoints, to provide hot reload, etc.
 14    -->
 15    <uses-permission android:name="android.permission.INTERNET" />
-15-->/Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:3:4-65
-15-->/Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:3:21-63
+15-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:3:4-65
+15-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:3:21-63
 16    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-16-->[com.google.android.exoplayer:exoplayer-core:2.18.5] /Users/tedgoh/.gradle/caches/transforms-3/42c9cb444e70aed5913074278d9d4671/transformed/jetified-exoplayer-core-2.18.5/AndroidManifest.xml:24:5-79
-16-->[com.google.android.exoplayer:exoplayer-core:2.18.5] /Users/tedgoh/.gradle/caches/transforms-3/42c9cb444e70aed5913074278d9d4671/transformed/jetified-exoplayer-core-2.18.5/AndroidManifest.xml:24:22-76
+16-->[com.google.android.exoplayer:exoplayer-core:2.18.5] /Users/lukeyeo/.gradle/caches/transforms-3/42c9cb444e70aed5913074278d9d4671/transformed/jetified-exoplayer-core-2.18.5/AndroidManifest.xml:24:5-79
+16-->[com.google.android.exoplayer:exoplayer-core:2.18.5] /Users/lukeyeo/.gradle/caches/transforms-3/42c9cb444e70aed5913074278d9d4671/transformed/jetified-exoplayer-core-2.18.5/AndroidManifest.xml:24:22-76
 17
 18    <application
 19        android:name="io.flutter.app.FlutterMultiDexApplication"
 20        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-20-->[androidx.core:core:1.7.0] /Users/tedgoh/.gradle/caches/transforms-3/92b378fed2c7ad5d0dc31b9e1ebba952/transformed/core-1.7.0/AndroidManifest.xml:24:18-86
+20-->[androidx.core:core:1.7.0] /Users/lukeyeo/.gradle/caches/transforms-3/92b378fed2c7ad5d0dc31b9e1ebba952/transformed/core-1.7.0/AndroidManifest.xml:24:18-86
 21        android:debuggable="true"
 22        android:icon="@mipmap/ic_launcher"
 23        android:label="sst_announcer" >
@@ -60,26 +60,26 @@
 55            android:value="2" />
 56
 57        <activity
-57-->[:url_launcher_android] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:8:9-11:74
+57-->[:url_launcher_android] /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:8:9-11:74
 58            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
-58-->[:url_launcher_android] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:9:13-74
+58-->[:url_launcher_android] /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:9:13-74
 59            android:exported="false"
-59-->[:url_launcher_android] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:10:13-37
+59-->[:url_launcher_android] /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:10:13-37
 60            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-60-->[:url_launcher_android] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-71
+60-->[:url_launcher_android] /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-71
 61
 62        <uses-library
-62-->[androidx.window:window:1.0.0-beta04] /Users/tedgoh/.gradle/caches/transforms-3/518111e08d93c16bc666f5016f25f03d/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
+62-->[androidx.window:window:1.0.0-beta04] /Users/lukeyeo/.gradle/caches/transforms-3/518111e08d93c16bc666f5016f25f03d/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
 63            android:name="androidx.window.extensions"
-63-->[androidx.window:window:1.0.0-beta04] /Users/tedgoh/.gradle/caches/transforms-3/518111e08d93c16bc666f5016f25f03d/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
+63-->[androidx.window:window:1.0.0-beta04] /Users/lukeyeo/.gradle/caches/transforms-3/518111e08d93c16bc666f5016f25f03d/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
 64            android:required="false" />
-64-->[androidx.window:window:1.0.0-beta04] /Users/tedgoh/.gradle/caches/transforms-3/518111e08d93c16bc666f5016f25f03d/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
+64-->[androidx.window:window:1.0.0-beta04] /Users/lukeyeo/.gradle/caches/transforms-3/518111e08d93c16bc666f5016f25f03d/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
 65        <uses-library
-65-->[androidx.window:window:1.0.0-beta04] /Users/tedgoh/.gradle/caches/transforms-3/518111e08d93c16bc666f5016f25f03d/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
+65-->[androidx.window:window:1.0.0-beta04] /Users/lukeyeo/.gradle/caches/transforms-3/518111e08d93c16bc666f5016f25f03d/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
 66            android:name="androidx.window.sidecar"
-66-->[androidx.window:window:1.0.0-beta04] /Users/tedgoh/.gradle/caches/transforms-3/518111e08d93c16bc666f5016f25f03d/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
+66-->[androidx.window:window:1.0.0-beta04] /Users/lukeyeo/.gradle/caches/transforms-3/518111e08d93c16bc666f5016f25f03d/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
 67            android:required="false" />
-67-->[androidx.window:window:1.0.0-beta04] /Users/tedgoh/.gradle/caches/transforms-3/518111e08d93c16bc666f5016f25f03d/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
+67-->[androidx.window:window:1.0.0-beta04] /Users/lukeyeo/.gradle/caches/transforms-3/518111e08d93c16bc666f5016f25f03d/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
 68    </application>
 69
 70</manifest>

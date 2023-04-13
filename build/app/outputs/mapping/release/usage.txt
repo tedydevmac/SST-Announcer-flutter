@@ -10202,6 +10202,18 @@ creativemaybeno.wakelock.R$styleable
 creativemaybeno.wakelock.R
 creativemaybeno.wakelock.Wakelock:
     public final android.app.Activity getActivity()
+gabrimatic.info.restart.BuildConfig
+gabrimatic.info.restart.R$attr
+gabrimatic.info.restart.R$color
+gabrimatic.info.restart.R$dimen
+gabrimatic.info.restart.R$drawable
+gabrimatic.info.restart.R$id
+gabrimatic.info.restart.R$integer
+gabrimatic.info.restart.R$layout
+gabrimatic.info.restart.R$string
+gabrimatic.info.restart.R$style
+gabrimatic.info.restart.R$styleable
+gabrimatic.info.restart.R
 io.flutter.BuildConfig
 io.flutter.FlutterInjector$Builder:
     public io.flutter.FlutterInjector$Builder setDeferredComponentManager(io.flutter.embedding.engine.deferredcomponents.DeferredComponentManager)
