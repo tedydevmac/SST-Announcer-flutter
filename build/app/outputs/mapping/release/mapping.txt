@@ -3,8 +3,8 @@
 # min_api: 19
 # common_typos_disable
 # {"id":"com.android.tools.r8.mapping","version":"2.1"}
-# pg_map_id: 8ee5b2f
-# pg_map_hash: SHA-256 8ee5b2f78795ed3803a37a1485e6d00b303a49606045e39fb5e8c1e5d132e9b1
+# pg_map_id: 318f83c
+# pg_map_hash: SHA-256 318f83c3dffa7167dea4df6da34dc007d4e8d07797b722d6e2f9ef805f2cf7c3
 android.media.MediaCodec$CodecException -> android.media.MediaCodec$CodecException:
 # {"id":"com.android.tools.r8.synthesized"}
     void <clinit>() -> <clinit>
@@ -22176,6 +22176,7 @@ io.flutter.plugins.pathprovider.Messages$StorageDirectory -> n2.h$c:
     io.flutter.plugins.pathprovider.Messages$StorageDirectory alarms -> j
     io.flutter.plugins.pathprovider.Messages$StorageDirectory music -> g
     io.flutter.plugins.pathprovider.Messages$StorageDirectory podcasts -> h
+    io.flutter.plugins.pathprovider.Messages$StorageDirectory[] $values() -> a
 io.flutter.plugins.pathprovider.PathProviderPlugin -> n2.i:
     android.content.Context context -> a
     java.lang.String getTemporaryPath() -> a
@@ -22243,6 +22244,7 @@ io.flutter.plugins.urllauncher.UrlLauncher$LaunchStatus -> p2.b$a:
     io.flutter.plugins.urllauncher.UrlLauncher$LaunchStatus OK -> e
     io.flutter.plugins.urllauncher.UrlLauncher$LaunchStatus NO_ACTIVITY -> f
     io.flutter.plugins.urllauncher.UrlLauncher$LaunchStatus ACTIVITY_NOT_FOUND -> g
+    io.flutter.plugins.urllauncher.UrlLauncher$LaunchStatus[] $values() -> a
 io.flutter.plugins.urllauncher.UrlLauncherPlugin -> p2.c:
     io.flutter.plugins.urllauncher.MethodCallHandlerImpl methodCallHandler -> a
     io.flutter.plugins.urllauncher.UrlLauncher urlLauncher -> b

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-const List<String> colorChoices = ["Purple", "Blue", "Red"];
-Color pickerColor = Color(0xff443a49);
-Color currentColor = Color(0xff443a49);
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+import 'package:http/http.dart';
+import 'package:xml/xml.dart' as xml;
+import 'dart:io';
+import 'package:path_provider/path_provider.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -13,30 +14,43 @@ class SettingsScreen extends StatefulWidget {
   State<SettingsScreen> createState() => _SettingsScreenState();
 }
 
+Future<int> getCacheSize() async {
+  Directory tempDir = await getTemporaryDirectory();
+  int tempDirSize = _getSize(tempDir);
+  return tempDirSize;
+}
+
+int _getSize(FileSystemEntity file) {
+  if (file is File) {
+    return file.lengthSync();
+  } else if (file is Directory) {
+    int sum = 0;
+    List<FileSystemEntity> children = file.listSync();
+    for (FileSystemEntity child in children) {
+      sum += _getSize(child);
+    }
+    return sum;
+  }
+  return 0;
+}
+
 class _SettingsScreenState extends State<SettingsScreen> {
-  String dropdownValue = colorChoices.first;
-
-  void changeColor(Color color) {
-    setState(() => pickerColor = color);
-  }
-
-  void getColor() async {
-    final prefs = await SharedPreferences.getInstance();
-    currentColor = Color(
-      prefs.getInt("color") ?? Color(0xff443a49).value,
-    );
-    print("current colour: $currentColor");
-  }
-
-  void saveColor(Color color) async {
-    final prefs = await SharedPreferences.getInstance();
-    prefs.setInt("color", color.value);
-    print(prefs.getInt("color"));
+  int cacheSize = 0;
+  List<xml.XmlElement> posts = [];
+  File? file;
+  void getCache() async {
+    file = await DefaultCacheManager().getSingleFile(
+        'http://studentsblog.sst.edu.sg/feeds/posts/default?max-results=100');
+    final document = xml.XmlDocument.parse(await file!.readAsString());
+    posts = document.findAllElements('entry').toList();
+    print(posts);
+    cacheSize = _getSize(file!);
+    print(cacheSize);
   }
 
   @override
   Widget build(BuildContext context) {
-    getColor();
+    getCache();
     return Scaffold(
       appBar: AppBar(
         title: Text("Settings"),
@@ -44,91 +58,40 @@ class _SettingsScreenState extends State<SettingsScreen> {
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(20),
-          child: Column(
+          child: ListView(
+            shrinkWrap: true,
             children: [
-              ListView(
-                shrinkWrap: true,
+              Text(
+                "Cache size: ${cacheSize}",
+                style: TextStyle(fontSize: 18),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Divider(
+                height: 1,
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              ExpansionTile(
+                title: Text("Show full cache string"),
                 children: [
-                  Row(
-                    children: [
-                      Text(
-                        "Colour scheme:",
-                        style: TextStyle(
-                          fontSize: 16,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(width: 2, color: Colors.white),
-                        ),
-                        child: Icon(
-                          Icons.square,
-                          color: currentColor,
-                        ),
-                      ),
-                      Spacer(),
-                      TextButton(
-                        onPressed: () {
-                          showDialog(
-                            context: context,
-                            builder: (context) {
-                              return AlertDialog(
-                                title: Text("Choose colour theme"),
-                                content: SingleChildScrollView(
-                                  child: ColorPicker(
-                                    pickerColor: currentColor,
-                                    onColorChanged: changeColor,
-                                  ),
-                                ),
-                                actions: [
-                                  Center(
-                                    child: Row(
-                                      children: [
-                                        ElevatedButton(
-                                            onPressed: () {
-                                              var navigator =
-                                                  Navigator.of(context);
-                                              navigator.pop();
-                                            },
-                                            child: Text("Cancel")),
-                                        Spacer(),
-                                        ElevatedButton(
-                                            onPressed: () async {
-                                              final prefs =
-                                                  await SharedPreferences
-                                                      .getInstance();
-                                              var navigator =
-                                                  Navigator.of(context);
-                                              print(
-                                                  "current picker color: $pickerColor");
-                                              saveColor(pickerColor);
-                                              print(
-                                                  "saved color: ${prefs.getInt("color")}");
-                                              setState(() {
-                                                getColor();
-                                              });
-                                              navigator.pop();
-                                            },
-                                            child: Text("Set color")),
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              );
-                            },
-                          );
-                        },
-                        child: Text(
-                          "Change",
-                          style: TextStyle(fontSize: 16),
-                        ),
-                      )
-                    ],
-                  )
+                  SingleChildScrollView(
+                    child: Text(posts.toString()),
+                  ),
                 ],
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              ElevatedButton(
+                onPressed: () async {
+                  DefaultCacheManager().emptyCache();
+                  print("emptied");
+                  print(cacheSize);
+                },
+                child: Text("Clear cache"),
               )
             ],
           ),

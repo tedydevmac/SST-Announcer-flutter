@@ -204,6 +204,10 @@ class _FeedPageState extends State<FeedPage> {
                                     : Container(),
                               ],
                             ),
+                            trailing: Icon(
+                              Icons.push_pin,
+                              color: Colors.red,
+                            ),
                           ),
                         ),
                       );
