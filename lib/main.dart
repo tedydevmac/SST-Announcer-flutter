@@ -1,21 +1,52 @@
 import 'dart:async';
-
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sst_announcer/poststream.dart';
+import 'package:sst_announcer/services/poststream.dart';
 import 'package:sst_announcer/search.dart';
-import 'package:sst_announcer/themes.dart';
+import 'package:sst_announcer/services/themes.dart';
 import 'package:sst_announcer/categories/categories_list.dart';
 import 'package:sst_announcer/categories/user_categories.dart';
-
 import 'categories/categoriespage.dart';
+import 'services/notificationservice.dart';
+import 'package:http/http.dart' as http;
+import 'package:xml/xml.dart' as xml;
+import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 
 final postStreamController = StreamController<PostStream>.broadcast();
+late final NotificationService service;
+const feedUrl = 'http://studentsblog.sst.edu.sg/feeds/posts/default?';
+Future<void> checkForNewPosts() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  DateTime lastPublishedDate = prefs.containsKey('lastPublishedDate')
+      ? DateTime.parse(prefs.getString('lastPublishedDate')!)
+      : DateTime.now();
 
-void main() {
-  runApp(const MyApp());
+  final response = await http.get(Uri.parse(feedUrl));
+  final document = xml.XmlDocument.parse(response.body);
+  final latestPublishedDate = DateTime.parse(document
+      .findAllElements('entry')
+      .first
+      .findElements('published')
+      .first
+      .text);
+  if (latestPublishedDate.isAfter(lastPublishedDate)) {
+    // There are new posts in the feed
+    service.scheduleNotification(
+        "New Announcement", "There is a new announcement in SST Announcer");
+    lastPublishedDate = latestPublishedDate;
+    await prefs.setString(
+        'lastPublishedDate', latestPublishedDate.toIso8601String());
+  }
+}
+
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await AndroidAlarmManager.initialize();
+  await AndroidAlarmManager.periodic(
+      const Duration(minutes: 30), 1, checkForNewPosts);
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -28,7 +59,9 @@ class MyApp extends StatelessWidget {
       title: 'SST Announcer',
       theme: lightTheme,
       darkTheme: darkTheme,
-      home: HomePage(title: 'All announcements'),
+      home: HomePage(title: 'All announcements')
+          .animate()
+          .shimmer(delay: 10.ms, duration: 450.ms),
       debugShowCheckedModeBanner: false,
     );
   }
@@ -61,15 +94,17 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  Future<void> removeCategory(String category) async {
+  Future<void> removeCategory(int category) async {
     final prefs = await SharedPreferences.getInstance();
     final categoryList = await getCategoryList();
-    categoryList.remove(category);
+    categoryList.removeAt(category);
     await prefs.setStringList('categoryList', categoryList);
   }
 
   @override
   void initState() {
+    service = NotificationService();
+    service.init();
     super.initState();
     getCategoryList().then((categoryList) {
       setState(() {
@@ -93,12 +128,12 @@ class _HomePageState extends State<HomePage> {
               child: ListView(
                 padding: EdgeInsets.zero,
                 children: [
-                  const Center(
-                    child: Text(
+                  Center(
+                    child: const Text(
                       "SST Announcer",
                       style:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    ),
+                    ).animate().fade(duration: 225.ms).scale(),
                   ),
                   const SizedBox(
                     height: 10,
@@ -109,7 +144,7 @@ class _HomePageState extends State<HomePage> {
                       "Categories",
                       style:
                           TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                    ),
+                    ).animate().fade(duration: 225.ms).scale(),
                     children: [
                       const SizedBox(
                         height: 10,
@@ -129,7 +164,7 @@ class _HomePageState extends State<HomePage> {
                       "Custom Categories",
                       style:
                           TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                    ),
+                    ).animate().fade(duration: 225.ms).scale(),
                     children: [
                       Column(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -165,7 +200,7 @@ class _HomePageState extends State<HomePage> {
                                               : Colors.black,
                                           tooltip: "Delete category",
                                           onPressed: () async {
-                                            removeCategory(customCats[index]);
+                                            removeCategory(index);
                                             setState(() {
                                               customCats.removeAt(index);
                                             });
@@ -250,7 +285,7 @@ class _HomePageState extends State<HomePage> {
                         height: 10,
                       )
                     ],
-                  )
+                  ),
                 ],
               ),
             ),
