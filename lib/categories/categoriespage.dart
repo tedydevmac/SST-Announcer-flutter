@@ -6,7 +6,7 @@ import 'package:sst_announcer/main.dart';
 import 'package:webfeed/webfeed.dart';
 import 'package:http/http.dart' as http;
 import 'package:xml/xml.dart' as xml;
-import '../poststream.dart';
+import '../services/poststream.dart';
 import 'CustomModalBottomSheet.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
