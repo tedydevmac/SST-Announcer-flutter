@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:skeletons/skeletons.dart';
 import 'package:sst_announcer/announcement.dart';
 import 'package:xml/xml.dart' as xml;
+import 'package:intl/intl.dart';
 
 class BlogPage extends StatefulWidget {
   @override
@@ -95,7 +96,7 @@ class _BlogPageState extends State<BlogPage> {
                   .map(
                     (category) => DropdownMenuItem<String>(
                       value: category!,
-                      child: Text(category),
+                      child: Text(toBeginningOfSentenceCase(category)!),
                     ),
                   )
                   .toList(),
@@ -126,6 +127,12 @@ class _BlogPageState extends State<BlogPage> {
                       final post = filteredPosts[index];
                       final title = post.findElements('title').first.text;
                       final content = post.findElements('content').first.text;
+                      final author = post
+                          .findElements("author")
+                          .first
+                          .findElements("name")
+                          .first
+                          .text;
                       return Ink(
                         padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
                         child: ListTile(
@@ -135,6 +142,7 @@ class _BlogPageState extends State<BlogPage> {
                               CupertinoPageRoute(
                                 builder: (context) {
                                   return AnnouncementPage(
+                                    author: author,
                                     title: title,
                                     bodyText: content,
                                   );

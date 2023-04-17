@@ -133,10 +133,13 @@ class _CategoryPageState extends State<CategoryPage> {
                               customCatPosts[widget.category]![index];
                           final title =
                               customCatPost.findElements('title').first.text;
-                          final content = parseFragment(customCatPost
-                                  .findElements('content')
-                                  .first
-                                  .text)
+                          final content =
+                              customCatPost.findElements('content').first.text;
+                          final author = customCatPost
+                              .findElements("author")
+                              .first
+                              .findElements("name")
+                              .first
                               .text;
                           return ListTile(
                             onTap: () {
@@ -145,6 +148,7 @@ class _CategoryPageState extends State<CategoryPage> {
                                 CupertinoPageRoute(
                                   builder: (context) {
                                     return AnnouncementPage(
+                                      author: author,
                                       title: title,
                                       bodyText: content,
                                     );
@@ -154,7 +158,7 @@ class _CategoryPageState extends State<CategoryPage> {
                             },
                             title: Text(title),
                             subtitle: Text(
-                              content!,
+                              parseFragment(content).text!,
                               maxLines: 2,
                             ),
                           );
@@ -193,10 +197,9 @@ class _CategoryPageState extends State<CategoryPage> {
                                       CupertinoPageRoute(
                                         builder: (context) {
                                           return AnnouncementPage(
+                                            author: "",
                                             title: item.title!,
-                                            bodyText:
-                                                parseFragment(item.content)
-                                                    .text!,
+                                            bodyText: item.content!,
                                           );
                                         },
                                       ),

@@ -140,6 +140,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "flutter_colorpicker",
+      "rootUri": "file:///Users/tedgoh/.pub-cache/hosted/pub.dev/flutter_colorpicker-1.0.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_html",
       "rootUri": "file:///Users/tedgoh/.pub-cache/hosted/pub.dev/flutter_html-2.2.1",
       "packageUri": "lib/",
@@ -303,7 +309,7 @@
     },
     {
       "name": "path_provider_android",
-      "rootUri": "file:///Users/tedgoh/.pub-cache/hosted/pub.dev/path_provider_android-2.0.24",
+      "rootUri": "file:///Users/tedgoh/.pub-cache/hosted/pub.dev/path_provider_android-2.0.25",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
@@ -374,6 +380,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "restart_app",
+      "rootUri": "file:///Users/tedgoh/.pub-cache/hosted/pub.dev/restart_app-1.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
       "name": "rxdart",
       "rootUri": "file:///Users/tedgoh/.pub-cache/hosted/pub.dev/rxdart-0.27.7",
       "packageUri": "lib/",
@@ -387,7 +399,7 @@
     },
     {
       "name": "shared_preferences_android",
-      "rootUri": "file:///Users/tedgoh/.pub-cache/hosted/pub.dev/shared_preferences_android-2.1.0",
+      "rootUri": "file:///Users/tedgoh/.pub-cache/hosted/pub.dev/shared_preferences_android-2.1.2",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
@@ -680,7 +692,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-04-17T13:41:45.046360Z",
+  "generated": "2023-04-17T14:11:57.990406Z",
   "generator": "pub",
   "generatorVersion": "2.19.4"
 }

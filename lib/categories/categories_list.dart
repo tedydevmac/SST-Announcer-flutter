@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:sst_announcer/categories/categoriespage.dart';
 import 'package:xml/xml.dart' as xml;
+import 'package:intl/intl.dart';
 
 class CategoryListPage extends StatefulWidget {
   @override
@@ -64,7 +65,7 @@ class _CategoryListPageState extends State<CategoryListPage> {
                 ));
               },
               child: ListTile(
-                title: Text(categories[index]),
+                title: Text(toBeginningOfSentenceCase(categories[index])!),
               ),
             );
           },

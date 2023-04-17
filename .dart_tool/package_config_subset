@@ -86,6 +86,10 @@ flutter_cache_manager
 2.12
 file:///Users/tedgoh/.pub-cache/hosted/pub.dev/flutter_cache_manager-3.3.0/
 file:///Users/tedgoh/.pub-cache/hosted/pub.dev/flutter_cache_manager-3.3.0/lib/
+flutter_colorpicker
+2.12
+file:///Users/tedgoh/.pub-cache/hosted/pub.dev/flutter_colorpicker-1.0.3/
+file:///Users/tedgoh/.pub-cache/hosted/pub.dev/flutter_colorpicker-1.0.3/lib/
 flutter_html
 2.12
 file:///Users/tedgoh/.pub-cache/hosted/pub.dev/flutter_html-2.2.1/
@@ -188,8 +192,8 @@ file:///Users/tedgoh/.pub-cache/hosted/pub.dev/path_provider-2.0.14/
 file:///Users/tedgoh/.pub-cache/hosted/pub.dev/path_provider-2.0.14/lib/
 path_provider_android
 2.17
-file:///Users/tedgoh/.pub-cache/hosted/pub.dev/path_provider_android-2.0.24/
-file:///Users/tedgoh/.pub-cache/hosted/pub.dev/path_provider_android-2.0.24/lib/
+file:///Users/tedgoh/.pub-cache/hosted/pub.dev/path_provider_android-2.0.25/
+file:///Users/tedgoh/.pub-cache/hosted/pub.dev/path_provider_android-2.0.25/lib/
 path_provider_foundation
 2.18
 file:///Users/tedgoh/.pub-cache/hosted/pub.dev/path_provider_foundation-2.2.2/
@@ -234,6 +238,10 @@ quiver
 2.17
 file:///Users/tedgoh/.pub-cache/hosted/pub.dev/quiver-3.2.1/
 file:///Users/tedgoh/.pub-cache/hosted/pub.dev/quiver-3.2.1/lib/
+restart_app
+2.19
+file:///Users/tedgoh/.pub-cache/hosted/pub.dev/restart_app-1.1.2/
+file:///Users/tedgoh/.pub-cache/hosted/pub.dev/restart_app-1.1.2/lib/
 rxdart
 2.12
 file:///Users/tedgoh/.pub-cache/hosted/pub.dev/rxdart-0.27.7/
@@ -244,8 +252,8 @@ file:///Users/tedgoh/.pub-cache/hosted/pub.dev/shared_preferences-2.1.0/
 file:///Users/tedgoh/.pub-cache/hosted/pub.dev/shared_preferences-2.1.0/lib/
 shared_preferences_android
 2.17
-file:///Users/tedgoh/.pub-cache/hosted/pub.dev/shared_preferences_android-2.1.0/
-file:///Users/tedgoh/.pub-cache/hosted/pub.dev/shared_preferences_android-2.1.0/lib/
+file:///Users/tedgoh/.pub-cache/hosted/pub.dev/shared_preferences_android-2.1.2/
+file:///Users/tedgoh/.pub-cache/hosted/pub.dev/shared_preferences_android-2.1.2/lib/
 shared_preferences_foundation
 2.17
 file:///Users/tedgoh/.pub-cache/hosted/pub.dev/shared_preferences_foundation-2.2.1/

@@ -29,6 +29,7 @@ MERGED from [:android_alarm_manager_plus] /Users/tedgoh/Downloads/development/fl
 MERGED from [:flutter_local_notifications] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-29:12
 MERGED from [:url_launcher_android] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-14:12
 MERGED from [:path_provider_android] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/path_provider_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-7:12
+MERGED from [:restart_app] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/restart_app/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:video_player_android] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/video_player_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:wakelock] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/wakelock/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:webview_flutter_android] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/webview_flutter_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-7:12
@@ -125,6 +126,8 @@ MERGED from [:url_launcher_android] /Users/tedgoh/Downloads/development/flutterf
 MERGED from [:url_launcher_android] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:path_provider_android] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/path_provider_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:path_provider_android] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/path_provider_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:restart_app] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/restart_app/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:restart_app] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/restart_app/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:video_player_android] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/video_player_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:video_player_android] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/video_player_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:wakelock] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/wakelock/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44

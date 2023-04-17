@@ -111,10 +111,8 @@ class _FeedPageState extends State<FeedPage> {
             : RefreshIndicator(
                 onRefresh: _refresh,
                 child: ListView.separated(
-                  separatorBuilder: (separatorContext, index) => const Divider(
-                    color: Colors.grey,
-                    thickness: 0.4,
-                    height: 1,
+                  separatorBuilder: (separatorContext, index) => const SizedBox(
+                    height: 5,
                   ),
                   controller: _controller,
                   itemCount: _posts.length,
@@ -122,18 +120,142 @@ class _FeedPageState extends State<FeedPage> {
                     final post = _posts[index];
                     final title = post.findElements('title').first.text;
                     final content = post.findElements('content').first.text;
+                    final author = post
+                        .findElements('author')
+                        .first
+                        .findElements("name")
+                        .first
+                        .text;
                     if (index < pinnedTitles!.length) {
-                      return Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+                      return Dismissible(
+                        background: Container(
+                          color: Colors.red,
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: Padding(
+                              padding: const EdgeInsets.all(20),
+                              child: Icon(Icons.push_pin),
+                            ),
+                          ),
+                        ),
+                        key: UniqueKey(),
+                        direction: DismissDirection.startToEnd,
+                        onDismissed: (direction) async {
+                          final SharedPreferences prefs =
+                              await SharedPreferences.getInstance();
+                          await getSavedValues();
+                          pinnedTitles?.removeAt(index);
+                          pinnedContent?.removeAt(index);
+                          await prefs.setStringList('titles', pinnedTitles!);
+                          await prefs.setStringList('content', pinnedContent!);
+                          _refresh();
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+                          child: ListTile(
+                            onTap: () {
+                              final navigator = Navigator.of(context);
+                              navigator.push(
+                                CupertinoPageRoute(
+                                  builder: (context) {
+                                    return AnnouncementPage(
+                                      author: author,
+                                      title: pinnedTitles![index],
+                                      bodyText: pinnedContent![index],
+                                    );
+                                  },
+                                ),
+                              );
+                            },
+                            title: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Pinned",
+                                  style: TextStyle(fontSize: 12),
+                                ),
+                                Text(
+                                  pinnedTitles![index],
+                                  maxLines: 3,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20),
+                                ),
+                                Text(
+                                  author,
+                                  style: TextStyle(fontWeight: FontWeight.w300),
+                                ),
+                              ],
+                            ),
+                            subtitle: Column(
+                              children: [
+                                Text(
+                                  parseFragment(pinnedContent![index]).text!,
+                                  maxLines: 3,
+                                  style: TextStyle(fontSize: 14),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                index == (pinnedTitles!.length - 1)
+                                    ? Divider(
+                                        thickness: 3,
+                                      )
+                                    : Container(),
+                              ],
+                            ),
+                            trailing: Icon(
+                              Icons.push_pin,
+                              color: Colors.red,
+                            ),
+                          ),
+                        ),
+                      );
+                    } else {
+                      return Dismissible(
+                        direction: DismissDirection.startToEnd,
+                        confirmDismiss: (direction) async {
+                          final SharedPreferences prefs =
+                              await SharedPreferences.getInstance();
+
+                          await getSavedValues();
+
+                          pinnedTitles!.insert(0, title);
+                          if (pinnedTitles!.length > 3) {
+                            pinnedTitles!.removeLast();
+                          }
+
+                          // saving pinned content values
+                          pinnedContent!.insert(0, content);
+                          if (pinnedContent!.length > 3) {
+                            pinnedContent!.removeLast();
+                          }
+
+                          await prefs.setStringList('titles', pinnedTitles!);
+                          await prefs.setStringList('content', pinnedContent!);
+                          _refresh();
+                        },
+                        background: Container(
+                          color: Colors.green,
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: Padding(
+                              padding: const EdgeInsets.all(20),
+                              child: Icon(Icons.push_pin),
+                            ),
+                          ),
+                        ),
+                        key: Key(title),
                         child: ListTile(
                           onTap: () {
-                            final navigator = Navigator.of(context);
+                            var navigator = Navigator.of(context);
                             navigator.push(
                               CupertinoPageRoute(
                                 builder: (context) {
                                   return AnnouncementPage(
-                                    title: pinnedTitles![index],
-                                    bodyText: pinnedContent![index],
+                                    author: author,
+                                    title: title,
+                                    bodyText: content,
                                   );
                                 },
                               ),
@@ -142,91 +264,28 @@ class _FeedPageState extends State<FeedPage> {
                           title: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Text(
-                                "Pinned",
-                                style: TextStyle(fontSize: 10),
-                                textAlign: TextAlign.left,
+                              Text(
+                                title,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 20),
                               ),
-                              const SizedBox(
-                                height: 10,
+                              Text(
+                                author,
+                                style: TextStyle(fontWeight: FontWeight.w300),
                               ),
-                              Text(pinnedTitles![index]),
                             ],
                           ),
-                          subtitle: Text(
-                            parseFragment(pinnedContent![index]).text!,
-                            maxLines: 3,
-                          ),
-                          trailing: IconButton(
-                            onPressed: () async {
-                              final SharedPreferences prefs =
-                                  await SharedPreferences.getInstance();
-                              await getSavedValues();
-                              pinnedTitles?.removeAt(index);
-                              pinnedContent?.removeAt(index);
-                              await prefs.setStringList(
-                                  'titles', pinnedTitles!);
-                              await prefs.setStringList(
-                                  'content', pinnedContent!);
-
-                              _refresh();
-                            },
-                            icon: const Icon(Icons.push_pin),
-                            color: Colors.red,
-                            iconSize: 21.5,
-                          ),
-                        ),
-                      );
-                    } else {
-                      return Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
-                        child: ListTile(
-                          onTap: () {
-                            var navigator = Navigator.of(context);
-                            navigator.push(
-                              CupertinoPageRoute(
-                                builder: (context) {
-                                  return AnnouncementPage(
-                                    title: title,
-                                    bodyText: content,
-                                  );
-                                },
+                          subtitle: Column(
+                            children: [
+                              Text(
+                                parseFragment(content).text!,
+                                maxLines: 3,
+                                style: TextStyle(fontSize: 14),
                               ),
-                            );
-                          },
-                          title: Text(title),
-                          subtitle:
-                              Text(parseFragment(content).text!, maxLines: 3),
-                          trailing: IconButton(
-                            onPressed: () async {
-                              // saving pinned title values
-                              final SharedPreferences prefs =
-                                  await SharedPreferences.getInstance();
-
-                              await getSavedValues();
-
-                              pinnedTitles!.insert(0, title);
-                              if (pinnedTitles!.length > 3) {
-                                pinnedTitles!.removeLast();
-                              }
-
-                              // saving pinned content values
-                              pinnedContent!.insert(0, content);
-                              if (pinnedContent!.length > 3) {
-                                pinnedContent!.removeLast();
-                              }
-
-                              await prefs.setStringList(
-                                  'titles', pinnedTitles!);
-                              await prefs.setStringList(
-                                  'content', pinnedContent!);
-                              _refresh();
-                            },
-                            iconSize: 21.5,
-                            icon: const Icon(
-                              Icons.push_pin,
-                              color: Colors.grey,
-                            ),
+                              SizedBox(
+                                height: 15,
+                              ),
+                            ],
                           ),
                         ),
                       );

@@ -5,8 +5,12 @@ import 'package:url_launcher/url_launcher.dart';
 class AnnouncementPage extends StatefulWidget {
   final String title;
   String bodyText;
-  AnnouncementPage({super.key, required this.title, required this.bodyText});
-
+  String author;
+  AnnouncementPage(
+      {super.key,
+      required this.title,
+      required this.bodyText,
+      required this.author});
   @override
   State<AnnouncementPage> createState() => _AnnouncementPageState();
 }
@@ -57,6 +61,7 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
           child: Ink(
             child: SingleChildScrollView(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     widget.title,
@@ -65,6 +70,7 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
                         fontSize: 20,
                         fontWeight: FontWeight.bold),
                   ),
+                  Text(widget.author),
                   const SizedBox(
                     height: 15,
                   ),
@@ -72,9 +78,13 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
                     data: parsedString,
                     style: {
                       "body": Style(
-                          fontSize: FontSize.large, color: backgroundColor),
+                          fontSize: FontSize.large,
+                          color: backgroundColor,
+                          textDecorationColor: backgroundColor),
                       "p": Style(
-                          fontSize: FontSize.large, color: backgroundColor),
+                          fontSize: FontSize.large,
+                          color: backgroundColor,
+                          textDecorationColor: backgroundColor),
                     },
                     onLinkTap: (link, _, __, ___) {
                       launch(link!);

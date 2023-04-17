@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sst_announcer/services/poststream.dart';
 import 'package:sst_announcer/search.dart';
-import 'package:sst_announcer/services/themes.dart';
+import 'package:sst_announcer/settings.dart';
 import 'package:sst_announcer/categories/categories_list.dart';
 import 'package:sst_announcer/categories/user_categories.dart';
 import 'categories/categoriespage.dart';
@@ -41,7 +41,35 @@ Future<void> checkForNewPosts() async {
   }
 }
 
+var seedcolor = Colors.red;
+
+var lightTheme = ThemeData(
+    useMaterial3: true,
+    colorScheme: ColorScheme.fromSeed(seedColor: seedcolor));
+var filledButtonStyle = ElevatedButton.styleFrom(
+        backgroundColor: lightTheme.colorScheme.primary,
+        foregroundColor: lightTheme.colorScheme.onPrimary,
+        elevation: 3)
+    .copyWith(elevation: MaterialStateProperty.resolveWith((states) {
+  if (states.contains(MaterialState.hovered)) {
+    return 1;
+  }
+  return 0;
+}));
+
+var darkTheme = ThemeData.dark(useMaterial3: true);
+var darkFilledButtonStyle = ElevatedButton.styleFrom(
+        backgroundColor: darkTheme.colorScheme.primary,
+        foregroundColor: darkTheme.colorScheme.onPrimary)
+    .copyWith(elevation: MaterialStateProperty.resolveWith((states) {
+  if (states.contains(MaterialState.hovered)) {
+    return 1;
+  }
+  return 0;
+}));
+
 void main() async {
+  runApp(const MyApp());
   WidgetsFlutterBinding.ensureInitialized();
   await AndroidAlarmManager.initialize();
   await AndroidAlarmManager.periodic(
@@ -161,7 +189,7 @@ class _HomePageState extends State<HomePage> {
                   ExpansionTile(
                     clipBehavior: Clip.hardEdge,
                     title: const Text(
-                      "Custom Categories",
+                      "Tags",
                       style:
                           TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                     ).animate().fade(duration: 225.ms).scale(),
@@ -271,21 +299,53 @@ class _HomePageState extends State<HomePage> {
                                 ],
                               ),
                             )
-                          : ElevatedButton.icon(
-                              style: filledButtonStyle,
+                          : ElevatedButton(
+                              style: darkFilledButtonStyle,
                               onPressed: () {
                                 setState(() {
                                   addCustomCat = true;
                                 });
                               },
-                              icon: const Icon(Icons.add),
-                              label: const Text("Add custom category"),
+                              child: Center(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: const [
+                                    Icon(Icons.add),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text("Add custom category"),
+                                  ],
+                                ),
+                              ),
                             ),
                       const SizedBox(
                         height: 10,
                       )
                     ],
                   ),
+                  const Divider(
+                    thickness: 0.5,
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      var navigator = Navigator.of(context);
+                      navigator.push(
+                        CupertinoPageRoute(
+                          builder: (context) {
+                            return const SettingsScreen();
+                          },
+                        ),
+                      );
+                    },
+                    child: const Text(
+                      "Settings",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  )
                 ],
               ),
             ),
@@ -293,7 +353,13 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(
+          widget.title,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 25,
+          ),
+        ),
         actions: [
           IconButton(
             onPressed: () {
