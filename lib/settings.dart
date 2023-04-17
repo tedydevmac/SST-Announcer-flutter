@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
-import 'package:http/http.dart';
 import 'package:xml/xml.dart' as xml;
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
@@ -38,19 +35,26 @@ class _SettingsScreenState extends State<SettingsScreen> {
   int cacheSize = 0;
   List<xml.XmlElement> posts = [];
   File? file;
+
+  @override
+  void initState() {
+    super.initState();
+    getCache();
+  }
+
   void getCache() async {
     file = await DefaultCacheManager().getSingleFile(
         'http://studentsblog.sst.edu.sg/feeds/posts/default?max-results=100');
     final document = xml.XmlDocument.parse(await file!.readAsString());
-    posts = document.findAllElements('entry').toList();
+    setState(() {
+      posts = document.findAllElements('entry').toList();
+      cacheSize = _getSize(file!);
+    });
     print(posts);
-    cacheSize = _getSize(file!);
     print(cacheSize);
   }
 
-  @override
   Widget build(BuildContext context) {
-    getCache();
     return Scaffold(
       appBar: AppBar(
         title: Text("Settings"),
@@ -62,7 +66,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             shrinkWrap: true,
             children: [
               Text(
-                "Cache size: ${cacheSize}",
+                "Cache size: ${cacheSize} bytes",
                 style: TextStyle(fontSize: 18),
               ),
               SizedBox(
@@ -90,6 +94,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   DefaultCacheManager().emptyCache();
                   print("emptied");
                   print(cacheSize);
+                  initState();
                 },
                 child: Text("Clear cache"),
               )

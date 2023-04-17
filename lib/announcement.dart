@@ -81,10 +81,25 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
                           fontSize: FontSize.large,
                           color: backgroundColor,
                           textDecorationColor: backgroundColor),
+                      "content": Style(
+                          fontSize: FontSize.large,
+                          color: backgroundColor,
+                          textDecorationColor: backgroundColor),
+                      "div": Style(
+                          fontSize: FontSize.large,
+                          color: backgroundColor,
+                          textDecorationColor: backgroundColor),
+                      /*"span": Style(
+                          fontSize: FontSize.large,
+                          color: backgroundColor,
+                          textDecorationColor: backgroundColor),*/
                       "p": Style(
                           fontSize: FontSize.large,
                           color: backgroundColor,
                           textDecorationColor: backgroundColor),
+                      "a": Style(
+                        color: Colors.blue,
+                      ),
                     },
                     onLinkTap: (link, _, __, ___) {
                       launch(link!);
