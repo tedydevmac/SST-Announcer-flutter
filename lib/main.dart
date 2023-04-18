@@ -16,7 +16,7 @@ import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 
 final postStreamController = StreamController<PostStream>.broadcast();
 late final NotificationService service;
-const feedUrl = 'https://announcertestnotif.blogspot.com/';
+const feedUrl = 'http://studentsblog.sst.edu.sg/feeds/posts/default?';
 
 Future<void> checkForNewPosts() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -33,25 +33,16 @@ Future<void> checkForNewPosts() async {
     List<Map<String, String>> latestPosts =
         await fetchLatestBlogspotPosts(feedUrl);
 
-    // Do something with the latest posts
-    print('Latest posts:');
-    latestPosts.forEach((post) {
-      print('Title: ${post['title']}');
-      print('Link: ${post['link']}');
-      print('Pub Date: ${post['pubDate']}');
-    });
-
     // Update the last check time
     await prefs.setString('lastCheckTime', latestPosts.first['pubDate']!);
   } else {
-    print('No new posts available');
+    return;
   }
 }
 
 Future<bool> checkForNewBlogspotPosts(
     String rssFeedUrl, DateTime lastCheckTime) async {
   final response = await http.get(Uri.parse(rssFeedUrl));
-  print(response.body);
   if (response.statusCode == 200) {
     final document = xml.XmlDocument.parse(response.body);
     final latestPostPubDate =
@@ -93,12 +84,12 @@ Future<List<Map<String, String>>> fetchLatestBlogspotPosts(
   }
 }
 
-var seedcolor = Colors.red;
+const seedcolor = Colors.red;
 
-var lightTheme = ThemeData(
+final lightTheme = ThemeData(
     useMaterial3: true,
     colorScheme: ColorScheme.fromSeed(seedColor: seedcolor));
-var filledButtonStyle = ElevatedButton.styleFrom(
+final filledButtonStyle = ElevatedButton.styleFrom(
         backgroundColor: lightTheme.colorScheme.primary,
         foregroundColor: lightTheme.colorScheme.onPrimary,
         elevation: 3)
@@ -109,8 +100,8 @@ var filledButtonStyle = ElevatedButton.styleFrom(
   return 0;
 }));
 
-var darkTheme = ThemeData.dark(useMaterial3: true);
-var darkFilledButtonStyle = ElevatedButton.styleFrom(
+final darkTheme = ThemeData.dark(useMaterial3: true);
+final darkFilledButtonStyle = ElevatedButton.styleFrom(
         backgroundColor: darkTheme.colorScheme.primary,
         foregroundColor: darkTheme.colorScheme.onPrimary)
     .copyWith(elevation: MaterialStateProperty.resolveWith((states) {

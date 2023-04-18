@@ -19,21 +19,15 @@ class FeedPage extends StatefulWidget {
 class _FeedPageState extends State<FeedPage> {
   List<String>? pinnedTitles = [];
   List<String>? pinnedContent = [];
+  List<String>? pinnedAuthors = [];
 
   getSavedValues() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     //Return String
     pinnedTitles = prefs.getStringList("titles") ?? ["", "", ""];
     pinnedContent = prefs.getStringList("content") ?? ["", "", ""];
+    pinnedAuthors = prefs.getStringList("authors") ?? ["", "", ""];
   }
-
-  /*getContentValues() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    //Return String
-
-    pinnedContent = prefs.getStringList("content") ?? ["", "", ""];
-    print(pinnedContent);
-  }*/
 
   int _numPosts = 10;
   List<xml.XmlElement> _posts = [];
@@ -146,8 +140,10 @@ class _FeedPageState extends State<FeedPage> {
                           await getSavedValues();
                           pinnedTitles?.removeAt(index);
                           pinnedContent?.removeAt(index);
+                          pinnedAuthors?.removeAt(index);
                           await prefs.setStringList('titles', pinnedTitles!);
                           await prefs.setStringList('content', pinnedContent!);
+                          await prefs.setStringList("authors", pinnedAuthors!);
                           _refresh();
                         },
                         child: Padding(
@@ -159,7 +155,7 @@ class _FeedPageState extends State<FeedPage> {
                                 CupertinoPageRoute(
                                   builder: (context) {
                                     return AnnouncementPage(
-                                      author: author,
+                                      author: pinnedAuthors![index],
                                       title: pinnedTitles![index],
                                       bodyText: pinnedContent![index],
                                     );
@@ -182,7 +178,7 @@ class _FeedPageState extends State<FeedPage> {
                                       fontSize: 20),
                                 ),
                                 Text(
-                                  author,
+                                  pinnedAuthors![index],
                                   style: TextStyle(fontWeight: FontWeight.w300),
                                 ),
                               ],
@@ -231,8 +227,14 @@ class _FeedPageState extends State<FeedPage> {
                             pinnedContent!.removeLast();
                           }
 
+                          pinnedAuthors!.insert(0, author);
+                          if (pinnedAuthors!.length > 3) {
+                            pinnedAuthors!.removeLast();
+                          }
+
                           await prefs.setStringList('titles', pinnedTitles!);
                           await prefs.setStringList('content', pinnedContent!);
+                          await prefs.setStringList("authors", pinnedAuthors!);
                           _refresh();
                         },
                         background: Container(
