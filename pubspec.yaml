@@ -48,6 +48,7 @@ dependencies:
   android_alarm_manager_plus: ^2.1.2
   flutter_colorpicker: ^1.0.3
   restart_app: ^1.1.2
+  flutter_datetime_picker: ^1.5.1
 
 dev_dependencies:
   flutter_test:

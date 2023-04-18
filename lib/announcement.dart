@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:sst_announcer/main.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:intl/intl.dart';
 
 class AnnouncementPage extends StatefulWidget {
   final String title;
@@ -25,20 +28,27 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
     }
   }
 
+  final titleController = TextEditingController();
+  final bodyController = TextEditingController();
   bool categoried = false;
+  DateTime? dueDate;
+  Future<void> pickDate() async {
+    final newDueDate = await DatePicker.showDateTimePicker(
+      context,
+      showTitleActions: true,
+      onChanged: (date) => date,
+      onConfirm: (date) {},
+    );
+    if (newDueDate != null) {
+      setState(() {
+        dueDate = newDueDate;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    var originalString = widget.bodyText;
-    var parsedString = originalString.replaceAllMapped(
-        RegExp(
-            "(font-size: [^;]+;|color: #[0-9a-fA-F]{6};|background-color: \\w+;)"),
-        (match) {
-      return '"${match.group(0)}"';
-    });
-    print(parsedString);
-
-    Color backgroundColor = Colors.black;
-
+    Color backgroundColor = Colors.white;
     bool isDarkMode =
         (MediaQuery.of(context).platformBrightness == Brightness.dark);
     if (isDarkMode) {
@@ -46,6 +56,17 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
     } else {
       backgroundColor = Colors.black;
     }
+    DateTime? dueDate;
+    final theme = Theme.of(context);
+    final originalString = widget.bodyText;
+    final parsedString = originalString.replaceAllMapped(
+        RegExp(
+            "(font-size: [^;]+;|color: #[0-9a-fA-F]{6};|background-color: \\w+;)"),
+        (match) {
+      return '"${match.group(0)}"';
+    });
+    final formattedDate =
+        dueDate == null ? "" : DateFormat("dd/MM/yyyy").format(dueDate);
 
     return Scaffold(
       appBar: AppBar(
@@ -56,68 +77,71 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
                   context: context,
                   builder: (BuildContext context) {
                     return AlertDialog(
-                      title: Text("Set reminder"),
+                      title: const Text("Set reminder"),
                       content: Column(
                         mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           TextField(
-                            decoration:
-                                InputDecoration(hintText: "Notification title"),
+                            controller: titleController,
+                            decoration: InputDecoration(
+                                hintText: "Notification title",
+                                labelText: widget.title),
                           ),
                           TextField(
-                            decoration:
-                                InputDecoration(hintText: "Notification body"),
+                            controller: bodyController,
+                            decoration: const InputDecoration(
+                                hintText: "Notification description"),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
-                          ElevatedButton(
-                            onPressed: () {
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return DatePickerDialog(
-                                      initialDate: DateTime.now(),
-                                      firstDate:
-                                          DateTime.utc(2023, DateTime.january),
-                                      lastDate:
-                                          DateTime(2023, DateTime.december));
-                                },
-                              );
-                            },
-                            child: Text("Choose date"),
-                          ),
-                          ElevatedButton(
-                            onPressed: () {
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return TimePickerDialog(
-                                      initialTime: TimeOfDay.now());
-                                },
-                              );
-                            },
-                            child: Text("Choose time"),
-                          ),
+                          dueDate == null
+                              ? IconButton(
+                                  onPressed: pickDate,
+                                  iconSize: 26,
+                                  icon: const Icon(
+                                      Icons.event_available_outlined),
+                                )
+                              : ActionChip(
+                                  label: Text(formattedDate),
+                                  onPressed: pickDate,
+                                  backgroundColor: theme.brightness ==
+                                          Brightness.dark
+                                      ? Colors.grey[800]
+                                      : const Color.fromRGBO(246, 242, 249, 1),
+                                  elevation: 0,
+                                )
                         ],
                       ),
                       actions: [
                         Center(
                           child: Row(children: [
-                            ElevatedButton(
+                            TextButton(
                               onPressed: () {
-                                var navigator = Navigator.of(context);
+                                final navigator = Navigator.of(context);
                                 navigator.pop();
                               },
-                              child: Text("Cancel"),
+                              child: const Text("Cancel"),
                             ),
-                            Spacer(),
+                            const Spacer(),
                             ElevatedButton(
                               onPressed: () {
-                                var navigator = Navigator.of(context);
+                                final navigator = Navigator.of(context);
                                 navigator.pop();
+                                if (titleController.text == "" ||
+                                    dueDate == null) {
+                                  return;
+                                } else {
+                                  print(dueDate);
+                                  service.scheduleNotification(
+                                      title: titleController.text,
+                                      body: bodyController.text,
+                                      scheduledNotificationDateTime: dueDate);
+                                }
                               },
-                              child: Text("Confirm"),
+                              style: filledButtonStyle,
+                              child: const Text("Confirm"),
                             ),
                           ]),
                         )
@@ -127,7 +151,7 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
                   },
                 );
               },
-              icon: Icon(Icons.calendar_month))
+              icon: const Icon(Icons.calendar_month))
         ],
         title: Row(
           mainAxisAlignment: MainAxisAlignment.start,

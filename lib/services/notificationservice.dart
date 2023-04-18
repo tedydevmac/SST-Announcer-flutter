@@ -39,13 +39,29 @@ class NotificationService {
     return platformChannelSpecifics;
   }
 
-  Future<void> scheduleNotification(String title, String body) async {
+  Future<void> showNotification(String title, String body) async {
     await flutterLocalNotificationsPlugin.zonedSchedule(
         0,
         title,
         body,
         tz.TZDateTime.now(tz.local).add(const Duration(seconds: 1)),
         getPlatformChannelSpecifics(),
+        androidAllowWhileIdle: true,
+        uiLocalNotificationDateInterpretation:
+            UILocalNotificationDateInterpretation.absoluteTime);
+  }
+
+  Future scheduleNotification(
+      {int id = 0,
+      required String title,
+      required String? body,
+      required DateTime scheduledNotificationDateTime}) async {
+    return flutterLocalNotificationsPlugin.zonedSchedule(
+        id,
+        title,
+        body,
+        tz.TZDateTime.from(scheduledNotificationDateTime, tz.local),
+        const NotificationDetails(),
         androidAllowWhileIdle: true,
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime);
