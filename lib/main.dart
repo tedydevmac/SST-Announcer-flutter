@@ -15,7 +15,7 @@ import 'package:xml/xml.dart' as xml;
 import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 
 final postStreamController = StreamController<PostStream>.broadcast();
-late final NotificationService service;
+final NotificationService service = NotificationService();
 const feedUrl = 'http://studentsblog.sst.edu.sg/feeds/posts/default?';
 
 Future<void> checkForNewPosts() async {
@@ -35,6 +35,8 @@ Future<void> checkForNewPosts() async {
 
     // Update the last check time
     await prefs.setString('lastCheckTime', latestPosts.first['pubDate']!);
+    service.showNotification(
+        "New announcement", "There is a new post in SST Announcer");
   } else {
     return;
   }
@@ -174,7 +176,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    service = NotificationService();
     service.init();
     super.initState();
     getCategoryList().then((categoryList) {
