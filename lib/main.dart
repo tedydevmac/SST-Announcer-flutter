@@ -17,36 +17,79 @@ import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 final postStreamController = StreamController<PostStream>.broadcast();
 late final NotificationService service;
 const feedUrl = 'http://studentsblog.sst.edu.sg/feeds/posts/default?';
+
 Future<void> checkForNewPosts() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  DateTime lastPublishedDate = prefs.containsKey('lastPublishedDate')
-      ? DateTime.parse(prefs.getString('lastPublishedDate')!)
+  DateTime lastCheckTime = prefs.containsKey('lastCheckTime')
+      ? DateTime.parse(prefs.getString('lastCheckTime')!)
       : DateTime.now();
 
-  final response = await http.get(Uri.parse(feedUrl));
-  final document = xml.XmlDocument.parse(response.body);
-  final latestPublishedDate = DateTime.parse(document
-      .findAllElements('entry')
-      .first
-      .findElements('published')
-      .first
-      .text);
-  if (latestPublishedDate.isAfter(lastPublishedDate)) {
-    // There are new posts in the feed
-    service.scheduleNotification(
-        "New Announcement", "There is a new announcement in SST Announcer");
-    lastPublishedDate = latestPublishedDate;
-    await prefs.setString(
-        'lastPublishedDate', latestPublishedDate.toIso8601String());
+  // Check for new posts in the RSS feed
+  bool newPostsAvailable =
+      await checkForNewBlogspotPosts(feedUrl, lastCheckTime);
+
+  if (newPostsAvailable) {
+    // Fetch the latest posts
+    List<Map<String, String>> latestPosts =
+        await fetchLatestBlogspotPosts(feedUrl);
+
+    // Update the last check time
+    await prefs.setString('lastCheckTime', latestPosts.first['pubDate']!);
+  } else {
+    return;
   }
 }
 
-var seedcolor = Colors.red;
+Future<bool> checkForNewBlogspotPosts(
+    String rssFeedUrl, DateTime lastCheckTime) async {
+  final response = await http.get(Uri.parse(rssFeedUrl));
+  if (response.statusCode == 200) {
+    final document = xml.XmlDocument.parse(response.body);
+    final latestPostPubDate =
+        document.findElements('item').last.getElement('pubDate')!.text;
+    final latestPostPubDateTime = DateTime.parse(latestPostPubDate);
 
-var lightTheme = ThemeData(
+    // Check if the latest post is newer than the last check time
+    return latestPostPubDateTime.isAfter(lastCheckTime);
+  } else {
+    throw Exception('Failed to load latest posts');
+  }
+}
+
+Future<List<Map<String, String>>> fetchLatestBlogspotPosts(
+    String rssFeedUrl) async {
+  final response = await http.get(Uri.parse(rssFeedUrl));
+
+  if (response.statusCode == 200) {
+    final document = xml.XmlDocument.parse(response.body);
+    final items = document
+        .findAllElements('channel')
+        .single
+        .findAllElements('item')
+        .map((item) {
+      final title = item.getElement('title')!.text;
+      final link = item.getElement('link')!.text;
+      final pubDate = item.getElement('pubDate')!.text;
+
+      return {
+        'title': title,
+        'link': link,
+        'pubDate': pubDate,
+      };
+    }).toList();
+
+    return items;
+  } else {
+    throw Exception('Failed to load latest posts');
+  }
+}
+
+const seedcolor = Colors.red;
+
+final lightTheme = ThemeData(
     useMaterial3: true,
     colorScheme: ColorScheme.fromSeed(seedColor: seedcolor));
-var filledButtonStyle = ElevatedButton.styleFrom(
+final filledButtonStyle = ElevatedButton.styleFrom(
         backgroundColor: lightTheme.colorScheme.primary,
         foregroundColor: lightTheme.colorScheme.onPrimary,
         elevation: 3)
@@ -57,8 +100,8 @@ var filledButtonStyle = ElevatedButton.styleFrom(
   return 0;
 }));
 
-var darkTheme = ThemeData.dark(useMaterial3: true);
-var darkFilledButtonStyle = ElevatedButton.styleFrom(
+final darkTheme = ThemeData.dark(useMaterial3: true);
+final darkFilledButtonStyle = ElevatedButton.styleFrom(
         backgroundColor: darkTheme.colorScheme.primary,
         foregroundColor: darkTheme.colorScheme.onPrimary)
     .copyWith(elevation: MaterialStateProperty.resolveWith((states) {
@@ -73,7 +116,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await AndroidAlarmManager.initialize();
   await AndroidAlarmManager.periodic(
-      const Duration(minutes: 30), 1, checkForNewPosts);
+      const Duration(minutes: 20), 1, checkForNewPosts);
   runApp(const MyApp());
 }
 
