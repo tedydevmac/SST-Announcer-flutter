@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AnnouncementPage extends StatefulWidget {
@@ -48,6 +49,86 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
 
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: Text("Set reminder"),
+                      content: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          TextField(
+                            decoration:
+                                InputDecoration(hintText: "Notification title"),
+                          ),
+                          TextField(
+                            decoration:
+                                InputDecoration(hintText: "Notification body"),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          ElevatedButton(
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return DatePickerDialog(
+                                      initialDate: DateTime.now(),
+                                      firstDate:
+                                          DateTime.utc(2023, DateTime.january),
+                                      lastDate:
+                                          DateTime(2023, DateTime.december));
+                                },
+                              );
+                            },
+                            child: Text("Choose date"),
+                          ),
+                          ElevatedButton(
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return TimePickerDialog(
+                                      initialTime: TimeOfDay.now());
+                                },
+                              );
+                            },
+                            child: Text("Choose time"),
+                          ),
+                        ],
+                      ),
+                      actions: [
+                        Center(
+                          child: Row(children: [
+                            ElevatedButton(
+                              onPressed: () {
+                                var navigator = Navigator.of(context);
+                                navigator.pop();
+                              },
+                              child: Text("Cancel"),
+                            ),
+                            Spacer(),
+                            ElevatedButton(
+                              onPressed: () {
+                                var navigator = Navigator.of(context);
+                                navigator.pop();
+                              },
+                              child: Text("Confirm"),
+                            ),
+                          ]),
+                        )
+                      ],
+                      alignment: Alignment.center,
+                    );
+                  },
+                );
+              },
+              icon: Icon(Icons.calendar_month))
+        ],
         title: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: const [
