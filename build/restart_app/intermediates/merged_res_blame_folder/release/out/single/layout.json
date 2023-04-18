@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "gabrimatic.info.restart.restart_app-merged_res-10:/layout/notification_action.xml",
+        "source": "gabrimatic.info.restart.restart_app-core-1.6.0-2:/layout/notification_action.xml"
+    },
+    {
+        "merged": "gabrimatic.info.restart.restart_app-merged_res-10:/layout/notification_template_icon_group.xml",
+        "source": "gabrimatic.info.restart.restart_app-core-1.6.0-2:/layout/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "gabrimatic.info.restart.restart_app-merged_res-10:/layout/notification_action_tombstone.xml",
+        "source": "gabrimatic.info.restart.restart_app-core-1.6.0-2:/layout/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "gabrimatic.info.restart.restart_app-merged_res-10:/layout/custom_dialog.xml",
+        "source": "gabrimatic.info.restart.restart_app-core-1.6.0-2:/layout/custom_dialog.xml"
+    },
+    {
+        "merged": "gabrimatic.info.restart.restart_app-merged_res-10:/layout/notification_template_part_chronometer.xml",
+        "source": "gabrimatic.info.restart.restart_app-core-1.6.0-2:/layout/notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "gabrimatic.info.restart.restart_app-merged_res-10:/layout/notification_template_part_time.xml",
+        "source": "gabrimatic.info.restart.restart_app-core-1.6.0-2:/layout/notification_template_part_time.xml"
+    }
+]
