@@ -13,73 +13,137 @@
 13         to allow setting breakpoints, to provide hot reload, etc.
 14    -->
 15    <uses-permission android:name="android.permission.INTERNET" />
-15-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:3:4-65
-15-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:3:21-63
-16    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-16-->[com.google.android.exoplayer:exoplayer-core:2.18.5] /Users/lukeyeo/.gradle/caches/transforms-3/42c9cb444e70aed5913074278d9d4671/transformed/jetified-exoplayer-core-2.18.5/AndroidManifest.xml:24:5-79
-16-->[com.google.android.exoplayer:exoplayer-core:2.18.5] /Users/lukeyeo/.gradle/caches/transforms-3/42c9cb444e70aed5913074278d9d4671/transformed/jetified-exoplayer-core-2.18.5/AndroidManifest.xml:24:22-76
-17
-18    <application
-19        android:name="io.flutter.app.FlutterMultiDexApplication"
-20        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-20-->[androidx.core:core:1.7.0] /Users/lukeyeo/.gradle/caches/transforms-3/92b378fed2c7ad5d0dc31b9e1ebba952/transformed/core-1.7.0/AndroidManifest.xml:24:18-86
-21        android:debuggable="true"
-22        android:icon="@mipmap/ic_launcher"
-23        android:label="sst_announcer" >
-24        <activity
-25            android:name="com.example.sst_announcer.MainActivity"
-26            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-27            android:exported="true"
-28            android:hardwareAccelerated="true"
-29            android:launchMode="singleTop"
-30            android:theme="@style/LaunchTheme"
-31            android:windowSoftInputMode="adjustResize" >
-32
-33            <!--
-34                 Specifies an Android theme to apply to this Activity as soon as
-35                 the Android process has started. This theme is visible to the user
-36                 while the Flutter UI initializes. After that, this theme continues
-37                 to determine the Window background behind the Flutter UI.
-38            -->
-39            <meta-data
-40                android:name="io.flutter.embedding.android.NormalTheme"
-41                android:resource="@style/NormalTheme" />
-42
-43            <intent-filter>
-44                <action android:name="android.intent.action.MAIN" />
+15-->/Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:3:5-66
+15-->/Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:3:22-64
+16    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+16-->/Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:4:5-81
+16-->/Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:4:22-78
+17    <uses-permission android:name="android.permission.WAKE_LOCK" />
+17-->/Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:5:5-68
+17-->/Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:5:22-65
+18    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+18-->/Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:6:5-78
+18-->/Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:6:22-76
+19    <uses-permission android:name="android.permission.VIBRATE" />
+19-->[:flutter_local_notifications] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:8:5-66
+19-->[:flutter_local_notifications] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:8:22-63
+20    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+20-->[:flutter_local_notifications] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-81
+20-->[:flutter_local_notifications] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:9:22-78
+21    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+21-->[:flutter_local_notifications] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:11:5-77
+21-->[:flutter_local_notifications] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:11:22-74
+22    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+22-->[com.google.android.exoplayer:exoplayer-core:2.18.5] /Users/tedgoh/.gradle/caches/transforms-3/42c9cb444e70aed5913074278d9d4671/transformed/jetified-exoplayer-core-2.18.5/AndroidManifest.xml:24:5-79
+22-->[com.google.android.exoplayer:exoplayer-core:2.18.5] /Users/tedgoh/.gradle/caches/transforms-3/42c9cb444e70aed5913074278d9d4671/transformed/jetified-exoplayer-core-2.18.5/AndroidManifest.xml:24:22-76
+23
+24    <application
+25        android:name="io.flutter.app.FlutterMultiDexApplication"
+26        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+26-->[androidx.core:core:1.7.0] /Users/tedgoh/.gradle/caches/transforms-3/92b378fed2c7ad5d0dc31b9e1ebba952/transformed/core-1.7.0/AndroidManifest.xml:24:18-86
+27        android:debuggable="true"
+28        android:icon="@mipmap/ic_launcherplaystore"
+29        android:label="sst_announcer" >
+30        <receiver
+31            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver"
+32            android:exported="false" >
+33            <intent-filter>
+33-->[:flutter_local_notifications] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:20:13-25:29
+34                <action android:name="android.intent.action.BOOT_COMPLETED" />
+34-->[:flutter_local_notifications] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:21:17-79
+34-->[:flutter_local_notifications] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:21:25-76
+35                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+35-->[:flutter_local_notifications] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:22:17-84
+35-->[:flutter_local_notifications] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:22:25-81
+36                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+36-->[:flutter_local_notifications] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:23:17-82
+36-->[:flutter_local_notifications] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:23:25-79
+37                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+37-->[:flutter_local_notifications] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:24:17-82
+37-->[:flutter_local_notifications] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:24:25-79
+38            </intent-filter>
+39        </receiver>
+40
+41        <service
+42            android:name="dev.fluttercommunity.plus.androidalarmmanager.AlarmService"
+43            android:exported="false"
+44            android:permission="android.permission.BIND_JOB_SERVICE" />
 45
-46                <category android:name="android.intent.category.LAUNCHER" />
-47            </intent-filter>
-48        </activity>
-49        <!--
-50             Don't delete the meta-data below.
-51             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
-52        -->
-53        <meta-data
-54            android:name="flutterEmbedding"
-55            android:value="2" />
-56
-57        <activity
-57-->[:url_launcher_android] /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:8:9-11:74
-58            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
-58-->[:url_launcher_android] /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:9:13-74
-59            android:exported="false"
-59-->[:url_launcher_android] /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:10:13-37
-60            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-60-->[:url_launcher_android] /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-71
-61
-62        <uses-library
-62-->[androidx.window:window:1.0.0-beta04] /Users/lukeyeo/.gradle/caches/transforms-3/518111e08d93c16bc666f5016f25f03d/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
-63            android:name="androidx.window.extensions"
-63-->[androidx.window:window:1.0.0-beta04] /Users/lukeyeo/.gradle/caches/transforms-3/518111e08d93c16bc666f5016f25f03d/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
-64            android:required="false" />
-64-->[androidx.window:window:1.0.0-beta04] /Users/lukeyeo/.gradle/caches/transforms-3/518111e08d93c16bc666f5016f25f03d/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
-65        <uses-library
-65-->[androidx.window:window:1.0.0-beta04] /Users/lukeyeo/.gradle/caches/transforms-3/518111e08d93c16bc666f5016f25f03d/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
-66            android:name="androidx.window.sidecar"
-66-->[androidx.window:window:1.0.0-beta04] /Users/lukeyeo/.gradle/caches/transforms-3/518111e08d93c16bc666f5016f25f03d/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
-67            android:required="false" />
-67-->[androidx.window:window:1.0.0-beta04] /Users/lukeyeo/.gradle/caches/transforms-3/518111e08d93c16bc666f5016f25f03d/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
-68    </application>
-69
-70</manifest>
+46        <receiver
+47            android:name="dev.fluttercommunity.plus.androidalarmmanager.AlarmBroadcastReceiver"
+48            android:exported="false" />
+49        <receiver
+50            android:name="dev.fluttercommunity.plus.androidalarmmanager.RebootBroadcastReceiver"
+51            android:enabled="false"
+52            android:exported="false" >
+53            <intent-filter>
+54                <action android:name="android.intent.action.BOOT_COMPLETED" />
+54-->[:flutter_local_notifications] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:21:17-79
+54-->[:flutter_local_notifications] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:21:25-76
+55            </intent-filter>
+56        </receiver>
+57
+58        <activity
+59            android:name="com.example.sst_announcer.MainActivity"
+60            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+61            android:exported="true"
+62            android:hardwareAccelerated="true"
+63            android:launchMode="singleTop"
+64            android:theme="@style/LaunchTheme"
+65            android:windowSoftInputMode="adjustResize" >
+66
+67            <!--
+68                 Specifies an Android theme to apply to this Activity as soon as
+69                 the Android process has started. This theme is visible to the user
+70                 while the Flutter UI initializes. After that, this theme continues
+71                 to determine the Window background behind the Flutter UI.
+72            -->
+73            <meta-data
+74                android:name="io.flutter.embedding.android.NormalTheme"
+75                android:resource="@style/NormalTheme" />
+76
+77            <intent-filter>
+78                <action android:name="android.intent.action.MAIN" />
+79
+80                <category android:name="android.intent.category.LAUNCHER" />
+81            </intent-filter>
+82        </activity>
+83        <!--
+84             Don't delete the meta-data below.
+85             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+86        -->
+87        <meta-data
+88            android:name="flutterEmbedding"
+89            android:value="2" />
+90
+91        <receiver
+91-->[:flutter_local_notifications] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:14:9-16:40
+92            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver"
+92-->[:flutter_local_notifications] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:15:13-97
+93            android:exported="false" />
+93-->[:flutter_local_notifications] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:16:13-37
+94
+95        <activity
+95-->[:url_launcher_android] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:8:9-11:74
+96            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
+96-->[:url_launcher_android] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:9:13-74
+97            android:exported="false"
+97-->[:url_launcher_android] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:10:13-37
+98            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+98-->[:url_launcher_android] /Users/tedgoh/Downloads/development/flutterfolder/SST-Announcer-flutter/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-71
+99
+100        <uses-library
+100-->[androidx.window:window:1.0.0] /Users/tedgoh/.gradle/caches/transforms-3/ff8b95578e5b7d746d7ee831a4c3e5a4/transformed/jetified-window-1.0.0/AndroidManifest.xml:25:9-27:40
+101            android:name="androidx.window.extensions"
+101-->[androidx.window:window:1.0.0] /Users/tedgoh/.gradle/caches/transforms-3/ff8b95578e5b7d746d7ee831a4c3e5a4/transformed/jetified-window-1.0.0/AndroidManifest.xml:26:13-54
+102            android:required="false" />
+102-->[androidx.window:window:1.0.0] /Users/tedgoh/.gradle/caches/transforms-3/ff8b95578e5b7d746d7ee831a4c3e5a4/transformed/jetified-window-1.0.0/AndroidManifest.xml:27:13-37
+103        <uses-library
+103-->[androidx.window:window:1.0.0] /Users/tedgoh/.gradle/caches/transforms-3/ff8b95578e5b7d746d7ee831a4c3e5a4/transformed/jetified-window-1.0.0/AndroidManifest.xml:28:9-30:40
+104            android:name="androidx.window.sidecar"
+104-->[androidx.window:window:1.0.0] /Users/tedgoh/.gradle/caches/transforms-3/ff8b95578e5b7d746d7ee831a4c3e5a4/transformed/jetified-window-1.0.0/AndroidManifest.xml:29:13-51
+105            android:required="false" />
+105-->[androidx.window:window:1.0.0] /Users/tedgoh/.gradle/caches/transforms-3/ff8b95578e5b7d746d7ee831a4c3e5a4/transformed/jetified-window-1.0.0/AndroidManifest.xml:30:13-37
+106    </application>
+107
+108</manifest>

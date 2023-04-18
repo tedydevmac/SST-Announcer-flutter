@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sst_announcer/main.dart';
 import 'package:http/http.dart' as http;
 import 'package:xml/xml.dart' as xml;
-import '../poststream.dart';
+import '../services/poststream.dart';
 import 'package:skeletons/skeletons.dart';
 
 class AddPostBotttomSheet extends StatefulWidget {
