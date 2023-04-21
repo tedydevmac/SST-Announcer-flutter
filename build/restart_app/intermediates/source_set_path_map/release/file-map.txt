@@ -1,0 +1,12 @@
+gabrimatic.info.restart.restart_app-jetified-window-java-1.0.0-beta04-0 /Users/lukeyeo/.gradle/caches/transforms-3/2bd4bcf7edde35867619ac3bea578f90/transformed/jetified-window-java-1.0.0-beta04/res
+gabrimatic.info.restart.restart_app-jetified-window-1.0.0-beta04-1 /Users/lukeyeo/.gradle/caches/transforms-3/518111e08d93c16bc666f5016f25f03d/transformed/jetified-window-1.0.0-beta04/res
+gabrimatic.info.restart.restart_app-core-1.6.0-2 /Users/lukeyeo/.gradle/caches/transforms-3/9ae990dd2d4353842bc15594b2d8f0d6/transformed/core-1.6.0/res
+gabrimatic.info.restart.restart_app-jetified-annotation-experimental-1.1.0-3 /Users/lukeyeo/.gradle/caches/transforms-3/cdf1e8c032ad5a7eddaa93f9b56918b8/transformed/jetified-annotation-experimental-1.1.0/res
+gabrimatic.info.restart.restart_app-main-4 /Users/lukeyeo/.pub-cache/hosted/pub.flutter-io.cn/restart_app-1.1.2/android/src/main/res
+gabrimatic.info.restart.restart_app-release-5 /Users/lukeyeo/.pub-cache/hosted/pub.flutter-io.cn/restart_app-1.1.2/android/src/release/res
+gabrimatic.info.restart.restart_app-pngs-6 /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/restart_app/generated/res/pngs/release
+gabrimatic.info.restart.restart_app-resValues-7 /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/restart_app/generated/res/resValues/release
+gabrimatic.info.restart.restart_app-rs-8 /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/restart_app/generated/res/rs/release
+gabrimatic.info.restart.restart_app-mergeReleaseResources-9 /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/restart_app/intermediates/incremental/release/mergeReleaseResources/merged.dir
+gabrimatic.info.restart.restart_app-mergeReleaseResources-10 /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/restart_app/intermediates/incremental/release/mergeReleaseResources/stripped.dir
+gabrimatic.info.restart.restart_app-merged_res-11 /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/restart_app/intermediates/merged_res/release
