@@ -459,13 +459,13 @@
     },
     {
       "name": "sqflite",
-      "rootUri": "file:///Users/tedgoh/.pub-cache/hosted/pub.dev/sqflite-2.2.6",
+      "rootUri": "file:///Users/tedgoh/.pub-cache/hosted/pub.dev/sqflite-2.2.7",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
     {
       "name": "sqflite_common",
-      "rootUri": "file:///Users/tedgoh/.pub-cache/hosted/pub.dev/sqflite_common-2.4.3",
+      "rootUri": "file:///Users/tedgoh/.pub-cache/hosted/pub.dev/sqflite_common-2.4.4",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
@@ -489,7 +489,7 @@
     },
     {
       "name": "synchronized",
-      "rootUri": "file:///Users/tedgoh/.pub-cache/hosted/pub.dev/synchronized-3.0.1",
+      "rootUri": "file:///Users/tedgoh/.pub-cache/hosted/pub.dev/synchronized-3.1.0",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
@@ -698,7 +698,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-04-18T06:13:00.948626Z",
+  "generated": "2023-04-22T02:55:38.930940Z",
   "generator": "pub",
   "generatorVersion": "2.19.4"
 }
