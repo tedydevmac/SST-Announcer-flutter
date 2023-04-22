@@ -62,7 +62,7 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
     final originalString = widget.bodyText;
     final parsedString = originalString.replaceAllMapped(
         RegExp(
-            "(font-size: [^;]+;|color: #[0-9a-fA-F]{6};|background-color: \\w+;)"),
+            "(font-size: [^;]+;|s/rgba\([^)]*\)//g:|color: #[0-9a-fA-F]{6};|background-color: \\w+;)"),
         (match) {
       return '"${match.group(0)}"';
     });
