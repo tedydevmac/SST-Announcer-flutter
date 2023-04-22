@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:sst_announcer/main.dart';
+import 'package:sst_announcer/services/notificationservice.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:intl/intl.dart';
@@ -22,13 +22,13 @@ class AnnouncementPage extends StatefulWidget {
 String selectedCat = "";
 
 class _AnnouncementPageState extends State<AnnouncementPage> {
+  final NotificationService service = NotificationService();
   void choiceDropdownCallback(String? selectedValue) {
     if (selectedValue != null) {
       selectedCat = selectedValue;
     }
   }
 
-  final titleController = TextEditingController();
   final bodyController = TextEditingController();
   bool categoried = false;
   DateTime? dueDate;
@@ -48,6 +48,7 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
 
   @override
   Widget build(BuildContext context) {
+    final titleController = TextEditingController(text: widget.title);
     Color backgroundColor = Colors.white;
     bool isDarkMode =
         (MediaQuery.of(context).platformBrightness == Brightness.dark);
@@ -84,9 +85,9 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
                         children: [
                           TextField(
                             controller: titleController,
-                            decoration: InputDecoration(
-                                hintText: "Notification title",
-                                labelText: widget.title),
+                            decoration: const InputDecoration(
+                              hintText: "Notification title",
+                            ),
                           ),
                           TextField(
                             controller: bodyController,
@@ -133,7 +134,6 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
                                     dueDate == null) {
                                   return;
                                 } else {
-                                  print(dueDate);
                                   service.scheduleNotification(
                                       title: titleController.text,
                                       body: bodyController.text,
