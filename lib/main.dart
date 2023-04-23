@@ -48,7 +48,7 @@ Future<bool> checkForNewBlogspotPosts(
   if (response.statusCode == 200) {
     final document = xml.XmlDocument.parse(response.body);
     final latestPostPubDate =
-        document.findElements('item').last.getElement('pubDate')!.text;
+        document.getElement("feed")!.getElement("updated")!.text;
     final latestPostPubDateTime = DateTime.parse(latestPostPubDate);
 
     // Check if the latest post is newer than the last check time
