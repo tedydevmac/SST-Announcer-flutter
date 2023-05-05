@@ -62,8 +62,9 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
     final originalString = widget.bodyText;
     final parsedString = originalString.replaceAllMapped(
         RegExp(
-            "(font-size: [^;]+;|s/rgba\([^)]*\)//g:|color: #[0-9a-fA-F]{6};|background-color: \\w+;)"),
-        (match) {
+            r'((?:font-size|color|background-color):\s*(?:rgba\([^)]*\)|[^;]*);?)',
+            multiLine: true,
+            caseSensitive: false), (match) {
       return '"${match.group(0)}"';
     });
     final formattedDate =

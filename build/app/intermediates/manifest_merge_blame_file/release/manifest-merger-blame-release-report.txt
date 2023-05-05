@@ -1,0 +1,183 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.sst_announcer"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="19"
+8-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="33" />
+9-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:3:5-66
+11-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:3:22-64
+12    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+12-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:4:5-81
+12-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:4:22-78
+13    <uses-permission android:name="android.permission.WAKE_LOCK" />
+13-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:5:5-68
+13-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:5:22-65
+14    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+14-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:6:5-78
+14-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:6:22-76
+15    <uses-permission android:name="android.permission.VIBRATE" />
+15-->[:flutter_local_notifications] /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:8:5-66
+15-->[:flutter_local_notifications] /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:8:22-63
+16    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+16-->[:flutter_local_notifications] /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:9:5-81
+16-->[:flutter_local_notifications] /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:9:22-78
+17    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+17-->[:flutter_local_notifications] /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:11:5-77
+17-->[:flutter_local_notifications] /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:11:22-74
+18    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+18-->[com.google.android.exoplayer:exoplayer-core:2.18.5] /Users/lukeyeo/.gradle/caches/transforms-3/42c9cb444e70aed5913074278d9d4671/transformed/jetified-exoplayer-core-2.18.5/AndroidManifest.xml:24:5-79
+18-->[com.google.android.exoplayer:exoplayer-core:2.18.5] /Users/lukeyeo/.gradle/caches/transforms-3/42c9cb444e70aed5913074278d9d4671/transformed/jetified-exoplayer-core-2.18.5/AndroidManifest.xml:24:22-76
+19
+20    <application
+21        android:name="io.flutter.app.FlutterMultiDexApplication"
+21-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:9:9-42
+22        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+22-->[androidx.core:core:1.7.0] /Users/lukeyeo/.gradle/caches/transforms-3/92b378fed2c7ad5d0dc31b9e1ebba952/transformed/core-1.7.0/AndroidManifest.xml:24:18-86
+23        android:icon="@mipmap/ic_launcherplaystore"
+23-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:10:9-52
+24        android:label="sst_announcer" >
+24-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:8:9-38
+25        <receiver
+25-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:11:9-14:20
+26            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver"
+26-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:12:13-101
+27            android:exported="false" >
+27-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:13:13-37
+28            <intent-filter>
+28-->[:flutter_local_notifications] /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:20:13-25:29
+29                <action android:name="android.intent.action.BOOT_COMPLETED" />
+29-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:27:17-79
+29-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:27:25-76
+30                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+30-->[:flutter_local_notifications] /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:22:17-84
+30-->[:flutter_local_notifications] /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:22:25-81
+31                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+31-->[:flutter_local_notifications] /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:23:17-82
+31-->[:flutter_local_notifications] /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:23:25-79
+32                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+32-->[:flutter_local_notifications] /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:24:17-82
+32-->[:flutter_local_notifications] /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:24:25-79
+33            </intent-filter>
+34        </receiver>
+35
+36        <service
+36-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:15:9-18:39
+37            android:name="dev.fluttercommunity.plus.androidalarmmanager.AlarmService"
+37-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:16:13-86
+38            android:exported="false"
+38-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:18:13-37
+39            android:permission="android.permission.BIND_JOB_SERVICE" />
+39-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:17:13-69
+40
+41        <receiver
+41-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:19:9-21:39
+42            android:name="dev.fluttercommunity.plus.androidalarmmanager.AlarmBroadcastReceiver"
+42-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:20:13-96
+43            android:exported="false" />
+43-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:21:13-37
+44        <receiver
+44-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:22:9-29:20
+45            android:name="dev.fluttercommunity.plus.androidalarmmanager.RebootBroadcastReceiver"
+45-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:23:13-97
+46            android:enabled="false"
+46-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:24:13-36
+47            android:exported="false" >
+47-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:25:13-37
+48            <intent-filter>
+48-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:26:13-28:29
+49                <action android:name="android.intent.action.BOOT_COMPLETED" />
+49-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:27:17-79
+49-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:27:25-76
+50            </intent-filter>
+51        </receiver>
+52
+53        <activity
+53-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:30:9-50:20
+54            android:name="com.example.sst_announcer.MainActivity"
+54-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:31:13-41
+55            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+55-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:35:13-163
+56            android:exported="true"
+56-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:32:13-36
+57            android:hardwareAccelerated="true"
+57-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:36:13-47
+58            android:launchMode="singleTop"
+58-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:33:13-43
+59            android:theme="@style/LaunchTheme"
+59-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:34:13-47
+60            android:windowSoftInputMode="adjustResize" >
+60-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:37:13-55
+61
+62            <!--
+63                 Specifies an Android theme to apply to this Activity as soon as
+64                 the Android process has started. This theme is visible to the user
+65                 while the Flutter UI initializes. After that, this theme continues
+66                 to determine the Window background behind the Flutter UI.
+67            -->
+68            <meta-data
+68-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:42:13-45:17
+69                android:name="io.flutter.embedding.android.NormalTheme"
+69-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:43:15-70
+70                android:resource="@style/NormalTheme" />
+70-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:44:15-52
+71
+72            <intent-filter>
+72-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:46:13-49:29
+73                <action android:name="android.intent.action.MAIN" />
+73-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:47:17-68
+73-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:47:25-66
+74
+75                <category android:name="android.intent.category.LAUNCHER" />
+75-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:48:17-76
+75-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:48:27-74
+76            </intent-filter>
+77        </activity>
+78        <!--
+79             Don't delete the meta-data below.
+80             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+81        -->
+82        <meta-data
+82-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:53:9-55:33
+83            android:name="flutterEmbedding"
+83-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:54:13-44
+84            android:value="2" />
+84-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:55:13-30
+85
+86        <receiver
+86-->[:flutter_local_notifications] /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:14:9-16:40
+87            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver"
+87-->[:flutter_local_notifications] /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:15:13-97
+88            android:exported="false" />
+88-->[:flutter_local_notifications] /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:16:13-37
+89
+90        <activity
+90-->[:url_launcher_android] /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/url_launcher_android/intermediates/merged_manifest/release/AndroidManifest.xml:8:9-11:74
+91            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
+91-->[:url_launcher_android] /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/url_launcher_android/intermediates/merged_manifest/release/AndroidManifest.xml:9:13-74
+92            android:exported="false"
+92-->[:url_launcher_android] /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/url_launcher_android/intermediates/merged_manifest/release/AndroidManifest.xml:10:13-37
+93            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+93-->[:url_launcher_android] /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/url_launcher_android/intermediates/merged_manifest/release/AndroidManifest.xml:11:13-71
+94
+95        <uses-library
+95-->[androidx.window:window:1.0.0] /Users/lukeyeo/.gradle/caches/transforms-3/ff8b95578e5b7d746d7ee831a4c3e5a4/transformed/jetified-window-1.0.0/AndroidManifest.xml:25:9-27:40
+96            android:name="androidx.window.extensions"
+96-->[androidx.window:window:1.0.0] /Users/lukeyeo/.gradle/caches/transforms-3/ff8b95578e5b7d746d7ee831a4c3e5a4/transformed/jetified-window-1.0.0/AndroidManifest.xml:26:13-54
+97            android:required="false" />
+97-->[androidx.window:window:1.0.0] /Users/lukeyeo/.gradle/caches/transforms-3/ff8b95578e5b7d746d7ee831a4c3e5a4/transformed/jetified-window-1.0.0/AndroidManifest.xml:27:13-37
+98        <uses-library
+98-->[androidx.window:window:1.0.0] /Users/lukeyeo/.gradle/caches/transforms-3/ff8b95578e5b7d746d7ee831a4c3e5a4/transformed/jetified-window-1.0.0/AndroidManifest.xml:28:9-30:40
+99            android:name="androidx.window.sidecar"
+99-->[androidx.window:window:1.0.0] /Users/lukeyeo/.gradle/caches/transforms-3/ff8b95578e5b7d746d7ee831a4c3e5a4/transformed/jetified-window-1.0.0/AndroidManifest.xml:29:13-51
+100            android:required="false" />
+100-->[androidx.window:window:1.0.0] /Users/lukeyeo/.gradle/caches/transforms-3/ff8b95578e5b7d746d7ee831a4c3e5a4/transformed/jetified-window-1.0.0/AndroidManifest.xml:30:13-37
+101    </application>
+102
+103</manifest>
