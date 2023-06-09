@@ -208,6 +208,15 @@ class _FeedPageState extends State<FeedPage> {
                         ),
                       );
                     } else {
+                      final post = _posts[index - pinnedTitles!.length];
+                      final title = post.findElements('title').first.text;
+                      final content = post.findElements('content').first.text;
+                      final author = post
+                          .findElements('author')
+                          .first
+                          .findElements("name")
+                          .first
+                          .text;
                       return Dismissible(
                         direction: DismissDirection.startToEnd,
                         confirmDismiss: (direction) async {
