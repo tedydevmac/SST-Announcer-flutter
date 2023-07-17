@@ -131,7 +131,7 @@
 -keep class androidx.core.app.CoreComponentFactory { <init>(); }
 -keep class com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver { <init>(); }
 -keep class com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver { <init>(); }
--keep class com.example.sst_announcer.MainActivity { <init>(); }
+-keep class com.sst.announcements.MainActivity { <init>(); }
 -keep class dev.fluttercommunity.plus.androidalarmmanager.AlarmBroadcastReceiver { <init>(); }
 -keep class dev.fluttercommunity.plus.androidalarmmanager.AlarmService { <init>(); }
 -keep class dev.fluttercommunity.plus.androidalarmmanager.RebootBroadcastReceiver { <init>(); }

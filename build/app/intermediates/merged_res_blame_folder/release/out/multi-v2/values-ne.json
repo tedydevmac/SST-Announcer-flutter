@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.sst_announcer.app-mergeReleaseResources-19:/values-ne/values-ne.xml",
+            "outputFile": "com.sst.announcements.app-mergeReleaseResources-19:/values-ne/values-ne.xml",
             "map": [
                 {
                     "source": "/Users/lukeyeo/.gradle/caches/transforms-3/42c9cb444e70aed5913074278d9d4671/transformed/jetified-exoplayer-core-2.18.5/res/values-ne/values-ne.xml",

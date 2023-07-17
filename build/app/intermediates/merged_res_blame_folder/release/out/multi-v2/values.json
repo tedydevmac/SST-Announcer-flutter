@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.sst_announcer.app-mergeReleaseResources-19:/values/values.xml",
+            "outputFile": "com.sst.announcements.app-mergeReleaseResources-19:/values/values.xml",
             "map": [
                 {
                     "source": "/Users/lukeyeo/.gradle/caches/transforms-3/d527349b99caec46f6a37ce2d52a171e/transformed/lifecycle-runtime-2.3.1/res/values/values.xml",

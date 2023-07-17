@@ -79,7 +79,7 @@ INJECTED from /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/
 INJECTED from /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:1:1-57:12
 INJECTED from /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:1:1-57:12
 	package
-		ADDED from /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:2:5-40
+		ADDED from /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:2:5-36
 		INJECTED from /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml
 	android:versionName
@@ -258,7 +258,7 @@ action#android.intent.action.BOOT_COMPLETED
 ADDED from /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:27:17-79
 	android:name
 		ADDED from /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:27:25-76
-activity#com.example.sst_announcer.MainActivity
+activity#com.sst.announcements.MainActivity
 ADDED from /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:30:9-50:20
 	android:launchMode
 		ADDED from /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:33:13-43

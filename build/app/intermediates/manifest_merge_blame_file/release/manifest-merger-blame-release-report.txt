@@ -1,8 +1,8 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-3    package="com.example.sst_announcer"
-4    android:versionCode="1"
-5    android:versionName="1.0.0" >
+3    package="com.sst.anouncements"
+4    android:versionCode="29"
+5    android:versionName="5.0.0" >
 6
 7    <uses-sdk
 8        android:minSdkVersion="19"
@@ -100,7 +100,7 @@
 52
 53        <activity
 53-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:30:9-50:20
-54            android:name="com.example.sst_announcer.MainActivity"
+54            android:name="com.sst.announcements.MainActivity"
 54-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:31:13-41
 55            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
 55-->/Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/android/app/src/main/AndroidManifest.xml:35:13-163

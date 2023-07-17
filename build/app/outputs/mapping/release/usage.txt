@@ -7147,24 +7147,6 @@ com.dexterous.flutterlocalnotifications.R$string
 com.dexterous.flutterlocalnotifications.R$style
 com.dexterous.flutterlocalnotifications.R$styleable
 com.dexterous.flutterlocalnotifications.R
-com.example.sst_announcer.BuildConfig
-com.example.sst_announcer.R$anim
-com.example.sst_announcer.R$animator
-com.example.sst_announcer.R$attr
-com.example.sst_announcer.R$bool
-com.example.sst_announcer.R$color
-com.example.sst_announcer.R$dimen
-com.example.sst_announcer.R$drawable
-com.example.sst_announcer.R$id
-com.example.sst_announcer.R$integer
-com.example.sst_announcer.R$interpolator
-com.example.sst_announcer.R$layout
-com.example.sst_announcer.R$menu
-com.example.sst_announcer.R$mipmap
-com.example.sst_announcer.R$string
-com.example.sst_announcer.R$style
-com.example.sst_announcer.R$styleable
-com.example.sst_announcer.R
 com.google.android.exoplayer2.AudioFocusManager$PlayerCommand
 com.google.android.exoplayer2.AudioFocusManager:
     private static final int AUDIOFOCUS_GAIN
@@ -15545,6 +15527,24 @@ com.jakewharton.threetenabp.AndroidThreeTen:
     private void <init>()
     public static void init(android.app.Application)
 com.jakewharton.threetenabp.R
+com.sst.announcements.BuildConfig
+com.sst.announcements.R$anim
+com.sst.announcements.R$animator
+com.sst.announcements.R$attr
+com.sst.announcements.R$bool
+com.sst.announcements.R$color
+com.sst.announcements.R$dimen
+com.sst.announcements.R$drawable
+com.sst.announcements.R$id
+com.sst.announcements.R$integer
+com.sst.announcements.R$interpolator
+com.sst.announcements.R$layout
+com.sst.announcements.R$menu
+com.sst.announcements.R$mipmap
+com.sst.announcements.R$string
+com.sst.announcements.R$style
+com.sst.announcements.R$styleable
+com.sst.announcements.R
 com.tekartik.sqflite.BuildConfig
 com.tekartik.sqflite.Constant:
     static final java.lang.String CMD_GET

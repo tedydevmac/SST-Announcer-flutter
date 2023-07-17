@@ -1,4 +1,4 @@
-package com.example.sst_announcer
+package com.sst.announcements
 
 import io.flutter.embedding.android.FlutterActivity
 
