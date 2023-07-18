@@ -8,6 +8,8 @@ import 'package:xml/xml.dart' as xml;
 import 'package:intl/intl.dart';
 
 class BlogPage extends StatefulWidget {
+  const BlogPage({super.key});
+
   @override
   _BlogPageState createState() => _BlogPageState();
 }

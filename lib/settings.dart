@@ -54,39 +54,40 @@ class _SettingsScreenState extends State<SettingsScreen> {
     print(cacheSize);
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Settings"),
+        title: const Text("Settings"),
       ),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           child: ListView(
             shrinkWrap: true,
             children: [
               Text(
-                "Cache size: ${cacheSize} bytes",
-                style: TextStyle(fontSize: 18),
+                "Cache size: $cacheSize bytes",
+                style: const TextStyle(fontSize: 18),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Divider(
+              const Divider(
                 height: 1,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               ExpansionTile(
-                title: Text("Show full cache string"),
+                title: const Text("Show full cache string"),
                 children: [
                   SingleChildScrollView(
                     child: Text(posts.toString()),
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               ElevatedButton(
@@ -96,7 +97,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   print(cacheSize);
                   initState();
                 },
-                child: Text("Clear cache"),
+                child: const Text("Clear cache"),
               )
             ],
           ),

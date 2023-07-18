@@ -43,6 +43,9 @@
 -keep class j$.util.Collection$-EL {
     j$.util.stream.Stream stream(java.util.Collection);
 }
+-keep class j$.util.DesugarArrays {
+    j$.util.stream.IntStream stream(int[]);
+}
 -keep class j$.util.DesugarCollections {
     java.util.Map synchronizedMap(java.util.Map);
 }
@@ -97,12 +100,22 @@
     j$.util.function.Function convert(java.util.function.Function);
 }
 -keep class j$.util.function.Function
+-keep class j$.util.function.IntPredicate$-CC {
+    j$.util.function.IntPredicate $default$and(j$.util.function.IntPredicate, j$.util.function.IntPredicate);
+    j$.util.function.IntPredicate $default$negate(j$.util.function.IntPredicate);
+    j$.util.function.IntPredicate $default$or(j$.util.function.IntPredicate, j$.util.function.IntPredicate);
+}
+-keep class j$.util.function.IntPredicate { *; }
 -keep class j$.util.function.Predicate$-CC {
     j$.util.function.Predicate $default$and(j$.util.function.Predicate, j$.util.function.Predicate);
     j$.util.function.Predicate $default$negate(j$.util.function.Predicate);
     j$.util.function.Predicate $default$or(j$.util.function.Predicate, j$.util.function.Predicate);
 }
 -keep class j$.util.function.Predicate { *; }
+-keep class j$.util.stream.IntStream {
+    long count();
+    j$.util.stream.IntStream filter(j$.util.function.IntPredicate);
+}
 -keep class j$.util.stream.Stream {
     boolean anyMatch(j$.util.function.Predicate);
 }

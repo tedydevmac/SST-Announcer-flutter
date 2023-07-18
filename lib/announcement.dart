@@ -156,7 +156,7 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
         ],
         title: Row(
           mainAxisAlignment: MainAxisAlignment.start,
-          children: const [
+          children: [
             Text("Announcement"),
           ],
         ),

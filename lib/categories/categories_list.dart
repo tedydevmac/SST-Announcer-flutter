@@ -6,6 +6,8 @@ import 'package:xml/xml.dart' as xml;
 import 'package:intl/intl.dart';
 
 class CategoryListPage extends StatefulWidget {
+  const CategoryListPage({super.key});
+
   @override
   _CategoryListPageState createState() => _CategoryListPageState();
 }

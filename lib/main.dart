@@ -132,7 +132,7 @@ class MyApp extends StatelessWidget {
       title: 'SST Announcer',
       theme: lightTheme,
       darkTheme: darkTheme,
-      home: HomePage(title: 'All announcements')
+      home: const HomePage(title: 'All announcements')
           .animate()
           .shimmer(delay: 10.ms, duration: 450.ms),
       debugShowCheckedModeBanner: false,
@@ -143,7 +143,7 @@ class MyApp extends StatelessWidget {
 List<String> customCats = [];
 
 class HomePage extends StatefulWidget {
-  HomePage({super.key, required this.title});
+  const HomePage({super.key, required this.title});
   final String title;
   @override
   State<HomePage> createState() => _HomePageState();
@@ -217,8 +217,8 @@ class _HomePageState extends State<HomePage> {
                       style:
                           TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                     ).animate().fade(duration: 225.ms).scale(),
-                    children: [
-                      const SizedBox(
+                    children: const [
+                      SizedBox(
                         height: 10,
                       ),
                       CategoryListPage(),
@@ -353,7 +353,7 @@ class _HomePageState extends State<HomePage> {
                               child: Center(
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
-                                  children: const [
+                                  children: [
                                     Icon(Icons.add),
                                     SizedBox(
                                       width: 10,
@@ -411,7 +411,7 @@ class _HomePageState extends State<HomePage> {
               navigator.push(
                 CupertinoPageRoute(
                   builder: (context) {
-                    return BlogPage();
+                    return const BlogPage();
                   },
                 ),
               );
@@ -425,7 +425,7 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const SizedBox(
+              SizedBox(
                 height: 10,
               ),
               Expanded(

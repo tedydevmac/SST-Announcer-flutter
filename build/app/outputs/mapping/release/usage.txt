@@ -786,6 +786,8 @@ androidx.annotation.PluralsRes
 androidx.annotation.Px
 androidx.annotation.RawRes
 androidx.annotation.RequiresApi
+androidx.annotation.RequiresExtension$Container
+androidx.annotation.RequiresExtension
 androidx.annotation.RequiresFeature
 androidx.annotation.RequiresOptIn$Level
 androidx.annotation.RequiresOptIn
@@ -4163,7 +4165,6 @@ androidx.core.math.MathUtils:
     public static int addExact(int,int)
     public static long addExact(long,long)
     public static double clamp(double,double,double)
-    public static float clamp(float,float,float)
     public static long clamp(long,long,long)
     public static int decrementExact(int)
     public static long decrementExact(long)
@@ -5964,7 +5965,6 @@ androidx.lifecycle.ComputableLiveData$1
 androidx.lifecycle.ComputableLiveData$2
 androidx.lifecycle.ComputableLiveData$3
 androidx.lifecycle.ComputableLiveData
-androidx.lifecycle.DefaultLifecycleObserver
 androidx.lifecycle.GenericLifecycleObserver
 androidx.lifecycle.HasDefaultViewModelProviderFactory
 androidx.lifecycle.Lifecycle$Event:
@@ -8440,6 +8440,7 @@ com.google.android.exoplayer2.Timeline:
     public final android.os.Bundle toBundle()
     public final android.os.Bundle toBundleWithOneWindowOnly(int)
 com.google.android.exoplayer2.Tracks$Group:
+    public com.google.android.exoplayer2.Tracks$Group copyWithId(java.lang.String)
     public com.google.android.exoplayer2.source.TrackGroup getMediaTrackGroup()
     public int getTrackSupport(int)
     public boolean isAdaptiveSupported()
@@ -9542,6 +9543,7 @@ com.google.android.exoplayer2.extractor.mp4.Atom:
     public static final int TYPE_twos
     public static final int TYPE_tx3g
     public static final int TYPE_udta
+    public static final int TYPE_udts
     public static final int TYPE_ulaw
     public static final int TYPE_uuid
     public static final int TYPE_vp08
@@ -16036,6 +16038,7 @@ io.flutter.embedding.engine.plugins.broadcastreceiver.BroadcastReceiverPluginBin
 io.flutter.embedding.engine.plugins.contentprovider.ContentProviderControlSurface
 io.flutter.embedding.engine.plugins.contentprovider.ContentProviderPluginBinding:
     public abstract android.content.ContentProvider getContentProvider()
+io.flutter.embedding.engine.plugins.lifecycle.FlutterLifecycleAdapter
 io.flutter.embedding.engine.plugins.service.ServiceAware$OnModeChangeListener
 io.flutter.embedding.engine.plugins.service.ServiceControlSurface
 io.flutter.embedding.engine.plugins.service.ServicePluginBinding:
@@ -16224,6 +16227,162 @@ io.flutter.plugin.platform.SingleViewPresentation$WindowManagerHandler:
 io.flutter.plugin.platform.VirtualDisplayController:
     public void dispose()
     void onFlutterViewDetached()
+io.flutter.plugins.camera.BuildConfig
+io.flutter.plugins.camera.Camera$HandlerFactory:
+    void <init>()
+io.flutter.plugins.camera.Camera$HandlerThreadFactory:
+    void <init>()
+io.flutter.plugins.camera.Camera:
+    private static final java.lang.String TAG
+    private android.view.Display getDefaultDisplay()
+io.flutter.plugins.camera.CameraCaptureCallback:
+    private static final java.lang.String TAG
+io.flutter.plugins.camera.CameraPermissions:
+    private static final java.lang.String AUDIO_ACCESS_DENIED
+    private static final java.lang.String AUDIO_ACCESS_DENIED_MESSAGE
+    private static final java.lang.String CAMERA_ACCESS_DENIED
+    private static final java.lang.String CAMERA_ACCESS_DENIED_MESSAGE
+    private static final java.lang.String CAMERA_PERMISSIONS_REQUEST_ONGOING
+    private static final java.lang.String CAMERA_PERMISSIONS_REQUEST_ONGOING_MESSAGE
+    private static final int CAMERA_REQUEST_ID
+io.flutter.plugins.camera.CameraPlugin:
+    private static final java.lang.String TAG
+    public static void registerWith(io.flutter.plugin.common.PluginRegistry$Registrar)
+io.flutter.plugins.camera.CameraProperties:
+    public abstract int getHardwareLevel()
+io.flutter.plugins.camera.CameraPropertiesImpl:
+    public int getHardwareLevel()
+io.flutter.plugins.camera.CameraRegionUtils$MeteringRectangleFactory:
+    void <init>()
+io.flutter.plugins.camera.CameraRegionUtils$SizeFactory:
+    void <init>()
+io.flutter.plugins.camera.CameraUtils:
+    private void <init>()
+io.flutter.plugins.camera.DartMessenger:
+    private void send(io.flutter.plugins.camera.DartMessenger$DeviceEventType)
+io.flutter.plugins.camera.DeviceInfo:
+    public void <init>()
+io.flutter.plugins.camera.ImageSaver$FileOutputStreamFactory:
+    void <init>()
+io.flutter.plugins.camera.R$attr
+io.flutter.plugins.camera.R$color
+io.flutter.plugins.camera.R$dimen
+io.flutter.plugins.camera.R$drawable
+io.flutter.plugins.camera.R$id
+io.flutter.plugins.camera.R$integer
+io.flutter.plugins.camera.R$layout
+io.flutter.plugins.camera.R$string
+io.flutter.plugins.camera.R$style
+io.flutter.plugins.camera.R$styleable
+io.flutter.plugins.camera.R
+io.flutter.plugins.camera.SdkCapabilityChecker:
+    public void <init>()
+io.flutter.plugins.camera.VideoRenderer:
+    private static final java.lang.String fragmentShaderCode
+    private static final java.lang.String vertexShaderCode
+io.flutter.plugins.camera.features.CameraFeature:
+    public abstract boolean checkIsSupported()
+    public abstract java.lang.String getDebugName()
+    public abstract java.lang.Object getValue()
+    public abstract void setValue(java.lang.Object)
+io.flutter.plugins.camera.features.CameraFeatures:
+    private static final java.lang.String AUTO_FOCUS
+    private static final java.lang.String EXPOSURE_LOCK
+    private static final java.lang.String EXPOSURE_OFFSET
+    private static final java.lang.String EXPOSURE_POINT
+    private static final java.lang.String FLASH
+    private static final java.lang.String FOCUS_POINT
+    private static final java.lang.String FPS_RANGE
+    private static final java.lang.String NOISE_REDUCTION
+    private static final java.lang.String REGION_BOUNDARIES
+    private static final java.lang.String RESOLUTION
+    private static final java.lang.String SENSOR_ORIENTATION
+    private static final java.lang.String ZOOM_LEVEL
+    public io.flutter.plugins.camera.features.fpsrange.FpsRangeFeature getFpsRange()
+    public io.flutter.plugins.camera.features.noisereduction.NoiseReductionFeature getNoiseReduction()
+io.flutter.plugins.camera.features.autofocus.AutoFocusFeature:
+    public java.lang.String getDebugName()
+    public synthetic bridge java.lang.Object getValue()
+    public synthetic bridge void setValue(java.lang.Object)
+io.flutter.plugins.camera.features.exposurelock.ExposureLockFeature:
+    public java.lang.String getDebugName()
+    public synthetic bridge java.lang.Object getValue()
+    public synthetic bridge void setValue(java.lang.Object)
+io.flutter.plugins.camera.features.exposureoffset.ExposureOffsetFeature:
+    public java.lang.String getDebugName()
+    public synthetic bridge java.lang.Object getValue()
+    public synthetic bridge void setValue(java.lang.Object)
+io.flutter.plugins.camera.features.exposurepoint.ExposurePointFeature:
+    public java.lang.String getDebugName()
+    public io.flutter.plugins.camera.features.Point getValue()
+    public synthetic bridge java.lang.Object getValue()
+    public synthetic bridge void setValue(java.lang.Object)
+io.flutter.plugins.camera.features.flash.FlashFeature:
+    public java.lang.String getDebugName()
+    public io.flutter.plugins.camera.features.flash.FlashMode getValue()
+    public synthetic bridge java.lang.Object getValue()
+    public synthetic bridge void setValue(java.lang.Object)
+io.flutter.plugins.camera.features.focuspoint.FocusPointFeature:
+    public java.lang.String getDebugName()
+    public io.flutter.plugins.camera.features.Point getValue()
+    public synthetic bridge java.lang.Object getValue()
+    public synthetic bridge void setValue(java.lang.Object)
+io.flutter.plugins.camera.features.fpsrange.FpsRangeFeature:
+    public java.lang.String getDebugName()
+    public android.util.Range getValue()
+    public synthetic bridge java.lang.Object getValue()
+    public void setValue(android.util.Range)
+    public synthetic bridge void setValue(java.lang.Object)
+io.flutter.plugins.camera.features.noisereduction.NoiseReductionFeature:
+    public java.lang.String getDebugName()
+    public io.flutter.plugins.camera.features.noisereduction.NoiseReductionMode getValue()
+    public synthetic bridge java.lang.Object getValue()
+    public void setValue(io.flutter.plugins.camera.features.noisereduction.NoiseReductionMode)
+    public synthetic bridge void setValue(java.lang.Object)
+io.flutter.plugins.camera.features.noisereduction.NoiseReductionMode:
+    public static io.flutter.plugins.camera.features.noisereduction.NoiseReductionMode getValueForString(java.lang.String)
+io.flutter.plugins.camera.features.resolution.ResolutionFeature:
+    public java.lang.String getDebugName()
+    public io.flutter.plugins.camera.features.resolution.ResolutionPreset getValue()
+    public synthetic bridge java.lang.Object getValue()
+    public void setValue(io.flutter.plugins.camera.features.resolution.ResolutionPreset)
+    public synthetic bridge void setValue(java.lang.Object)
+io.flutter.plugins.camera.features.sensororientation.DeviceOrientationManager:
+    io.flutter.embedding.engine.systemchannels.PlatformChannel$DeviceOrientation calculateSensorOrientation(int)
+    int getDeviceDefaultOrientation()
+io.flutter.plugins.camera.features.sensororientation.SensorOrientationFeature:
+    public boolean checkIsSupported()
+    public java.lang.String getDebugName()
+    public java.lang.Integer getValue()
+    public synthetic bridge java.lang.Object getValue()
+    public synthetic bridge void setValue(java.lang.Object)
+io.flutter.plugins.camera.features.zoomlevel.ZoomLevelFeature:
+    public java.lang.String getDebugName()
+    public java.lang.Float getValue()
+    public synthetic bridge java.lang.Object getValue()
+    public synthetic bridge void setValue(java.lang.Object)
+io.flutter.plugins.camera.features.zoomlevel.ZoomUtils:
+    void <init>()
+io.flutter.plugins.camera.media.ImageStreamReader:
+    public void <init>(android.media.ImageReader,int,io.flutter.plugins.camera.media.ImageStreamReaderUtils)
+io.flutter.plugins.camera.types.ExposureMode
+io.flutter.plugins.camera.types.FlashMode
+io.flutter.plugins.camera.types.FocusMode
+io.flutter.plugins.camera.types.ResolutionPreset
+io.flutter.plugins.flutter_plugin_android_lifecycle.BuildConfig
+io.flutter.plugins.flutter_plugin_android_lifecycle.FlutterAndroidLifecyclePlugin:
+    public static void registerWith(io.flutter.plugin.common.PluginRegistry$Registrar)
+io.flutter.plugins.flutter_plugin_android_lifecycle.R$attr
+io.flutter.plugins.flutter_plugin_android_lifecycle.R$color
+io.flutter.plugins.flutter_plugin_android_lifecycle.R$dimen
+io.flutter.plugins.flutter_plugin_android_lifecycle.R$drawable
+io.flutter.plugins.flutter_plugin_android_lifecycle.R$id
+io.flutter.plugins.flutter_plugin_android_lifecycle.R$integer
+io.flutter.plugins.flutter_plugin_android_lifecycle.R$layout
+io.flutter.plugins.flutter_plugin_android_lifecycle.R$string
+io.flutter.plugins.flutter_plugin_android_lifecycle.R$style
+io.flutter.plugins.flutter_plugin_android_lifecycle.R$styleable
+io.flutter.plugins.flutter_plugin_android_lifecycle.R
 io.flutter.plugins.pathprovider.BuildConfig
 io.flutter.plugins.pathprovider.Messages$FlutterError:
     public void <init>(java.lang.String,java.lang.String,java.lang.Object)
@@ -16268,8 +16427,9 @@ io.flutter.plugins.sharedpreferences.SharedPreferencesPlugin:
     private static final java.lang.String TAG
     public static void registerWith(io.flutter.plugin.common.PluginRegistry$Registrar)
 io.flutter.plugins.urllauncher.BuildConfig
-io.flutter.plugins.urllauncher.MethodCallHandlerImpl:
-    private static final java.lang.String TAG
+io.flutter.plugins.urllauncher.Messages$WebViewOptions$Builder
+io.flutter.plugins.urllauncher.Messages:
+    public void <init>()
 io.flutter.plugins.urllauncher.R$attr
 io.flutter.plugins.urllauncher.R$color
 io.flutter.plugins.urllauncher.R$dimen
@@ -16288,25 +16448,17 @@ io.flutter.plugins.urllauncher.UrlLauncherPlugin:
     public static void registerWith(io.flutter.plugin.common.PluginRegistry$Registrar)
 io.flutter.plugins.urllauncher.WebViewActivity:
     public static final java.lang.String ACTION_CLOSE
-    private static final java.lang.String ENABLE_DOM_EXTRA
-    private static final java.lang.String ENABLE_JS_EXTRA
-    private static final java.lang.String URL_EXTRA
+    static final java.lang.String ENABLE_DOM_EXTRA
+    static final java.lang.String ENABLE_JS_EXTRA
+    static final java.lang.String URL_EXTRA
 io.flutter.plugins.videoplayer.BuildConfig
 io.flutter.plugins.videoplayer.Messages$CreateMessage$Builder
-io.flutter.plugins.videoplayer.Messages$CreateMessage:
-    synthetic void <init>(io.flutter.plugins.videoplayer.Messages$1)
+io.flutter.plugins.videoplayer.Messages$FlutterError:
+    public void <init>(java.lang.String,java.lang.String,java.lang.Object)
 io.flutter.plugins.videoplayer.Messages$LoopingMessage$Builder
-io.flutter.plugins.videoplayer.Messages$LoopingMessage:
-    synthetic void <init>(io.flutter.plugins.videoplayer.Messages$1)
 io.flutter.plugins.videoplayer.Messages$MixWithOthersMessage$Builder
-io.flutter.plugins.videoplayer.Messages$MixWithOthersMessage:
-    synthetic void <init>(io.flutter.plugins.videoplayer.Messages$1)
 io.flutter.plugins.videoplayer.Messages$PlaybackSpeedMessage$Builder
-io.flutter.plugins.videoplayer.Messages$PlaybackSpeedMessage:
-    synthetic void <init>(io.flutter.plugins.videoplayer.Messages$1)
 io.flutter.plugins.videoplayer.Messages$VolumeMessage$Builder
-io.flutter.plugins.videoplayer.Messages$VolumeMessage:
-    synthetic void <init>(io.flutter.plugins.videoplayer.Messages$1)
 io.flutter.plugins.videoplayer.Messages:
     public void <init>()
 io.flutter.plugins.videoplayer.R$attr
@@ -16493,10 +16645,9 @@ kotlin.ExceptionsKt__ExceptionsKt:
     private static final void printStackTrace(java.lang.Throwable,java.io.PrintStream)
     private static final void printStackTrace(java.lang.Throwable,java.io.PrintWriter)
     public static final java.lang.String stackTraceToString(java.lang.Throwable)
-kotlin.Experimental$Level
-kotlin.Experimental
 kotlin.ExperimentalMultiplatform
 kotlin.ExperimentalStdlibApi
+kotlin.ExperimentalSubclassOptIn
 kotlin.ExperimentalUnsignedTypes
 kotlin.ExtensionFunctionType
 kotlin.HashCodeKt
@@ -16588,6 +16739,7 @@ kotlin.SinceKotlin
 kotlin.StandardKt
 kotlin.StandardKt__StandardKt
 kotlin.StandardKt__SynchronizedKt
+kotlin.SubclassOptInRequired
 kotlin.Suppress
 kotlin.SuspendKt
 kotlin.SynchronizedLazyImpl:
@@ -16630,7 +16782,6 @@ kotlin.UninitializedPropertyAccessException:
 kotlin.UnsafeLazyImpl
 kotlin.UnsafeVariance
 kotlin.UnsignedKt
-kotlin.UseExperimental
 kotlin.WasExperimental
 kotlin._Assertions
 kotlin.annotation.AnnotationRetention
@@ -18681,15 +18832,12 @@ kotlin.collections.ArraysKt___ArraysKt:
 kotlin.collections.ArraysUtilJVM:
     void <init>()
 kotlin.collections.BooleanIterator
-kotlin.collections.BrittleContainsOptimizationKt
 kotlin.collections.ByteIterator
 kotlin.collections.CharIterator
-kotlin.collections.CollectionSystemProperties
 kotlin.collections.CollectionsKt:
     private void <init>()
 kotlin.collections.CollectionsKt__CollectionsJVMKt:
     public void <init>()
-    public static final boolean brittleContainsOptimizationEnabled()
     public static final java.util.List build(java.util.List)
     private static final java.util.List buildListInternal(int,kotlin.jvm.functions.Function1)
     private static final java.util.List buildListInternal(kotlin.jvm.functions.Function1)
@@ -18763,6 +18911,7 @@ kotlin.collections.CollectionsKt__MutableCollectionsKt:
     public void <init>()
     public static final boolean addAll(java.util.Collection,kotlin.sequences.Sequence)
     public static final boolean addAll(java.util.Collection,java.lang.Object[])
+    public static final java.util.Collection convertToListIfNotCollection(java.lang.Iterable)
     private static final boolean filterInPlace$CollectionsKt__MutableCollectionsKt(java.lang.Iterable,kotlin.jvm.functions.Function1,boolean)
     private static final boolean filterInPlace$CollectionsKt__MutableCollectionsKt(java.util.List,kotlin.jvm.functions.Function1,boolean)
     private static final void minusAssign(java.util.Collection,java.lang.Iterable)
@@ -19330,26 +19479,21 @@ kotlin.collections.unsigned.UArraysKt___UArraysKt$withIndex$4
 kotlin.collections.unsigned.UArraysKt___UArraysKt
 kotlin.comparisons.ComparisonsKt:
     private void <init>()
-kotlin.comparisons.ComparisonsKt__ComparisonsKt$compareBy$1
 kotlin.comparisons.ComparisonsKt__ComparisonsKt$compareBy$2
 kotlin.comparisons.ComparisonsKt__ComparisonsKt$compareBy$3
 kotlin.comparisons.ComparisonsKt__ComparisonsKt$compareByDescending$1
 kotlin.comparisons.ComparisonsKt__ComparisonsKt$compareByDescending$2
-kotlin.comparisons.ComparisonsKt__ComparisonsKt$nullsFirst$1
-kotlin.comparisons.ComparisonsKt__ComparisonsKt$nullsLast$1
-kotlin.comparisons.ComparisonsKt__ComparisonsKt$then$1
 kotlin.comparisons.ComparisonsKt__ComparisonsKt$thenBy$1
 kotlin.comparisons.ComparisonsKt__ComparisonsKt$thenBy$2
 kotlin.comparisons.ComparisonsKt__ComparisonsKt$thenByDescending$1
 kotlin.comparisons.ComparisonsKt__ComparisonsKt$thenByDescending$2
 kotlin.comparisons.ComparisonsKt__ComparisonsKt$thenComparator$1
-kotlin.comparisons.ComparisonsKt__ComparisonsKt$thenDescending$1
 kotlin.comparisons.ComparisonsKt__ComparisonsKt:
     public void <init>()
-    public static final synthetic int access$compareValuesByImpl(java.lang.Object,java.lang.Object,kotlin.jvm.functions.Function1[])
     private static final java.util.Comparator compareBy(java.util.Comparator,kotlin.jvm.functions.Function1)
     private static final java.util.Comparator compareBy(kotlin.jvm.functions.Function1)
     public static final varargs java.util.Comparator compareBy(kotlin.jvm.functions.Function1[])
+    private static final int compareBy$lambda$0$ComparisonsKt__ComparisonsKt(kotlin.jvm.functions.Function1[],java.lang.Object,java.lang.Object)
     private static final java.util.Comparator compareByDescending(java.util.Comparator,kotlin.jvm.functions.Function1)
     private static final java.util.Comparator compareByDescending(kotlin.jvm.functions.Function1)
     private static final int compareValuesBy(java.lang.Object,java.lang.Object,java.util.Comparator,kotlin.jvm.functions.Function1)
@@ -19359,17 +19503,21 @@ kotlin.comparisons.ComparisonsKt__ComparisonsKt:
     public static final java.util.Comparator naturalOrder()
     private static final java.util.Comparator nullsFirst()
     public static final java.util.Comparator nullsFirst(java.util.Comparator)
+    private static final int nullsFirst$lambda$3$ComparisonsKt__ComparisonsKt(java.util.Comparator,java.lang.Object,java.lang.Object)
     private static final java.util.Comparator nullsLast()
     public static final java.util.Comparator nullsLast(java.util.Comparator)
+    private static final int nullsLast$lambda$4$ComparisonsKt__ComparisonsKt(java.util.Comparator,java.lang.Object,java.lang.Object)
     public static final java.util.Comparator reverseOrder()
     public static final java.util.Comparator reversed(java.util.Comparator)
     public static final java.util.Comparator then(java.util.Comparator,java.util.Comparator)
+    private static final int then$lambda$1$ComparisonsKt__ComparisonsKt(java.util.Comparator,java.util.Comparator,java.lang.Object,java.lang.Object)
     private static final java.util.Comparator thenBy(java.util.Comparator,java.util.Comparator,kotlin.jvm.functions.Function1)
     private static final java.util.Comparator thenBy(java.util.Comparator,kotlin.jvm.functions.Function1)
     private static final java.util.Comparator thenByDescending(java.util.Comparator,java.util.Comparator,kotlin.jvm.functions.Function1)
     private static final java.util.Comparator thenByDescending(java.util.Comparator,kotlin.jvm.functions.Function1)
     private static final java.util.Comparator thenComparator(java.util.Comparator,kotlin.jvm.functions.Function2)
     public static final java.util.Comparator thenDescending(java.util.Comparator,java.util.Comparator)
+    private static final int thenDescending$lambda$2$ComparisonsKt__ComparisonsKt(java.util.Comparator,java.util.Comparator,java.lang.Object,java.lang.Object)
 kotlin.comparisons.ComparisonsKt___ComparisonsJvmKt:
     public void <init>()
     private static final byte maxOf(byte,byte)
@@ -19432,6 +19580,7 @@ kotlin.concurrent.ThreadsKt$thread$thread$1
 kotlin.concurrent.ThreadsKt
 kotlin.concurrent.TimersKt$timerTask$1
 kotlin.concurrent.TimersKt
+kotlin.concurrent.VolatileKt
 kotlin.contracts.CallsInPlace
 kotlin.contracts.ConditionalEffect
 kotlin.contracts.ContractBuilder$DefaultImpls
@@ -19517,7 +19666,15 @@ kotlin.coroutines.jvm.internal.RunSuspendKt
 kotlin.coroutines.jvm.internal.SuspendFunction
 kotlin.coroutines.jvm.internal.SuspendLambda:
     public void <init>(int)
+kotlin.enums.EnumEntries
+kotlin.enums.EnumEntriesKt$enumEntries$1
+kotlin.enums.EnumEntriesKt
+kotlin.enums.EnumEntriesList
+kotlin.enums.EnumEntriesSerializationProxy$Companion
+kotlin.enums.EnumEntriesSerializationProxy
 kotlin.experimental.BitwiseOperationsKt
+kotlin.experimental.ExperimentalObjCName
+kotlin.experimental.ExperimentalObjCRefinement
 kotlin.experimental.ExperimentalTypeInference
 kotlin.internal.AccessibleLateinitPropertyLiteral
 kotlin.internal.ContractsDsl
@@ -19588,10 +19745,46 @@ kotlin.io.SerializableKt
 kotlin.io.TerminateException
 kotlin.io.TextStreamsKt$readLines$1
 kotlin.io.TextStreamsKt
+kotlin.io.encoding.Base64$Default
+kotlin.io.encoding.Base64
+kotlin.io.encoding.Base64JVMKt
+kotlin.io.encoding.Base64Kt
+kotlin.io.encoding.DecodeInputStream
+kotlin.io.encoding.EncodeOutputStream
+kotlin.io.encoding.ExperimentalEncodingApi
+kotlin.io.encoding.StreamEncodingKt
+kotlin.io.encoding.StreamEncodingKt__Base64IOStreamKt
+kotlin.io.path.CopyActionContext
+kotlin.io.path.CopyActionResult
+kotlin.io.path.DefaultCopyActionContext
+kotlin.io.path.DirectoryEntriesReader
+kotlin.io.path.ExceptionsCollector
 kotlin.io.path.ExperimentalPathApi
+kotlin.io.path.FileVisitorBuilder
+kotlin.io.path.FileVisitorBuilderImpl
+kotlin.io.path.FileVisitorImpl
+kotlin.io.path.LinkFollowing
+kotlin.io.path.OnErrorResult
+kotlin.io.path.PathNode
 kotlin.io.path.PathRelativizer
+kotlin.io.path.PathTreeWalk$bfsIterator$1
+kotlin.io.path.PathTreeWalk$dfsIterator$1
+kotlin.io.path.PathTreeWalk
+kotlin.io.path.PathTreeWalkKt
+kotlin.io.path.PathWalkOption
 kotlin.io.path.PathsKt
 kotlin.io.path.PathsKt__PathReadWriteKt
+kotlin.io.path.PathsKt__PathRecursiveFunctionsKt$WhenMappings
+kotlin.io.path.PathsKt__PathRecursiveFunctionsKt$copyToRecursively$1
+kotlin.io.path.PathsKt__PathRecursiveFunctionsKt$copyToRecursively$2
+kotlin.io.path.PathsKt__PathRecursiveFunctionsKt$copyToRecursively$3
+kotlin.io.path.PathsKt__PathRecursiveFunctionsKt$copyToRecursively$4
+kotlin.io.path.PathsKt__PathRecursiveFunctionsKt$copyToRecursively$5$1
+kotlin.io.path.PathsKt__PathRecursiveFunctionsKt$copyToRecursively$5$2
+kotlin.io.path.PathsKt__PathRecursiveFunctionsKt$copyToRecursively$5$3
+kotlin.io.path.PathsKt__PathRecursiveFunctionsKt$copyToRecursively$5$4
+kotlin.io.path.PathsKt__PathRecursiveFunctionsKt$copyToRecursively$5
+kotlin.io.path.PathsKt__PathRecursiveFunctionsKt
 kotlin.io.path.PathsKt__PathUtilsKt
 kotlin.jdk7.AutoCloseableKt
 kotlin.js.ExperimentalJsExport
@@ -19615,6 +19808,7 @@ kotlin.jvm.JvmName
 kotlin.jvm.JvmOverloads
 kotlin.jvm.JvmPackageName
 kotlin.jvm.JvmRecord
+kotlin.jvm.JvmSerializableLambda
 kotlin.jvm.JvmStatic
 kotlin.jvm.JvmSuppressWildcards
 kotlin.jvm.JvmSynthetic
@@ -19886,6 +20080,7 @@ kotlin.jvm.internal.RepeatableContainer
 kotlin.jvm.internal.SerializedIr
 kotlin.jvm.internal.ShortCompanionObject
 kotlin.jvm.internal.ShortSpreadBuilder
+kotlin.jvm.internal.SourceDebugExtension
 kotlin.jvm.internal.SpreadBuilder
 kotlin.jvm.internal.StringCompanionObject
 kotlin.jvm.internal.TypeIntrinsics:
@@ -19939,6 +20134,8 @@ kotlin.jvm.internal.markers.KMutableMap$Entry
 kotlin.jvm.internal.markers.KMutableMap
 kotlin.jvm.internal.markers.KMutableSet
 kotlin.jvm.internal.unsafe.MonitorKt
+kotlin.jvm.jdk8.JvmRepeatableKt
+kotlin.jvm.optionals.OptionalsKt
 kotlin.math.Constants
 kotlin.math.MathKt
 kotlin.math.MathKt__MathHKt
@@ -20024,11 +20221,15 @@ kotlin.ranges.ClosedFloatingPointRange$DefaultImpls
 kotlin.ranges.ClosedFloatingPointRange
 kotlin.ranges.ClosedRange$DefaultImpls
 kotlin.ranges.ClosedRange
+kotlin.ranges.ComparableOpenEndRange
 kotlin.ranges.ComparableRange
 kotlin.ranges.IntProgressionIterator:
     public final int getStep()
 kotlin.ranges.IntRange:
     public synthetic bridge boolean contains(java.lang.Comparable)
+    public synthetic bridge java.lang.Comparable getEndExclusive()
+    public java.lang.Integer getEndExclusive()
+    public static synthetic void getEndExclusive$annotations()
     public synthetic bridge java.lang.Comparable getEndInclusive()
     public synthetic bridge java.lang.Comparable getStart()
 kotlin.ranges.LongProgression$Companion
@@ -20036,15 +20237,23 @@ kotlin.ranges.LongProgression
 kotlin.ranges.LongProgressionIterator
 kotlin.ranges.LongRange$Companion
 kotlin.ranges.LongRange
+kotlin.ranges.OpenEndDoubleRange
+kotlin.ranges.OpenEndFloatRange
+kotlin.ranges.OpenEndRange$DefaultImpls
+kotlin.ranges.OpenEndRange
 kotlin.ranges.RangesKt:
     private void <init>()
 kotlin.ranges.RangesKt__RangesKt:
     public void <init>()
     public static final void checkStepIsPositive(boolean,java.lang.Number)
-    private static final boolean contains(java.lang.Iterable,java.lang.Object)
+    private static final boolean contains(kotlin.ranges.ClosedRange,java.lang.Object)
+    private static final boolean contains(kotlin.ranges.OpenEndRange,java.lang.Object)
     public static final kotlin.ranges.ClosedFloatingPointRange rangeTo(double,double)
     public static final kotlin.ranges.ClosedFloatingPointRange rangeTo(float,float)
     public static final kotlin.ranges.ClosedRange rangeTo(java.lang.Comparable,java.lang.Comparable)
+    public static final kotlin.ranges.OpenEndRange rangeUntil(double,double)
+    public static final kotlin.ranges.OpenEndRange rangeUntil(float,float)
+    public static final kotlin.ranges.OpenEndRange rangeUntil(java.lang.Comparable,java.lang.Comparable)
 kotlin.ranges.RangesKt___RangesKt:
     public void <init>()
     public static final synthetic boolean byteRangeContains(kotlin.ranges.ClosedRange,double)
@@ -20052,6 +20261,9 @@ kotlin.ranges.RangesKt___RangesKt:
     public static final boolean byteRangeContains(kotlin.ranges.ClosedRange,int)
     public static final boolean byteRangeContains(kotlin.ranges.ClosedRange,long)
     public static final boolean byteRangeContains(kotlin.ranges.ClosedRange,short)
+    public static final boolean byteRangeContains(kotlin.ranges.OpenEndRange,int)
+    public static final boolean byteRangeContains(kotlin.ranges.OpenEndRange,long)
+    public static final boolean byteRangeContains(kotlin.ranges.OpenEndRange,short)
     public static final byte coerceAtLeast(byte,byte)
     public static final double coerceAtLeast(double,double)
     public static final float coerceAtLeast(float,float)
@@ -20073,13 +20285,20 @@ kotlin.ranges.RangesKt___RangesKt:
     public static final java.lang.Comparable coerceIn(java.lang.Comparable,kotlin.ranges.ClosedRange)
     public static final short coerceIn(short,short,short)
     private static final boolean contains(kotlin.ranges.CharRange,java.lang.Character)
+    private static final boolean contains(kotlin.ranges.IntRange,byte)
+    private static final boolean contains(kotlin.ranges.IntRange,long)
     private static final boolean contains(kotlin.ranges.IntRange,java.lang.Integer)
+    private static final boolean contains(kotlin.ranges.IntRange,short)
+    private static final boolean contains(kotlin.ranges.LongRange,byte)
+    private static final boolean contains(kotlin.ranges.LongRange,int)
     private static final boolean contains(kotlin.ranges.LongRange,java.lang.Long)
+    private static final boolean contains(kotlin.ranges.LongRange,short)
     public static final synthetic boolean doubleRangeContains(kotlin.ranges.ClosedRange,byte)
     public static final boolean doubleRangeContains(kotlin.ranges.ClosedRange,float)
     public static final synthetic boolean doubleRangeContains(kotlin.ranges.ClosedRange,int)
     public static final synthetic boolean doubleRangeContains(kotlin.ranges.ClosedRange,long)
     public static final synthetic boolean doubleRangeContains(kotlin.ranges.ClosedRange,short)
+    public static final boolean doubleRangeContains(kotlin.ranges.OpenEndRange,float)
     public static final kotlin.ranges.CharProgression downTo(char,char)
     public static final kotlin.ranges.IntProgression downTo(byte,byte)
     public static final kotlin.ranges.IntProgression downTo(byte,int)
@@ -20112,6 +20331,9 @@ kotlin.ranges.RangesKt___RangesKt:
     public static final synthetic boolean intRangeContains(kotlin.ranges.ClosedRange,float)
     public static final boolean intRangeContains(kotlin.ranges.ClosedRange,long)
     public static final boolean intRangeContains(kotlin.ranges.ClosedRange,short)
+    public static final boolean intRangeContains(kotlin.ranges.OpenEndRange,byte)
+    public static final boolean intRangeContains(kotlin.ranges.OpenEndRange,long)
+    public static final boolean intRangeContains(kotlin.ranges.OpenEndRange,short)
     public static final char last(kotlin.ranges.CharProgression)
     public static final int last(kotlin.ranges.IntProgression)
     public static final long last(kotlin.ranges.LongProgression)
@@ -20123,6 +20345,9 @@ kotlin.ranges.RangesKt___RangesKt:
     public static final synthetic boolean longRangeContains(kotlin.ranges.ClosedRange,float)
     public static final boolean longRangeContains(kotlin.ranges.ClosedRange,int)
     public static final boolean longRangeContains(kotlin.ranges.ClosedRange,short)
+    public static final boolean longRangeContains(kotlin.ranges.OpenEndRange,byte)
+    public static final boolean longRangeContains(kotlin.ranges.OpenEndRange,int)
+    public static final boolean longRangeContains(kotlin.ranges.OpenEndRange,short)
     private static final char random(kotlin.ranges.CharRange)
     public static final char random(kotlin.ranges.CharRange,kotlin.random.Random)
     private static final int random(kotlin.ranges.IntRange)
@@ -20143,6 +20368,9 @@ kotlin.ranges.RangesKt___RangesKt:
     public static final synthetic boolean shortRangeContains(kotlin.ranges.ClosedRange,float)
     public static final boolean shortRangeContains(kotlin.ranges.ClosedRange,int)
     public static final boolean shortRangeContains(kotlin.ranges.ClosedRange,long)
+    public static final boolean shortRangeContains(kotlin.ranges.OpenEndRange,byte)
+    public static final boolean shortRangeContains(kotlin.ranges.OpenEndRange,int)
+    public static final boolean shortRangeContains(kotlin.ranges.OpenEndRange,long)
     public static final kotlin.ranges.CharProgression step(kotlin.ranges.CharProgression,int)
     public static final kotlin.ranges.IntProgression step(kotlin.ranges.IntProgression,int)
     public static final kotlin.ranges.LongProgression step(kotlin.ranges.LongProgression,long)
@@ -20593,7 +20821,6 @@ kotlin.streams.jdk8.StreamsKt$asSequence$$inlined$Sequence$1
 kotlin.streams.jdk8.StreamsKt$asSequence$$inlined$Sequence$2
 kotlin.streams.jdk8.StreamsKt$asSequence$$inlined$Sequence$3
 kotlin.streams.jdk8.StreamsKt$asSequence$$inlined$Sequence$4
-kotlin.streams.jdk8.StreamsKt$asStream$1
 kotlin.streams.jdk8.StreamsKt
 kotlin.system.ProcessKt
 kotlin.system.TimingKt
@@ -20750,6 +20977,7 @@ kotlin.text.StringsKt__StringBuilderJVMKt:
 kotlin.text.StringsKt__StringBuilderKt:
     public void <init>()
     private static final java.lang.StringBuilder append(java.lang.StringBuilder,java.lang.Object)
+    private static final java.lang.StringBuilder append(java.lang.StringBuilder,char[],int,int)
     public static final varargs java.lang.StringBuilder append(java.lang.StringBuilder,java.lang.Object[])
     public static final varargs java.lang.StringBuilder append(java.lang.StringBuilder,java.lang.String[])
     private static final java.lang.StringBuilder appendLine(java.lang.StringBuilder)
@@ -21221,6 +21449,8 @@ kotlin.time.AbstractDoubleTimeSource
 kotlin.time.AbstractLongTimeSource$LongTimeMark
 kotlin.time.AbstractLongTimeSource
 kotlin.time.AdjustedTimeMark
+kotlin.time.ComparableTimeMark$DefaultImpls
+kotlin.time.ComparableTimeMark
 kotlin.time.Duration$Companion
 kotlin.time.Duration
 kotlin.time.DurationJvmKt
@@ -21242,8 +21472,8 @@ kotlin.time.TimeMark
 kotlin.time.TimeSource$Companion
 kotlin.time.TimeSource$Monotonic$ValueTimeMark
 kotlin.time.TimeSource$Monotonic
+kotlin.time.TimeSource$WithComparableMarks
 kotlin.time.TimeSource
-kotlin.time.TimeSourceKt
 kotlin.time.TimedValue
 kotlin.time.jdk8.DurationConversionsJDK8Kt
 kotlinx.coroutines.AbstractCoroutine:
@@ -23927,6 +24157,12 @@ org.threeten.bp.zone.ZoneRulesProvider:
     protected boolean provideRefresh()
     protected abstract java.util.NavigableMap provideVersions(java.lang.String)
     public static boolean refresh()
+android.support.v4.app.INotificationSideChannel$Stub$Proxy:
+    public void cancel(java.lang.String,int,java.lang.String)
+    public void cancelAll(java.lang.String)
+android.support.v4.app.INotificationSideChannel:
+    public abstract void cancel(java.lang.String,int,java.lang.String)
+    public abstract void cancelAll(java.lang.String)
 android.support.v4.media.MediaBrowserCompat$CustomActionCallback
 android.support.v4.media.MediaBrowserCompat$CustomActionResultReceiver:
     private final java.lang.String mAction
@@ -23941,12 +24177,27 @@ android.support.v4.media.MediaBrowserCompat$SearchResultReceiver:
     private final android.support.v4.media.MediaBrowserCompat$SearchCallback mCallback
     private final android.os.Bundle mExtras
     private final java.lang.String mQuery
+android.support.v4.media.MediaDescriptionCompat:
+    void <init>(android.os.Parcel)
 android.support.v4.media.session.MediaControllerCompat$Callback$MessageHandler
+android.support.v4.media.session.MediaControllerCompat$Callback$StubCompat:
+    public void onExtrasChanged(android.os.Bundle)
+    public void onMetadataChanged(android.support.v4.media.MediaMetadataCompat)
+    public void onQueueChanged(java.util.List)
+    public void onQueueTitleChanged(java.lang.CharSequence)
+    public void onSessionDestroyed()
+    public void onVolumeInfoChanged(android.support.v4.media.session.ParcelableVolumeInfo)
 android.support.v4.media.session.MediaControllerCompat$Callback:
     android.support.v4.media.session.MediaControllerCompat$Callback$MessageHandler mHandler
+android.support.v4.media.session.MediaControllerCompat$PlaybackInfo:
+    void <init>(int,int,int,int,int)
 androidx.appcompat.app.AlertController$AlertParams$OnPrepareListViewListener
 androidx.appcompat.app.AlertController$AlertParams:
     public androidx.appcompat.app.AlertController$AlertParams$OnPrepareListViewListener mOnPrepareListViewListener
+androidx.appcompat.app.AppCompatDelegateImpl$1
+androidx.appcompat.app.AppCompatDelegateImpl$4
+androidx.appcompat.app.AppCompatDelegateImpl:
+    private static boolean sInstalledExceptionHandler
 androidx.appcompat.app.ToolbarActionBar
 androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat:
     private static final java.lang.String LOGTAG
@@ -23954,6 +24205,9 @@ androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper:
     private static java.lang.Object accessAndReturnWithDefault(java.lang.Object,java.lang.String,java.lang.Object)
     private android.text.StaticLayout createStaticLayoutForMeasuringPre16(java.lang.CharSequence,android.text.Layout$Alignment,int)
     private static java.lang.reflect.Field getTextViewField(java.lang.String)
+androidx.appcompat.widget.ContentFrameLayout:
+    public void dispatchFitSystemWindows(android.graphics.Rect)
+androidx.appcompat.widget.FitWindowsViewGroup
 androidx.appcompat.widget.SearchView$OnCloseListener:
     public abstract boolean onClose()
 androidx.appcompat.widget.SearchView$OnQueryTextListener:
@@ -23974,10 +24228,22 @@ androidx.appcompat.widget.ViewStubCompat$OnInflateListener:
     public abstract void onInflate(androidx.appcompat.widget.ViewStubCompat,android.view.View)
 androidx.appcompat.widget.ViewStubCompat:
     private androidx.appcompat.widget.ViewStubCompat$OnInflateListener mInflateListener
+androidx.core.R$drawable:
+    public static final int notification_bg
+    public static final int notification_bg_low
+    public static final int notification_template_icon_bg
+    public static final int notification_template_icon_low_bg
+androidx.core.R$id:
+    public static final int notification_background
+    public static final int tag_transition_group
 androidx.core.app.ActivityCompat$PermissionCompatDelegate
 androidx.core.app.ActivityCompat:
     private static androidx.core.app.ActivityCompat$PermissionCompatDelegate sDelegate
 androidx.core.app.BundleCompat$BundleCompatBaseImpl
+androidx.core.app.NotificationCompat$Action:
+    private final androidx.core.app.RemoteInput[] mDataOnlyRemoteInputs
+    public androidx.core.app.RemoteInput[] getDataOnlyRemoteInputs()
+    public int getIcon()
 androidx.core.app.NotificationCompat$BubbleMetadata$Api29Impl$$InternalSyntheticApiModelOutline$2$6e7271ba046966584d7e4dc31c9c028d255d7d9de474a432358b7144fb93556a$0
 androidx.core.app.NotificationCompat$BubbleMetadata$Api29Impl$$InternalSyntheticApiModelOutline$2$6e7271ba046966584d7e4dc31c9c028d255d7d9de474a432358b7144fb93556a$1
 androidx.core.app.NotificationCompat$BubbleMetadata$Api29Impl$$InternalSyntheticApiModelOutline$2$6e7271ba046966584d7e4dc31c9c028d255d7d9de474a432358b7144fb93556a$2
@@ -24006,18 +24272,18 @@ androidx.core.app.NotificationCompat$BubbleMetadata:
 androidx.core.app.NotificationCompat$Builder:
     androidx.core.app.NotificationCompat$BubbleMetadata mBubbleMetadata
     androidx.core.content.LocusIdCompat mLocusId
-androidx.core.app.NotificationCompatBuilder$$InternalSyntheticApiModelOutline$1$73cb8751ab51b21ad35dca8bb429f18dd92b113dd98fb852fe30e6efdb45c21f$25
+androidx.core.app.NotificationCompat$Style:
+    public android.graphics.Bitmap createColoredBitmap(int,int)
+androidx.core.app.NotificationCompatBuilder$$InternalSyntheticApiModelOutline$1$73cb8751ab51b21ad35dca8bb429f18dd92b113dd98fb852fe30e6efdb45c21f$14
 androidx.core.app.NotificationCompatJellybean:
     private static java.lang.reflect.Field sExtrasField
     private static boolean sExtrasFieldAccessFailed
+    public static android.util.SparseArray buildActionExtrasMap(java.util.List)
     public static android.os.Bundle getExtras(android.app.Notification)
+    public static android.os.Bundle writeActionAndGetExtras(android.app.Notification$Builder,androidx.core.app.NotificationCompat$Action)
+androidx.core.app.NotificationManagerCompat$CancelTask
 androidx.core.app.RemoteInput$$InternalSyntheticApiModelOutline$3$25c7a00ff2857b8faab497d0260d9b7a4cb67240a7308d6bcf4480da9fd26053$0
 androidx.core.app.RemoteInput$$InternalSyntheticApiModelOutline$3$25c7a00ff2857b8faab497d0260d9b7a4cb67240a7308d6bcf4480da9fd26053$1
-androidx.core.app.RemoteInput$$InternalSyntheticApiModelOutline$3$25c7a00ff2857b8faab497d0260d9b7a4cb67240a7308d6bcf4480da9fd26053$2
-androidx.core.app.RemoteInput$$InternalSyntheticApiModelOutline$3$25c7a00ff2857b8faab497d0260d9b7a4cb67240a7308d6bcf4480da9fd26053$3
-androidx.core.app.RemoteInput$$InternalSyntheticApiModelOutline$3$25c7a00ff2857b8faab497d0260d9b7a4cb67240a7308d6bcf4480da9fd26053$4
-androidx.core.app.RemoteInput$$InternalSyntheticApiModelOutline$3$25c7a00ff2857b8faab497d0260d9b7a4cb67240a7308d6bcf4480da9fd26053$5
-androidx.core.app.RemoteInput$$InternalSyntheticApiModelOutline$3$25c7a00ff2857b8faab497d0260d9b7a4cb67240a7308d6bcf4480da9fd26053$6
 androidx.core.app.RemoteInput:
     public boolean getAllowFreeFormInput()
     public java.util.Set getAllowedDataTypes()
@@ -24033,28 +24299,52 @@ androidx.core.app.SharedElementCallback:
 androidx.core.content.ContextCompat:
     private static android.util.TypedValue sTempValue
 androidx.core.content.LocusIdCompat
-androidx.core.text.ICUCompat$$InternalSyntheticApiModelOutline$3$724ba491ab5bd0c9cc6c8bac29af99b68e09a7b1bd0a0e64a10979ca7815f343$0
-androidx.core.text.ICUCompat$$InternalSyntheticApiModelOutline$3$724ba491ab5bd0c9cc6c8bac29af99b68e09a7b1bd0a0e64a10979ca7815f343$1
-androidx.core.text.ICUCompat$$InternalSyntheticApiModelOutline$3$724ba491ab5bd0c9cc6c8bac29af99b68e09a7b1bd0a0e64a10979ca7815f343$2
-androidx.core.text.ICUCompat$$InternalSyntheticApiModelOutline$3$724ba491ab5bd0c9cc6c8bac29af99b68e09a7b1bd0a0e64a10979ca7815f343$3
-androidx.core.text.ICUCompat$$InternalSyntheticApiModelOutline$3$724ba491ab5bd0c9cc6c8bac29af99b68e09a7b1bd0a0e64a10979ca7815f343$4
+androidx.core.graphics.TypefaceCompat:
+    private static android.graphics.Typeface getBestFontFromFamily(android.content.Context,android.graphics.Typeface,int)
+androidx.core.graphics.TypefaceCompatApi29Impl:
+    protected android.graphics.Typeface createFromInputStream(android.content.Context,java.io.InputStream)
+androidx.core.graphics.TypefaceCompatBaseImpl$2
+androidx.core.graphics.TypefaceCompatBaseImpl:
+    private void addFontFamily(android.graphics.Typeface,androidx.core.content.res.FontResourcesParserCompat$FontFamilyFilesResourceEntry)
+    private androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry findBestEntry(androidx.core.content.res.FontResourcesParserCompat$FontFamilyFilesResourceEntry,int)
+    androidx.core.content.res.FontResourcesParserCompat$FontFamilyFilesResourceEntry getFontFamily(android.graphics.Typeface)
+    private static long getUniqueKey(android.graphics.Typeface)
+androidx.core.graphics.drawable.TintAwareDrawable:
+    public abstract void setTint(int)
+    public abstract void setTintList(android.content.res.ColorStateList)
+    public abstract void setTintMode(android.graphics.PorterDuff$Mode)
+androidx.core.text.ICUCompat$$InternalSyntheticApiModelOutline$2$724ba491ab5bd0c9cc6c8bac29af99b68e09a7b1bd0a0e64a10979ca7815f343$0
+androidx.core.text.ICUCompat$$InternalSyntheticApiModelOutline$2$724ba491ab5bd0c9cc6c8bac29af99b68e09a7b1bd0a0e64a10979ca7815f343$1
+androidx.core.text.ICUCompat$$InternalSyntheticApiModelOutline$2$724ba491ab5bd0c9cc6c8bac29af99b68e09a7b1bd0a0e64a10979ca7815f343$2
 androidx.core.text.ICUCompat
 androidx.core.text.PrecomputedTextCompat:
     private static java.util.concurrent.Executor sExecutor
 androidx.core.text.TextUtilsCompat:
     private static int getLayoutDirectionFromFirstChar(java.util.Locale)
+androidx.core.view.LayoutInflaterCompat:
+    private static boolean sCheckedField
+    private static java.lang.reflect.Field sLayoutInflaterFactory2Field
+    private static void forceSetFactory2(android.view.LayoutInflater,android.view.LayoutInflater$Factory2)
+androidx.core.view.NestedScrollingChild
+androidx.core.view.NestedScrollingParent
+androidx.core.view.TintableBackgroundView
 androidx.core.view.ViewCompat:
     private static java.lang.reflect.Field sMinHeightField
     private static boolean sMinHeightFieldFetched
+    private static java.util.WeakHashMap sTransitionNameMap
 androidx.core.view.ViewPropertyAnimatorCompat$ViewPropertyAnimatorListenerApi14
 androidx.core.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityActionCompat:
     protected final androidx.core.view.accessibility.AccessibilityViewCommand mCommand
+androidx.core.view.accessibility.AccessibilityNodeInfoCompat:
+    public int getActions()
 androidx.core.view.accessibility.AccessibilityViewCommand$CommandArguments:
     android.os.Bundle mBundle
     public void setBundle(android.os.Bundle)
 androidx.core.view.accessibility.AccessibilityViewCommand:
     public abstract boolean perform(android.view.View,androidx.core.view.accessibility.AccessibilityViewCommand$CommandArguments)
 androidx.core.widget.TextViewOnReceiveContentListener$ApiImpl
+androidx.core.widget.TintableCompoundButton
+androidx.core.widget.TintableImageSourceView
 androidx.fragment.app.Fragment$AnimationInfo:
     androidx.core.app.SharedElementCallback mEnterTransitionCallback
     androidx.core.app.SharedElementCallback mExitTransitionCallback
@@ -24068,6 +24358,18 @@ androidx.fragment.app.FragmentManager:
 androidx.fragment.app.FragmentResultListener
 androidx.fragment.app.FragmentTransition:
     static java.lang.String findKeyForValue(androidx.collection.ArrayMap,java.lang.String)
+androidx.interpolator.view.animation.FastOutLinearInInterpolator
+androidx.interpolator.view.animation.FastOutSlowInInterpolator
+androidx.interpolator.view.animation.LinearOutSlowInInterpolator
+androidx.interpolator.view.animation.LookupTableInterpolator
+androidx.lifecycle.DefaultLifecycleObserver$-CC
+androidx.lifecycle.DefaultLifecycleObserver:
+    public abstract void onCreate(androidx.lifecycle.LifecycleOwner)
+    public abstract void onDestroy(androidx.lifecycle.LifecycleOwner)
+    public abstract void onPause(androidx.lifecycle.LifecycleOwner)
+    public abstract void onResume(androidx.lifecycle.LifecycleOwner)
+    public abstract void onStart(androidx.lifecycle.LifecycleOwner)
+    public abstract void onStop(androidx.lifecycle.LifecycleOwner)
 androidx.lifecycle.LiveData$LifecycleBoundObserver:
     void <init>(androidx.lifecycle.LiveData,androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Observer)
     boolean isAttachedTo(androidx.lifecycle.LifecycleOwner)
@@ -24103,12 +24405,35 @@ androidx.loader.content.Loader:
     public final void startLoading()
     public void stopLoading()
     public void unregisterListener(androidx.loader.content.Loader$OnLoadCompleteListener)
+androidx.media.AudioAttributesCompat$Builder
+androidx.media.AudioAttributesImpl$Builder
+androidx.media.AudioAttributesImplApi21$Builder
+androidx.media.AudioAttributesImplApi26$Builder
+androidx.media.AudioAttributesImplBase$Builder
+androidx.media.AudioAttributesImplBase:
+    void <init>(int,int,int,int)
+androidx.media.R$id
+androidx.media.R$integer
+androidx.media.R$layout
+androidx.media.app.NotificationCompat$MediaStyle:
+    android.app.PendingIntent mCancelButtonIntent
+    boolean mShowCancelButton
+    android.widget.RemoteViews generateBigContentView()
+    android.widget.RemoteViews generateContentView()
+    private android.widget.RemoteViews generateMediaActionButton(androidx.core.app.NotificationCompat$Action)
+    int getBigContentViewLayoutResource(int)
+    int getContentViewLayoutResource()
 androidx.multidex.MultiDex$V14$ElementConstructor
 androidx.multidex.MultiDex$V14$ICSElementConstructor
 androidx.multidex.MultiDex$V14$JBMR11ElementConstructor
 androidx.multidex.MultiDex$V14$JBMR2ElementConstructor
 androidx.multidex.MultiDex$V14
 androidx.multidex.MultiDex$V4
+androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat:
+    private void setupColorAnimator(android.animation.Animator)
+androidx.vectordrawable.graphics.drawable.AnimationUtilsCompat:
+    private static android.view.animation.Interpolator createInterpolatorFromXml(android.content.Context,android.content.res.Resources,android.content.res.Resources$Theme,org.xmlpull.v1.XmlPullParser)
+androidx.vectordrawable.graphics.drawable.PathInterpolatorCompat
 androidx.webkit.TracingConfig:
     public java.util.List getCustomIncludedCategories()
     public int getPredefinedCategories()
@@ -24204,6 +24529,8 @@ com.google.android.exoplayer2.video.spherical.SphericalGLSurfaceView:
     private final com.google.android.exoplayer2.video.spherical.SceneRenderer scene
 com.google.gson.internal.LinkedTreeMap:
     static final synthetic boolean $assertionsDisabled
+com.tekartik.sqflite.Utils:
+    static java.util.Locale localeForLanguageTagPre21(java.lang.String)
 dev.fluttercommunity.plus.androidalarmmanager.FlutterBackgroundExecutor:
     private static io.flutter.plugin.common.PluginRegistry$PluginRegistrantCallback pluginRegistrantCallback
 dev.fluttercommunity.plus.androidalarmmanager.PluginRegistrantException
@@ -24261,8 +24588,16 @@ io.flutter.plugin.common.PluginRegistry$ViewDestroyListener
 io.flutter.plugin.common.PluginRegistry
 io.flutter.plugin.platform.VirtualDisplayController:
     private static java.lang.String TAG
-io.flutter.plugins.urllauncher.UrlLauncherPlugin:
+io.flutter.plugins.camera.CameraRegionUtils:
     static final synthetic boolean $assertionsDisabled
+    public void <init>()
+io.flutter.plugins.camera.DartMessenger:
+    static final synthetic boolean $assertionsDisabled
+io.flutter.plugins.camera.MethodCallHandlerImpl:
+    static final synthetic boolean $assertionsDisabled
+io.flutter.plugins.urllauncher.UrlLauncher:
+    static final synthetic boolean $assertionsDisabled
+io.flutter.plugins.videoplayer.CustomSSLSocketFactory
 io.flutter.view.FlutterNativeView
 io.flutter.view.TextureRegistry$SurfaceTextureEntry$-CC
 io.flutter.view.VsyncWaiter:

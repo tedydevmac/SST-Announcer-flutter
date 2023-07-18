@@ -12,6 +12,8 @@ import 'package:xml/xml.dart' as xml;
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
 class FeedPage extends StatefulWidget {
+  const FeedPage({super.key});
+
   @override
   _FeedPageState createState() => _FeedPageState();
 }
@@ -124,10 +126,10 @@ class _FeedPageState extends State<FeedPage> {
                       return Dismissible(
                         background: Container(
                           color: Colors.red,
-                          child: Align(
+                          child: const Align(
                             alignment: Alignment.centerLeft,
                             child: Padding(
-                              padding: const EdgeInsets.all(20),
+                              padding: EdgeInsets.all(20),
                               child: Icon(Icons.push_pin),
                             ),
                           ),
@@ -166,20 +168,20 @@ class _FeedPageState extends State<FeedPage> {
                             title: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
+                                const Text(
                                   "Pinned",
                                   style: TextStyle(fontSize: 12),
                                 ),
                                 Text(
                                   pinnedTitles![index],
                                   maxLines: 3,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 20),
                                 ),
                                 Text(
                                   pinnedAuthors![index],
-                                  style: TextStyle(fontWeight: FontWeight.w300),
+                                  style: const TextStyle(fontWeight: FontWeight.w300),
                                 ),
                               ],
                             ),
@@ -188,19 +190,19 @@ class _FeedPageState extends State<FeedPage> {
                                 Text(
                                   parseFragment(pinnedContent![index]).text!,
                                   maxLines: 3,
-                                  style: TextStyle(fontSize: 14),
+                                  style: const TextStyle(fontSize: 14),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 index == (pinnedTitles!.length - 1)
-                                    ? Divider(
+                                    ? const Divider(
                                         thickness: 3,
                                       )
                                     : Container(),
                               ],
                             ),
-                            trailing: Icon(
+                            trailing: const Icon(
                               Icons.push_pin,
                               color: Colors.red,
                             ),
@@ -245,13 +247,14 @@ class _FeedPageState extends State<FeedPage> {
                           await prefs.setStringList('content', pinnedContent!);
                           await prefs.setStringList("authors", pinnedAuthors!);
                           _refresh();
+                          return null;
                         },
                         background: Container(
                           color: Colors.green,
-                          child: Align(
+                          child: const Align(
                             alignment: Alignment.centerLeft,
                             child: Padding(
-                              padding: const EdgeInsets.all(20),
+                              padding: EdgeInsets.all(20),
                               child: Icon(Icons.push_pin),
                             ),
                           ),
@@ -277,12 +280,12 @@ class _FeedPageState extends State<FeedPage> {
                             children: [
                               Text(
                                 title,
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 20),
                               ),
                               Text(
                                 author,
-                                style: TextStyle(fontWeight: FontWeight.w300),
+                                style: const TextStyle(fontWeight: FontWeight.w300),
                               ),
                             ],
                           ),
@@ -291,9 +294,9 @@ class _FeedPageState extends State<FeedPage> {
                               Text(
                                 parseFragment(content).text!,
                                 maxLines: 3,
-                                style: TextStyle(fontSize: 14),
+                                style: const TextStyle(fontSize: 14),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 15,
                               ),
                             ],

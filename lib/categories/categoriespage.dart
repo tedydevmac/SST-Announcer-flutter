@@ -14,7 +14,7 @@ class CategoryPage extends StatefulWidget {
   final String category;
   final bool isCustom;
 
-  CategoryPage({required this.category, required this.isCustom});
+  const CategoryPage({super.key, required this.category, required this.isCustom});
 
   @override
   _CategoryPageState createState() => _CategoryPageState();

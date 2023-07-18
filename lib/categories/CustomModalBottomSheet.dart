@@ -62,7 +62,7 @@ class _AddPostBotttomSheetState extends State<AddPostBotttomSheet> {
   @override
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
-    final _controller = ScrollController();
+    final controller = ScrollController();
     final navigator = Navigator.of(context);
     return Container(
       height: screenHeight * 0.75,
@@ -84,7 +84,7 @@ class _AddPostBotttomSheetState extends State<AddPostBotttomSheet> {
                       thickness: 0.4,
                       height: 1,
                     ),
-                    controller: _controller,
+                    controller: controller,
                     itemCount: _posts.length,
                     shrinkWrap: true,
                     itemBuilder: (context, index) {

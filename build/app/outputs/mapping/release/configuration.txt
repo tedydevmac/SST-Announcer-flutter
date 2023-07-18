@@ -179,6 +179,18 @@
 
 
 # End of content from /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/app/intermediates/aapt_proguard_file/release/aapt_rules.txt
+# The proguard configuration file for the following section is /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/flutter_plugin_android_lifecycle/intermediates/consumer_proguard_dir/release/lib0/proguard.txt
+# The point of this package is to specify that a dependent plugin intends to
+# use the AndroidX lifecycle classes. Make sure no R8 heuristics shrink classes
+# brought in by the embedding's pom.
+#
+# This isn't strictly needed since by definition, plugins using Android
+# lifecycles should implement DefaultLifecycleObserver and therefore keep it
+# from being shrunk. But there seems to be an R8 bug so this needs to stay
+# https://issuetracker.google.com/issues/142778206.
+-keep class androidx.lifecycle.DefaultLifecycleObserver
+
+# End of content from /Users/lukeyeo/Documents/GitHub/SST-Announcer-flutter/build/flutter_plugin_android_lifecycle/intermediates/consumer_proguard_dir/release/lib0/proguard.txt
 # The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/ff8b95578e5b7d746d7ee831a4c3e5a4/transformed/jetified-window-1.0.0/proguard.txt
 # Copyright (C) 2020 The Android Open Source Project
 #
@@ -255,6 +267,36 @@
 -dontwarn sun.misc.Signal
 
 # End of content from /Users/lukeyeo/.gradle/caches/transforms-3/c7651117b57881e2cf17ca36cec8ed87/transformed/rules/lib/META-INF/proguard/coroutines.pro
+# The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/caf79cea42cbd291c641ead075abd485/transformed/webkit-1.5.0/proguard.txt
+# Copyright 2018 The Chromium Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# We need to avoid obfuscating the support library boundary interface because
+# this API is shared with the Android Support Library.
+# Note that we only 'keep' the package org.chromium.support_lib_boundary itself,
+# any sub-packages of that package can still be obfuscated.
+-keep public class org.chromium.support_lib_boundary.* { public *; }
+
+# Copyright (C) 2018 The Android Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Prevent WebViewClientCompat from being renamed, since chromium depends on this name.
+-keepnames public class androidx.webkit.WebViewClientCompat
+
+
+# End of content from /Users/lukeyeo/.gradle/caches/transforms-3/caf79cea42cbd291c641ead075abd485/transformed/webkit-1.5.0/proguard.txt
 # The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/a86f84b9a26e704b7f35b2d67a4e8974/transformed/appcompat-1.3.1/proguard.txt
 # Copyright (C) 2018 The Android Open Source Project
 #
@@ -280,32 +322,7 @@
 }
 
 # End of content from /Users/lukeyeo/.gradle/caches/transforms-3/a86f84b9a26e704b7f35b2d67a4e8974/transformed/appcompat-1.3.1/proguard.txt
-# The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/636b7adb33846abec3ebd3d2bb29c254/transformed/media-1.1.0/proguard.txt
-# Copyright (C) 2017 The Android Open Source Project
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
-# Prevent Parcelable objects from being removed or renamed.
--keep class android.support.v4.media.** implements android.os.Parcelable {
-    public static final android.os.Parcelable$Creator *;
-}
-
-# Prevent Parcelable objects from being removed or renamed.
--keep class androidx.media.** implements android.os.Parcelable {
-    public static final android.os.Parcelable$Creator *;
-}
-# End of content from /Users/lukeyeo/.gradle/caches/transforms-3/636b7adb33846abec3ebd3d2bb29c254/transformed/media-1.1.0/proguard.txt
-# The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/42c9cb444e70aed5913074278d9d4671/transformed/jetified-exoplayer-core-2.18.5/proguard.txt
+# The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/31ca3cba99de61d8e796213014c1b16c/transformed/jetified-exoplayer-core-2.18.7/proguard.txt
 # Proguard rules specific to the core module.
 
 # Constructors accessed via reflection in DefaultRenderersFactory
@@ -362,19 +379,9 @@
   <init>();
 }
 
-# End of content from /Users/lukeyeo/.gradle/caches/transforms-3/42c9cb444e70aed5913074278d9d4671/transformed/jetified-exoplayer-core-2.18.5/proguard.txt
-# The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/caf79cea42cbd291c641ead075abd485/transformed/webkit-1.5.0/proguard.txt
-# Copyright 2018 The Chromium Authors. All rights reserved.
-# Use of this source code is governed by a BSD-style license that can be
-# found in the LICENSE file.
-
-# We need to avoid obfuscating the support library boundary interface because
-# this API is shared with the Android Support Library.
-# Note that we only 'keep' the package org.chromium.support_lib_boundary itself,
-# any sub-packages of that package can still be obfuscated.
--keep public class org.chromium.support_lib_boundary.* { public *; }
-
-# Copyright (C) 2018 The Android Open Source Project
+# End of content from /Users/lukeyeo/.gradle/caches/transforms-3/31ca3cba99de61d8e796213014c1b16c/transformed/jetified-exoplayer-core-2.18.7/proguard.txt
+# The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/636b7adb33846abec3ebd3d2bb29c254/transformed/media-1.1.0/proguard.txt
+# Copyright (C) 2017 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -388,11 +395,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Prevent WebViewClientCompat from being renamed, since chromium depends on this name.
--keepnames public class androidx.webkit.WebViewClientCompat
+# Prevent Parcelable objects from being removed or renamed.
+-keep class android.support.v4.media.** implements android.os.Parcelable {
+    public static final android.os.Parcelable$Creator *;
+}
 
-
-# End of content from /Users/lukeyeo/.gradle/caches/transforms-3/caf79cea42cbd291c641ead075abd485/transformed/webkit-1.5.0/proguard.txt
+# Prevent Parcelable objects from being removed or renamed.
+-keep class androidx.media.** implements android.os.Parcelable {
+    public static final android.os.Parcelable$Creator *;
+}
+# End of content from /Users/lukeyeo/.gradle/caches/transforms-3/636b7adb33846abec3ebd3d2bb29c254/transformed/media-1.1.0/proguard.txt
 # The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/8d105ec515a0f2aebfa1668c915342ea/transformed/fragment-1.3.6/proguard.txt
 # Copyright (C) 2020 The Android Open Source Project
 #
@@ -456,18 +468,6 @@
 }
 
 # End of content from /Users/lukeyeo/.gradle/caches/transforms-3/92b378fed2c7ad5d0dc31b9e1ebba952/transformed/core-1.7.0/proguard.txt
-# The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/6cf6da00e3440487cc9a5b8ad5368b20/transformed/jetified-threetenabp-1.2.3/proguard.txt
-# Keep class members used for serialization
-# https://www.guardsquare.com/en/products/proguard/manual/examples#serializable
--keepclassmembers class org.threeten.bp.** implements java.io.Serializable {
-  private static final java.io.ObjectStreamField[] serialPersistentFields;
-  private void writeObject(java.io.ObjectOutputStream);
-  private void readObject(java.io.ObjectInputStream);
-  java.lang.Object writeReplace();
-  java.lang.Object readResolve();
-}
-
-# End of content from /Users/lukeyeo/.gradle/caches/transforms-3/6cf6da00e3440487cc9a5b8ad5368b20/transformed/jetified-threetenabp-1.2.3/proguard.txt
 # The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/6f6c99620269cf0645b8cf4d98dca92d/transformed/versionedparcelable-1.1.1/proguard.txt
 -keep class * implements androidx.versionedparcelable.VersionedParcelable
 -keep public class android.support.**Parcelizer { *; }
@@ -537,7 +537,7 @@
 }
 
 # End of content from /Users/lukeyeo/.gradle/caches/transforms-3/e7545ccf387d8301386c5993420ca6c8/transformed/lifecycle-viewmodel-2.3.1/proguard.txt
-# The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/c3f3c22a078eff5c655925d4a231283e/transformed/jetified-exoplayer-datasource-2.18.5/proguard.txt
+# The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/d3610de1296d77f601741f88f400f9fb/transformed/jetified-exoplayer-datasource-2.18.7/proguard.txt
 # Proguard rules specific to the DataSource module.
 
 # Constant folding for resource integers may mean that a resource passed to this method appears to be unused. Keep the method to prevent this from happening.
@@ -551,8 +551,8 @@
   <init>();
 }
 
-# End of content from /Users/lukeyeo/.gradle/caches/transforms-3/c3f3c22a078eff5c655925d4a231283e/transformed/jetified-exoplayer-datasource-2.18.5/proguard.txt
-# The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/6878010ef9076c6a8a916822a69d27f0/transformed/jetified-exoplayer-extractor-2.18.5/proguard.txt
+# End of content from /Users/lukeyeo/.gradle/caches/transforms-3/d3610de1296d77f601741f88f400f9fb/transformed/jetified-exoplayer-datasource-2.18.7/proguard.txt
+# The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/951f6eacc45c4e0682f7ce0c62d7586f/transformed/jetified-exoplayer-extractor-2.18.7/proguard.txt
 # Proguard rules specific to the extractor module.
 
 # Methods accessed via reflection in DefaultExtractorsFactory
@@ -570,8 +570,8 @@
 -dontwarn kotlin.annotations.jvm.**
 -dontwarn javax.annotation.**
 
-# End of content from /Users/lukeyeo/.gradle/caches/transforms-3/6878010ef9076c6a8a916822a69d27f0/transformed/jetified-exoplayer-extractor-2.18.5/proguard.txt
-# The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/66536e940f829f67ee2a3cc707524fe8/transformed/jetified-exoplayer-common-2.18.5/proguard.txt
+# End of content from /Users/lukeyeo/.gradle/caches/transforms-3/951f6eacc45c4e0682f7ce0c62d7586f/transformed/jetified-exoplayer-extractor-2.18.7/proguard.txt
+# The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/9354730f886cca1c166eb08d35814319/transformed/jetified-exoplayer-common-2.18.7/proguard.txt
 # Proguard rules specific to the common module.
 
 # Don't warn about checkerframework and Kotlin annotations
@@ -595,8 +595,20 @@
 # This is needed for ProGuard but not R8.
 -keepclassmembernames class com.google.common.base.Function { *; }
 
-# End of content from /Users/lukeyeo/.gradle/caches/transforms-3/66536e940f829f67ee2a3cc707524fe8/transformed/jetified-exoplayer-common-2.18.5/proguard.txt
-# The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/970eca219f6882e5c456164ef8aa2829/transformed/rules/lib/META-INF/proguard/androidx-annotations.pro
+# End of content from /Users/lukeyeo/.gradle/caches/transforms-3/9354730f886cca1c166eb08d35814319/transformed/jetified-exoplayer-common-2.18.7/proguard.txt
+# The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/6cf6da00e3440487cc9a5b8ad5368b20/transformed/jetified-threetenabp-1.2.3/proguard.txt
+# Keep class members used for serialization
+# https://www.guardsquare.com/en/products/proguard/manual/examples#serializable
+-keepclassmembers class org.threeten.bp.** implements java.io.Serializable {
+  private static final java.io.ObjectStreamField[] serialPersistentFields;
+  private void writeObject(java.io.ObjectOutputStream);
+  private void readObject(java.io.ObjectInputStream);
+  java.lang.Object writeReplace();
+  java.lang.Object readResolve();
+}
+
+# End of content from /Users/lukeyeo/.gradle/caches/transforms-3/6cf6da00e3440487cc9a5b8ad5368b20/transformed/jetified-threetenabp-1.2.3/proguard.txt
+# The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/5bec2eb3969d87339f1a971e1f74daee/transformed/rules/lib/META-INF/proguard/androidx-annotations.pro
 -keep,allowobfuscation @interface androidx.annotation.Keep
 -keep @androidx.annotation.Keep class * {*;}
 
@@ -616,7 +628,13 @@
   @androidx.annotation.DoNotInline <methods>;
 }
 
-# End of content from /Users/lukeyeo/.gradle/caches/transforms-3/970eca219f6882e5c456164ef8aa2829/transformed/rules/lib/META-INF/proguard/androidx-annotations.pro
+# End of content from /Users/lukeyeo/.gradle/caches/transforms-3/5bec2eb3969d87339f1a971e1f74daee/transformed/rules/lib/META-INF/proguard/androidx-annotations.pro
+# The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/ce6e3fac34eacd07eec742362f32f698/transformed/rules/lib/META-INF/proguard/org.threeten.bp.pro
+-keepclassmembers class org.threeten.bp.Ser {
+  <init>();
+}
+
+# End of content from /Users/lukeyeo/.gradle/caches/transforms-3/ce6e3fac34eacd07eec742362f32f698/transformed/rules/lib/META-INF/proguard/org.threeten.bp.pro
 # The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/cdf1e8c032ad5a7eddaa93f9b56918b8/transformed/jetified-annotation-experimental-1.1.0/proguard.txt
 # Copyright (C) 2020 The Android Open Source Project
 #
@@ -643,12 +661,6 @@
 -dontwarn kotlin.annotation.Target
 
 # End of content from /Users/lukeyeo/.gradle/caches/transforms-3/cdf1e8c032ad5a7eddaa93f9b56918b8/transformed/jetified-annotation-experimental-1.1.0/proguard.txt
-# The proguard configuration file for the following section is /Users/lukeyeo/.gradle/caches/transforms-3/ce6e3fac34eacd07eec742362f32f698/transformed/rules/lib/META-INF/proguard/org.threeten.bp.pro
--keepclassmembers class org.threeten.bp.Ser {
-  <init>();
-}
-
-# End of content from /Users/lukeyeo/.gradle/caches/transforms-3/ce6e3fac34eacd07eec742362f32f698/transformed/rules/lib/META-INF/proguard/org.threeten.bp.pro
 # The proguard configuration file for the following section is <unknown>
 -ignorewarnings
 # End of content from <unknown>
